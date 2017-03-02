@@ -33,3 +33,13 @@
 + 其实第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；
 + 第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。
 + 在git commit成功之后暂存区就是空白了，被默认推送到git自动创建的master分支上了
+
+###七、关联远程仓库
++ 一般都是先建立远程再clone到本地
++ shh(速度更快)协议个https协议(每次push都要求输入口令)
+
+###八、分支管理
+####8.1 创建并合并分支
++ git branch dev创建分支dev
++ git checkout dev切换到分支dev
++ git checkout -b dev创建分支dev并切换到分支dev(相当于2条命令)
