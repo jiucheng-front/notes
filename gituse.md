@@ -192,3 +192,24 @@
 + git tag -a <tagname> -m "blablabla..."可以指定标签信息；
 + git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
 + 命令git tag可以查看所有标签。
+
+=============================
+####标签操作(因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。)
++ 命令git push origin <tagname>可以推送一个本地标签
++ 命令git push origin --tags可以推送全部未推送过的本地标签
++ 命令git tag -d <tagname>可以删除一个本地标签
++ 命令git push origin :refs/tags/<tagname>可以删除一个远程标签
+
+###十三、github使用
+#### 13.1如何clone和参与项目
++ 可以clone自己的仓库到本地进行操作
++ 想参与别人的先fork别人的仓库到自己账号名下再clone这个fork倒自己账号的的仓库到本地，进行修扩展push到自己的仓库后，可以在github上发送pull request,即可让原来作者看到。
++ .gitignore忽略不想提交的文件
+
+###13.2 配置别名
++ 有时候会觉得git命令繁琐，可以自己配置别名如：
++ git config --global alias.st status，此时git st===git status
++ 当然还有别的命令可以简写，很多人都用co表示checkout，ci表示commit，br表示branch
++ git config --global alias.co checkout
++ git config --global alias.ci commit
++ git config --global alias.br branch
