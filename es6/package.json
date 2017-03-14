@@ -1,0 +1,18 @@
+{
+  "name": "es6",
+  "version": "1.0.0",
+  "description": "test es6",
+  "main": "add.es5.js",
+  "scripts": {
+    "build": "babel js -d lib"
+  },
+  "author": "jj",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.24.0"
+  }
+}
