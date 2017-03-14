@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQ上傳圖片</title>
+    <style>
+        .box{
+            width: 100px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+<input type="file" class="file">
+<img class="box" src=""/>
+</body>
+<script src="src/jquery-1.9.1.min.js"></script>
+<script>
+    $(".file").on("change", function(){
+
+        var files = this.files
+        if(this.files.length === 1){
+            var reader=new FileReader();
+            reader.onload=function(){
+                // 通过 reader.result 来访问生成的 DataURL
+                var url=reader.result;
+                $(".box").attr("src", url);
+            };
+            reader.readAsDataURL(files[0]);
+        }
+    })
+</script>
+</html>
