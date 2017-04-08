@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='what fuck is going on';
+//    str='on going is fuck what'
+    function reverse1(str){
+        var arr=str.split(' ');
+        var arr1=[];
+        for(var j=arr.length-1;j>=0;j--){
+            arr1.push(arr[j]);
+        }
+        return arr1.join(' ');
+    }
+    var ss=reverse1(str);
+    console.log(ss);
+</script>
+</body>
+</html>
