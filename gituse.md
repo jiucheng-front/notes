@@ -15,6 +15,7 @@
 + git checkout -- file放弃工作区的修改，没有--就是切换到另一个分支了
 + rm filename 删除文件(命令行删除还是手动删除都要重新add/commit)
 + 如果误删还没commit可以git checkout -- filename恢复文件
++ git show [commit number]查看该次提交前后文件的对比，新增变化
 
 ###四、版本退回
 + 先git log看看最近的提交信息（如有ABC三次提交）
