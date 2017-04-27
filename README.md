@@ -13,11 +13,11 @@ WeX5 –  应用快速开发框架
 + git init初始化仓库，自动创建一个.git文件监视该仓库
 + mkdir flodName创建文件夹
 
-####二、添加到git仓库需要2步
+#### 二、添加到git仓库需要2步
 + 1、git add file 添加文件
 + 2、git commit -m '本次提交的注释'
 
-###三、常用命令
+### 三、常用命令
 + ls 查看当前仓库下面都有什么
 + pwd 查看当前仓库的名字
 + git status查看当前仓库状态(是否有文件改动)
@@ -28,7 +28,7 @@ WeX5 –  应用快速开发框架
 + 如果误删还没commit可以git checkout -- filename恢复文件
 + git push origin dev單獨提交dev分支
 
-###四、版本退回
+### 四、版本退回
 + 先git log看看最近的提交信息（如有ABC三次提交）
 + 当前在C：git reset --haed HEAD^回退到上一个版本B(回头退之后再git log看看提交信息是否少一次提交)
 + 当前回退到了B：git reset --hard 7cc99041be2d如果想回到版本C怎么办(当前命令行一直没关闭是可以的)，7cc99041be2d是版本C提交时候的id的前一段
@@ -39,19 +39,19 @@ WeX5 –  应用快速开发框架
 + git log可以查看提交历史
 + git reflog查看历史命令(重返未来)
 
-###六、工作区(Working Directory)和暂存区(Stage)
+### 六、工作区(Working Directory)和暂存区(Stage)
 + Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
 + ![xx](img/001.jpg)
 + 其实第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；
 + 第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。
 + 在git commit成功之后暂存区就是空白了，被默认推送到git自动创建的master分支上了
 
-###七、关联远程仓库
+### 七、关联远程仓库
 + 一般都是先建立远程再clone到本地
 + shh(速度更快)协议个https协议(每次push都要求输入口令)
 
-###八、分支管理
-####8.1 创建并合并分支
+### 八、分支管理
+#### 8.1 创建并合并分支
 + git branch dev创建分支dev
 + git checkout dev切换到分支dev
 + git checkout -b dev创建分支dev并切换到分支dev(相当于2条命令)
@@ -63,7 +63,7 @@ WeX5 –  应用快速开发框架
 + git branch -d dev
 + **因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。**
 
-####小结：Git鼓励大量使用分支：
+#### 小结：Git鼓励大量使用分支：
 + 查看分支：git branch
 + 创建分支：git branch <name>
 + 切换分支：git checkout <name>
@@ -71,7 +71,7 @@ WeX5 –  应用快速开发框架
 + 合并某分支到当前分支：git merge <name>
 + 删除分支：git branch -d <name>
 
-####8.2、解决冲突
+#### 8.2、解决冲突
 + 不同分支上对相同的文件都做了修改并add/commit之后合git merge name会报错
 + ![冲突](img/chongtu.png)
 + 打开冲突的文件如下
@@ -82,22 +82,22 @@ WeX5 –  应用快速开发框架
 + 上面命令之后可以git branch查看分支是否被删除
 + 工作结束
 
-####小结
+#### 小结
 + 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
 + 用git log --graph命令可以看到分支合并图如下(只截一点)。
 + ![冲突](img/001.png)
 
-####8.3、分支管理策略
+#### 8.3、分支管理策略
 + fast forward合并策略看不到有合并的历史记录
 + git merge --no-ff -m "merge with no-ff" dev（使用--no-ff合并分支dev重新提交带提交注释信息）
 + **在实际开发中，我们应该按照几个基本原则进行分支管理：**
 + 首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。
 
-####小结
+#### 小结
 + Git分支十分强大，在团队开发中应该充分应用。
 + 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
 
-###九、BUG分支
+### 九、BUG分支
 + 正在分支dev上‘作战’而且还没完成(没法提交)，有个紧急bug需要修复
 + 幸好，Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：
 + git stash(也就是修改后没add/commit的时候，**可以理解为临时托管所**)
@@ -113,11 +113,11 @@ WeX5 –  应用快速开发框架
 + 1、git stash apply 恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；
 + 2、另一种方式是用git stash pop，恢复的同时把stash内容也删了
 
-####小结
+#### 小结
 + 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
 当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。
 
-####十、feature分支
+#### 十、feature分支
 + 正在dev分支上开发，BOSS需要一个新功能，此时应该在dev分支上床架一个小分支如git checkout -b feature01 创建并切换到分支feature01
 + 在feature01上完成功能之并git add/commit之后
 + git checkout dev 切换到dev分支**准备合并**
@@ -126,11 +126,11 @@ WeX5 –  应用快速开发框架
 + git branch -D feature01 强行删除
 + 就OK了
 
-####小结
+#### 小结
 + 开发一个新feature，最好新建一个分支；
 + 如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。
 
-###十一、多人协作
+### 十一、多人协作
 + 当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。
 + git remote 查看远程信息
 + git remote -v 查看远程origin地址，没有推送权限就看不到push地址
@@ -156,14 +156,14 @@ WeX5 –  应用快速开发框架
 + 如果pull失败了是因为没有指定本地的dev分支与远程的origin/dev分支的连接，根据提示设置dev和origin/dev连接：
 + git branch --set-upstream dev origin/dev
 + 再pull，这回git pull成功，但是合并有冲突，**如果合并有冲突需要手动解决冲突**，解决后再add/commit，再push
-#####所以：多人协作的工作模式通常是这样：
+##### 所以：多人协作的工作模式通常是这样：
 + 1、首先，可以试图用git push origin name推送自己的修改；
 + 2、如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
 + 3、如果合并有冲突，则解决冲突，并在本地提交；
 + 4、没有冲突或者解决掉冲突后，再用git push origin bname推送就能成功！
 + **注意**如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream name origin/name。
 
-####小结
+#### 小结
 + 查看远程库信息，使用git remote -v；
 + 本地新建的分支如果不推送到远程，对其他人就是不可见的；
 + 从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
@@ -171,7 +171,7 @@ WeX5 –  应用快速开发框架
 + 建立本地分支和远程分支的关联，使用git branch --set-upstream name origin/name；
 + 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
 
-###十二、标签
+### 十二、标签
 + 发布一个版本时，我们通常先在版本库中打一个标签（tag），这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。
 
 + Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。
@@ -183,7 +183,7 @@ WeX5 –  应用快速开发框架
 + “好的，按照tag v1.2查找commit就行！”
 + 所以，tag就是一个让人容易记住的有意义的名字，它跟某个commit绑在一起。
 
-####如何创建标签
+#### 如何创建标签
 + 在Git中打标签非常简单，首先，切换到需要打标签的分支上
 + 如切换到dev分支并创建一个标签：git checkout dev
 + git tag v1.0 然后，敲命令git tag <name>就可以打一个新标签
@@ -199,7 +199,7 @@ WeX5 –  应用快速开发框架
 + ![tag](img/004.png)
 + 还可以通过-s用私钥签名一个标签(过于复杂略)
 
-####总结
+#### 总结
 + 命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
 + git tag -a <tagname> -m "blablabla..."可以指定标签信息；
 + git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
