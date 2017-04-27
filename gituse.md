@@ -10,12 +10,12 @@
 + ls 查看当前仓库下面都有什么
 + pwd 查看当前命令行所在目录
 + git status查看当前仓库状态(是否有文件改动)
-+ git diff查看改动后新加的内容
++ git diff查看改动后新加的内容(在没有commit之前是可以的，commit之后看不到)
 + git log [--pretty=oneline]查看所有的提交信息
 + git checkout -- file放弃工作区的修改，没有--就是切换到另一个分支了
 + rm filename 删除文件(命令行删除还是手动删除都要重新add/commit)
 + 如果误删还没commit可以git checkout -- filename恢复文件
-+ git show [commit number]查看该次提交前后文件的对比，新增变化
++ git show [commit number]在命令行查看该次提交前后文件的对比，新增变化
 
 ### 四、版本退回
 + 先git log看看最近的提交信息（如有ABC三次提交）
@@ -54,20 +54,20 @@
 
 #### 小结：Git鼓励大量使用分支：
 + 查看分支：git branch
-+ 创建分支：git branch <name>
-+ 切换分支：git checkout <name>
-+ 创建+切换分支：git checkout -b <name>
-+ 合并某分支到当前分支：git merge <name>
-+ 删除分支：git branch -d <name>
++ 创建分支：git branch branchName
++ 切换分支：git checkout branchName
++ 创建+切换分支：git checkout -b branchName
++ 合并某分支到当前分支：git merge branchName
++ 删除分支：git branch -d branchName
 
 #### 8.2、解决冲突
-+ 不同分支上对相同的文件都做了修改并add/commit之后合git merge name会报错
++ 不同分支上对相同的文件都做了修改并add/commit之后合git merge branchName会报错
 + ![冲突](img/chongtu.png)
 + 打开冲突的文件如下
 + ![冲突](img/errorfile.png)
 + 选择一个重新add/commit就可以了
 + 此时就可以删除多余的分支了
-+ git branch -d name
++ git branch -d branchName
 + 上面命令之后可以git branch查看分支是否被删除
 + 工作结束
 
@@ -122,7 +122,7 @@
 ### 十一、多人协作
 + 当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。
 + git remote 查看远程信息
-+ git remote -v 查看远程origin地址，没有推送权限就看不到push地址
++ git remote -v 查看远程origin地址
 + **推送分支**
 + 推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上
 + git push origin master
