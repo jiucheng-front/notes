@@ -1151,60 +1151,492 @@
             <td>n. 大拇指的指甲，极小之物，小图片 adj. 极小的，极短的 "豆腐干"(文章)</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>stacked</td>
+            <td>adj. 妖艳的, 身材丰满匀称的 adj. 成堆的 动词stack的过去式和过去分</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>breadcrumb</td>
+            <td>n. 面包屑</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>pane</td>
+            <td>n. 窗玻璃, 方框, 方格 v. 嵌窗玻璃</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>badge</td>
+            <td>n. 徽章,标记</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>carousel</td>
+            <td>n. 旋转木马, （机场的）行李传送带 =carrousel</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>affix</td>
+            <td>v. 使...附于, 署名, 粘贴</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>placeholder</td>
+            <td>n. 位置标志符, 占位符</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>compile</td>
+            <td>v. 编译,编辑,编纂 [计算机] 编译</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>force</td>
+            <td>. 力量,武力,暴力,影响力 vt. 施暴,强迫,强夺,加压力 [计算机] 强制</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>expanded</td>
+            <td>adj. 扩大的 动词expand的过去式和过去分词</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>compact</td>
+            <td>adj. 紧凑的,紧密的,简洁的 v. 使装满,使简洁</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>nested</td>
+            <td>adj.嵌套的</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td>compressed</td>
+            <td>adj. 压缩的 动词compress的过去式和过去分词</td>
         </tr>
 		<tr>
-            <td></td>
-            <td></td>
+            <td> dimension</td>
+            <td> n. 尺寸, 次元, 容积, 维度 n. 范围; 方面 vt. 标尺寸; 形成...尺寸</td>
+        </tr>
+		<tr>
+            <td>lottery </td>
+            <td>n. 彩票 </td>
+        </tr>
+		<tr>
+            <td> respond</td>
+            <td> vi. &vt. 回复,反应，响应，应答 n. 拱柱</td>
+        </tr>
+		<tr>
+            <td> tip</td>
+            <td> n. 顶, 尖端, 小费，指点 v. 提出建议或意见, 倾斜, 给小费, 轻触</td>
+        </tr>
+		<tr>
+            <td> loop</td>
+            <td> n. 环,圈,弯曲部份,回路 vt. 使...成环,以圈结,以环连结 vi. 形成环,环形地行动</td>
+        </tr>
+		<tr>
+            <td> zooming</td>
+            <td> adj.快速上升的.缩放</td>
+        </tr>
+		<tr>
+            <td> fluid</td>
+            <td> adj. 流畅优美的,流体的,流动的,不稳定的 n. 流体,液体</td>
+        </tr>
+		<tr>
+            <td> bounce</td>
+            <td> n. 跳,反跃,(活)弹力 vt. 弹跳,向...透露注意 vi. 弹起,重新恢复</td>
+        </tr>
+		<tr>
+            <td> pulse</td>
+            <td> n. 脉冲,脉波,脉搏 vt. &vi. 跳动,脉跳</td>
+        </tr>
+		<tr>
+            <td> wobble</td>
+            <td> n. 摆动, 动摇, 不稳定 vi. 摇晃, 动摇, 游移不定 vt. 使摇晃，使动摇</td>
+        </tr>
+		<tr>
+            <td> seeker</td>
+            <td> n. 搜索者, 探求者</td>
+        </tr>
+		<tr>
+            <td> flip</td>
+            <td> vt. 掷, 弹, 轻击 vi. 翻转 n. 空翻，浏览 adj. 无礼的, 冒失的, 轻率的</td>
+        </tr>
+		<tr>
+            <td> slide</td>
+            <td> n. 滑,幻灯片,雪崩,山崩,滑坡,滑梯 vt. 使滑 vi. 滑,跌落</td>
+        </tr>
+		<tr>
+            <td> hinge</td>
+            <td> n. 铰链,关键,枢纽 v. 装铰链,靠铰链移动,依...而移</td>
+        </tr>
+		<tr>
+            <td> emphasis</td>
+            <td> n. 强调,重点</td>
+        </tr>
+		<tr>
+            <td> syntax</td>
+            <td> n. 句法</td>
+        </tr>
+		<tr>
+            <td> pack</td>
+            <td> n. 包裹,一群,一副,一帮,一群 vt. 包装,捆扎,塞满, 收拾行李， 佩戴 vi. 包装，（用某物）保存，保藏 ,塞进</td>
+        </tr>
+		<tr>
+            <td> interactive</td>
+            <td> adj. 相互作用的 [计算机] 交互的</td>
+        </tr>
+		<tr>
+            <td> gist</td>
+            <td> n. 要点, 要旨</td>
+        </tr>
+		<tr>
+            <td> complex</td>
+            <td> adj. 复杂的 n. 复合体</td>
+        </tr>
+		<tr>
+            <td> convoluted</td>
+            <td> adj. 旋绕的, 费解的 动词convolute的过去式和过去分词</td>
+        </tr>
+		<tr>
+            <td> bloated</td>
+            <td> adj. 发胀的, 浮肿的, 傲慢的</td>
+        </tr>
+		<tr>
+            <td> extend</td>
+            <td> v. 扩充, 延伸, 伸展, 扩展</td>
+        </tr>
+		<tr>
+            <td> ellipse</td>
+            <td> n. 椭圆(形)</td>
+        </tr>
+		<tr>
+            <td> fill</td>
+            <td> vt. 装满,填充,弥漫,担任 n. 足量</td>
+        </tr>
+		<tr>
+            <td> column</td>
+            <td> n.纵队，列； 圆柱； 专栏</td>
+        </tr>
+		<tr>
+            <td> gap</td>
+            <td> n. (意见、个性等的)差异,缝隙,漏洞,缺口 vt. 制造缺口 嘉普(财富500强公司之一，总部所在地美国,主要经营服装零售)</td>
+        </tr>
+		<tr>
+            <td> align</td>
+            <td> vt. 使成一行, 使一致, 使结盟, 调整, 排列 vi. 成一条线</td>
+        </tr>
+		<tr>
+            <td> justify</td>
+            <td> vt. 替...辩护,证明...正当 n. 对齐 [计算机] 调整</td>
+        </tr>
+		<tr>
+            <td> embossed</td>
+            <td> adj. 饰以浮雕图案的 动词emboss的过去式和过去分词</td>
+        </tr>
+		<tr>
+            <td> handheld</td>
+            <td> adj. 手持式的</td>
+        </tr>
+		<tr>
+            <td> projection	</td>
+            <td> n. 发射，计划，突出部分</td>
+        </tr>
+		<tr>
+            <td> speech</td>
+            <td> n. 演讲,对话,话语,语言</td>
+        </tr>
+		<tr>
+            <td> landscape</td>
+            <td> n. 风景,山水,风景画 v. 美化…的景观,进行造园工程</td>
+        </tr>
+		<tr>
+            <td> orientation</td>
+            <td> n. 信仰,趋向,定位,适应,情况介绍 [计算机] 定向</td>
+        </tr>
+		<tr>
+            <td> optimize</td>
+            <td> v. 使...完美,乐观,使...完善 v.优化</td>
+        </tr>
+		<tr>
+            <td> overview</td>
+            <td> n. 概观(况),总结 [计算机] 概貌</td>
+        </tr>
+		<tr>
+            <td> customize</td>
+            <td> vt. 定制 [计算机] 用户化</td>
+        </tr>
+		<tr>
+            <td> fundamental</td>
+            <td> adj. 基本的,根本的,重要的 n. 基本原理,基础</td>
+        </tr>
+		<tr>
+            <td> extensible</td>
+            <td> adj. 可延伸的，可扩张的</td>
+        </tr>
+		<tr>
+            <td> piece</td>
+            <td> n. 块,片,篇 vt. 修补,结合</td>
+        </tr>
+		<tr>
+            <td> infrastructure</td>
+            <td> n. 下部构造, 下部组织, 基础结构, 基础设施</td>
+        </tr>
+		<tr>
+            <td> lowdown</td>
+            <td> n. &lt;俚&gt;内幕，真相，实情</td>
+        </tr>
+		<tr>
+            <td> gutter</td>
+            <td> n. 排水沟, 槽, 贫民区</td>
+        </tr>
+		<tr>
+            <td> capitalize</td>
+            <td> v. 以大写字母写, 使...资本化, 计算...的现价</td>
+        </tr>
+		<tr>
+            <td> compatible</td>
+            <td> adj. 能共处的,可并立的,适合的, 兼容的 n. 兼容</td>
+        </tr>
+		<tr>
+            <td> holder</td>
+            <td> n. 持有者，占有者，（台、架等）支持物</td>
+        </tr>
+		<tr>
+            <td> deadline</td>
+            <td> n. (鉴于边上的)警戒线,最后期限,截止时间</td>
+        </tr>
+		<tr>
+            <td> debug</td>
+            <td> v.调试，驱除（某处的)害虫，排除障碍，纠正...的错误，寻出并拆除...内的窃听器</td>
+        </tr>
+		<tr>
+            <td> acceptance</td>
+            <td> n. 接受（礼物、邀请、建议等），同意，认可</td>
+        </tr>
+		<tr>
+            <td> agile</td>
+            <td> adj. （动作）敏捷的,灵活的,（头脑）机灵的</td>
+        </tr>
+		<tr>
+            <td> acronym</td>
+            <td> n. 缩写字,字头语</td>
+        </tr>
+		<tr>
+            <td> fragile</td>
+            <td> adj. 易碎的,脆的,精细的</td>
+        </tr>
+		<tr>
+            <td> definition</td>
+            <td> n. 定义, 阐释，清晰度</td>
+        </tr>
+		<tr>
+            <td> architect</td>
+            <td> n. 建筑师、架构师</td>
+        </tr>
+		<tr>
+            <td> trail</td>
+            <td> n. 踪迹,小径,尾 vi. 拖,尾随,追踪,落后于 vt. 拖拽,追踪</td>
+        </tr>
+		<tr>
+            <td> backlog</td>
+            <td> n. 积累(积压待办事项) vi. 把...积压起来</td>
+        </tr>
+		<tr>
+            <td> blame</td>
+            <td> n. 过失,责备 vt.把...归咎于,责备</td>
+        </tr>
+		<tr>
+            <td> impatience</td>
+            <td> n. 不耐烦</td>
+        </tr>
+		<tr>
+            <td> increase</td>
+            <td> v. 增加, 提高 n. 增加, 增强, 提高</td>
+        </tr>
+		<tr>
+            <td> development</td>
+            <td> n. 发展,显影, 开发区, 开发</td>
+        </tr>
+		<tr>
+            <td> inherit</td>
+            <td> vi. 继承 vt. 继承,遗传</td>
+        </tr>
+		<tr>
+            <td> install</td>
+            <td> v. 安装,安置,使...就职 n.[计算机] 安装,DOS命令 : 装入结束且驻留软件</td>
+        </tr>
+		<tr>
+            <td> integrate</td>
+            <td> v. 整合, 使...成整体</td>
+        </tr>
+		<tr>
+            <td> capital</td>
+            <td> n. 首都,资本,大写字母 adj. 大写的,资本的，首要的</td>
+        </tr>
+		<tr>
+            <td> investment</td>
+            <td> n. 投资,投入,投资额</td>
+        </tr>
+		<tr>
+            <td> isolation</td>
+            <td> n. 隔离, 孤立</td>
+        </tr>
+		<tr>
+            <td> tracking</td>
+            <td> n. 按学生能力分组 动词track的现在分词形式</td>
+        </tr>
+		<tr>
+            <td> iterative</td>
+            <td> adj. 迭代的, 重复的</td>
+        </tr>
+		<tr>
+            <td> unit</td>
+            <td> n. 单位, 单元</td>
+        </tr>
+		<tr>
+            <td> cycle</td>
+            <td> n. 循环,周期,长期,圈,套曲,自行车, vt. 环行,骑自行车 vi. 使环行</td>
+        </tr>
+		<tr>
+            <td> mediator</td>
+            <td> n. 调解人,中介人</td>
+        </tr>
+		<tr>
+            <td> mentor</td>
+            <td> n. 指导者 vt. 指导</td>
+        </tr>
+		<tr>
+            <td> methodology</td>
+            <td> n. 一套方法,方法学</td>
+        </tr>
+		<tr>
+            <td> metrics</td>
+            <td> n. 韵律学 n. 度量学</td>
+        </tr>
+		<tr>
+            <td> mock</td>
+            <td> n. 嘲笑,戏弄,模仿 adj. 假的,伪造的 vt. 嘲弄,模仿,轻视 vi. 嘲弄</td>
+        </tr>
+		<tr>
+            <td> negativity</td>
+            <td> n. 否定性, 消极性</td>
+        </tr>
+		<tr>
+            <td> opaque</td>
+            <td> adj. 不透明的, 难懂的</td>
+        </tr>
+		<tr>
+            <td> principle</td>
+            <td> n. 原则, 原理, 主义, 信念</td>
+        </tr>
+		<tr>
+            <td> outcome</td>
+            <td> n. 结果</td>
+        </tr>
+		<tr>
+            <td> complication</td>
+            <td> n. 并发症；复杂；复杂化；混乱</td>
+        </tr>
+		<tr>
+            <td> pair</td>
+            <td> n. 双,对,副 vt.& vi. 使...成对,配对</td>
+        </tr>
+		<tr>
+            <td> pressure</td>
+            <td> n. 压力, 压强, 压迫</td>
+        </tr>
+		<tr>
+            <td> require</td>
+            <td> v. 需要, 要求</td>
+        </tr>
+		<tr>
+            <td> freeze</td>
+            <td> v. 冻结, 冷冻, 僵硬 [计算机] 冻结</td>
+        </tr>
+		<tr>
+            <td> risk</td>
+            <td> n.危险，冒险； 保险额； 被保险人或物 vt.冒…的危险； 使…冒风险（或面临危险）</td>
+        </tr>
+		<tr>
+            <td> grave</td>
+            <td> adj.重大的，重要的； 严重的； [音乐]沉重的； （颜色等）朴素的 adv.沉重地，庄重地； 极慢地 n.坟墓，墓穴； 埋葬…的地方； 下场； 死亡 vt.雕刻； 铭记</td>
+        </tr>
+		<tr>
+            <td> scrum</td>
+            <td> n. (橄榄球赛中)双方球员争球 n. 疯狂的马，多而乱的一群人</td>
+        </tr>
+		<tr>
+            <td> effect</td>
+            <td> n. 结果, 影响, 效果; 要旨 vt. 招致, 引起; 实现, 达到</td>
+        </tr>
+		<tr>
+            <td> strategic</td>
+            <td> adj. 战略的,重要的,基本的</td>
+        </tr>
+		<tr>
+            <td> design</td>
+            <td> vt.& vi.设计； 绘制 vt.设计； 计划； 企图； 决意（做） n.设计； 图案； 结构； 计划 vi.设计略图； （为工艺品、装潢项目等）设计； 当设计师； 构思</td>
+        </tr>
+		<tr>
+            <td> version</td>
+            <td> n. 版本, 说法，翻译</td>
+        </tr>
+		<tr>
+            <td> tactical</td>
+            <td> adj. 战术上的, 战术性的, 足智多谋的</td>
+        </tr>
+		<tr>
+            <td> coverage</td>
+            <td> n. 涉及范围(如保险范围或储备金额)，涂层，新闻覆盖率</td>
+        </tr>
+		<tr>
+            <td> transition</td>
+            <td> n. 过渡,转变</td>
+        </tr>
+		<tr>
+            <td> waterfall</td>
+            <td> n. 瀑布</td>
+        </tr>
+		<tr>
+            <td> benefit</td>
+            <td> n. 利益, 津贴; 义卖, 义演 vt. 有益于 vi. 得益</td>
+        </tr>
+		<tr>
+            <td> overtime</td>
+            <td> n. 加班时间(加班加点费) adv. 在规定时间之外(超出时间地)</td>
+        </tr>
+		<tr>
+            <td> inevitability</td>
+            <td> n. 必然性，不可避免性</td>
+        </tr>
+		<tr>
+            <td> construction</td>
+            <td> n. 建设，建造，结构，构造</td>
+        </tr>
+		<tr>
+            <td> decision</td>
+            <td> n. 决定,决心</td>
+        </tr>
+		<tr>
+            <td> inspection</td>
+            <td> n. 检查,视察</td>
+        </tr>
+		<tr>
+            <td> quality</td>
+            <td> n. 品质, 特质, 才能 adj. 高品质的</td>
+        </tr>
+		<tr>
+            <td> review</td>
+            <td> n. 检讨, 复习, 回顾, 评审 vt. 温习, 检讨, 评论, 检阅 vi. 写评论</td>
+        </tr>
+		<tr>
+            <td> cohesion</td>
+            <td>n. 凝聚力, 团结</td>
+        </tr>
+		<tr>
+            <td> comment</td>
+            <td> n. 注释, 评论; 闲话 v. 注释, 评论</td>
+        </tr>
+		<tr>
+            <td>component</td>
+            <td>n. 元件, 组件, 成份 adj. 组成的, 构成的</td>
+        </tr>
+		<tr>
+            <td>conference </td>
+            <td> n. 会议</td>
+        </tr>
+		<tr>
+            <td> ..</td>
+            <td> ..</td>
         </tr>
     </tbody>
 </table>
