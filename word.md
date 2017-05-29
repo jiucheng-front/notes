@@ -2,6 +2,98 @@
 
 <table style="border-collapse:collapse;">
     <tbody>
+		<tr>
+            <td># Github #</td>
+            <td> </td>
+        </tr>
+		<tr>
+            <td>Sigin up</td>
+            <td>注册</td>
+        </tr>
+		<tr>
+            <td>Sigin in</td>
+            <td>登录</td>
+        </tr>
+		<tr>
+            <td>Sigin out</td>
+            <td>退出</td>
+        </tr>
+		<tr>
+            <td>your profile</td>
+            <td>个人资料</td>
+        </tr>
+		<tr>
+            <td>Explore</td>
+            <td>搜索</td>
+        </tr>
+		<tr>
+            <td>New repoitory</td>
+            <td>新建仓库</td>
+        </tr>
+		<tr>
+            <td>Import repoitory</td>
+            <td>导入仓库</td>
+        </tr>
+		<tr>
+            <td>New gist</td>
+            <td>新要点</td>
+        </tr>
+		<tr>
+            <td>New organization</td>
+            <td>新建组织</td>
+        </tr>
+		<tr>
+            <td>unread notifications</td>
+            <td>未读通知</td>
+        </tr>
+		<tr>
+            <td>Marketplace</td>
+            <td>n.市场，集市; 商业界;</td>
+        </tr>
+		<tr>
+            <td>Issues</td>
+            <td>n.问题、BUG</td>
+        </tr>
+		<tr>
+            <td>Gist</td>
+            <td>n.要领; 精神; 要点，主旨; 大要;</td>
+        </tr>
+		<tr>
+            <td>Overview</td>
+            <td>n.概观; 总的看法; 回顾，复习;</td>
+        </tr>
+		<tr>
+            <td>Repositories</td>
+            <td>n.仓库; 宝库; 存放处( repository的名词复数 ); 学识渊博的人;</td>
+        </tr>
+		<tr>
+            <td>Followers</td>
+            <td>n.追随者( follower的名词复数 ); 用户; 契据的附面; 从动件;</td>
+        </tr>
+		<tr>
+            <td>Following</td>
+            <td>adj.后面的，其次的; 下列的; 顺风的;n.跟随; 崇拜者，拥护者; 下列，如下; 随球;</td>
+        </tr>
+		<tr>
+            <td>Pinned Repositories</td>
+            <td>置顶仓库</td>
+        </tr>
+		<tr>
+            <td>Customize your pinned repositories</td>
+            <td>定制你的固定版本库</td>
+        </tr>
+		<tr>
+            <td>contributions</td>
+            <td>n.捐献、贡献</td>
+        </tr>
+		<tr>
+            <td>Description</td>
+            <td>n.描述，类型</td>
+        </tr>
+		<tr>
+            <td># JAVASCRIPT #</td>
+			<td> </td>
+        </tr>
         <tr>
             <td>object tyoe</td>
             <td>n.对象类型</td>
