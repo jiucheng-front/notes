@@ -1,5 +1,5 @@
 #### 分支合并指定文件
-+ 当前在master分支，把dev扥之上dev_branch.md文件合并到master:git checkou dev dev_branch.md，此时在master分支上已经add过了，需要commit再push.
++ 当前在master分支，把dev扥之上dev_branch.md文件合并到master:git checkou dev dev_branch.md，此时在master分支上已经add过了，需要commit再push.（git checkout branchName fileName是強行覆蓋）
 
 #### 一、git版本控制系统
 + git init初始化仓库，自动创建一个.git文件监视该仓库
