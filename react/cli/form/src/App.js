@@ -1,57 +1,48 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
 
+import './styles/App.css';
 
-//1 开关切换组件
-class Toogle extends React.Component {
-    constructor( props ){
-        super( props );
-        this.state={ isSelected : true };
-        this.handleToogle=this.handleToogle.bind(this);
-    }
-    handleToogle(){
-        console.log(this.state.isSelected);
-        this.setState(prevState => ({
-            isSelected: !prevState.isSelected
-        }));
-    }
-    render(){
-        const isSelected=this.state.isSelected;
-        let p=null;
-        if(isSelected){
-            p="开关打开";
-        }else{
-            p="开关关闭！";
-        }
-        return (
-            <div className="box">
-              <h3 className="title">开关</h3>
-              <button onClick={ this.handleToogle }>
-                  { this.state.isSelected ?"on":"off"}
-              </button>
-              <p>{ p }</p>
-            </div>
-        );
-    }
-}
+//1、导入toogle切换组件
+import Toggle from "./component/Toggle.js";
+//2、导入Form表单组件
+import NameForm from "./component/Form";
+//3、textarea 组件
+import TextAreaForm from "./component/TextAreaForm";
+//4、select 组件
+import SelectForm from "./component/SelectForm";
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        {/*开关组件*/}
-        <Toogle />
-      </div>
-    );
-  }
+    render() {
+        return (
+          <div className="App">
+            <div className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h2>Welcome to React</h2>
+            </div>
+            <p className="App-intro">
+              To get started, edit <code>src/App.js</code> and save to reload.
+            </p>
+              <div className="Toggle">
+                  <h3 className="title">1、Toggle-component</h3>
+                  <Toggle />
+              </div>
+              <div className="Form">
+                  <h3>2、Form-component(Data bidirectional binding 双向绑定)</h3>
+                  <NameForm />
+              </div>
+              <div className="TextAreaForm">
+                  <h3>3、Textarea-Form-component</h3>
+                  <TextAreaForm />
+              </div>
+              <div className="SelectForm">
+                  <h3>4、Select-Form-component</h3>
+                  <SelectForm />
+              </div>
+          </div>
+        );
+    }
 }
 
 export default App;
