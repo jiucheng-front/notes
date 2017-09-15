@@ -21,7 +21,7 @@ class Toggle extends React.Component {
             p="开关关闭！";
         }
         return (
-            <div className="box">
+            <div className="toggleTab">
                 <button onClick={ this.handleToogle }>
                     { this.state.isSelected ?"on":"off"}
                 </button>

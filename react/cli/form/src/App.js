@@ -13,7 +13,8 @@ import TextAreaForm from "./component/TextAreaForm";
 import SelectForm from "./component/SelectForm";
 //5、多个不同类型的input
 import MoreInput from "./component/MoreInput";
-
+//6、状态提升
+import Calculator from "./component/LiftStateUp";
 
 
 class App extends Component {
@@ -46,6 +47,10 @@ class App extends Component {
               <div className="MoreInput">
                   <h3>5、More about input</h3>
                   <MoreInput />
+              </div>
+              <div className="Calculator">
+                  <h3>6、Lifting state Up</h3>
+                  <Calculator />
               </div>
           </div>
         );

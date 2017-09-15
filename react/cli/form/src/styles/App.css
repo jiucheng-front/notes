@@ -4,7 +4,7 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 2s linear;
   height: 80px;
 }
 
@@ -23,9 +23,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.root{
+  padding-bottom: 320px;
+}
+
+
 
 /*box*/
-.box button{
+.toggleTab button{
   padding: 5px 30px;
   background: #fff;
   outline: none;
