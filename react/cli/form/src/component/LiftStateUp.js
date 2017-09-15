@@ -7,21 +7,21 @@ function BoilingVerdict(props) {
     return <p>水不会烧开</p>;
 }
 
-class Calculator extends React.Component{
-    constructor(props){
+class Calculator extends React.Component {
+    constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state={ temperature:""};
+        this.state = {temperature: ''};
     }
     handleChange(e){
-        this.setState({temperature:e.target.vlue});
+        this.setState({temperature:e.target.value});
     }
     render(){
         const temperature= this.state.temperature;
         return(
             <fieldset>
                 <legend>输入一个摄氏温度</legend>
-                <input type="text"
+                <input
                     value={temperature}
                     onChange={this.handleChange}/>
                 <BoilingVerdict celsius={parseFloat(temperature)} />
