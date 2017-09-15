@@ -11,6 +11,9 @@ import NameForm from "./component/Form";
 import TextAreaForm from "./component/TextAreaForm";
 //4、select 组件
 import SelectForm from "./component/SelectForm";
+//5、多个不同类型的input
+import MoreInput from "./component/MoreInput";
+
 
 
 class App extends Component {
@@ -39,6 +42,10 @@ class App extends Component {
               <div className="SelectForm">
                   <h3>4、Select-Form-component</h3>
                   <SelectForm />
+              </div>
+              <div className="MoreInput">
+                  <h3>5、More about input</h3>
+                  <MoreInput />
               </div>
           </div>
         );
