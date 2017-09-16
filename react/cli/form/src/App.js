@@ -15,7 +15,8 @@ import SelectForm from "./component/SelectForm";
 import MoreInput from "./component/MoreInput";
 //6、状态提升
 import Calculator from "./component/LiftStateUp";
-
+//6.1 状态提升2
+import CalculatorTwo from "./component/LiftStateUp2";
 
 class App extends Component {
     render() {
@@ -51,6 +52,10 @@ class App extends Component {
               <div className="Calculator">
                   <h3>6、Lifting state Up</h3>
                   <Calculator />
+              </div>
+              <div className="CalculatorTwo">
+                  <h3>6、1 Lifting state Up-2</h3>
+                  <CalculatorTwo />
               </div>
           </div>
         );
