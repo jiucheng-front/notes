@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>7 组合VS继承</title>
+    <!-- Script tags including React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"> </script>
+</head>
+<body>
+<style>
+    .FancyBorder{
+        padding: 15px;
+        border: 2px solid;
+    }
+    .Fancyborder-blue{
+        border-color: blue;
+    }
+    .Fancyborder-red{
+        border-color: red;
+    }
+</style>
+<div id="app"></div>
+<script type="text/babel">
+    function FancyBorder(props) {
+        return (
+            <div className={"FancyBorder Fancyborder-" + props.color}>
+                {props.children}
+            </div>
+        );
+    }
+
+    function WelcomeDialog() {
+        return (
+            <FancyBorder color="blue">
+                <h1 className="Dialog-title">Welcome</h1>
+                <p className="Dialog-content">
+                    Thank u for visiting our Company .
+                </p>
+            </FancyBorder>
+        );
+    }
+    ReactDOM.render(
+            <WelcomeDialog />,
+        document.getElementById('app')
+    );
+</script>
+</body>
+</html>
