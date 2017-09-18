@@ -10,12 +10,18 @@ function BoilingVerdict(props) {
 class Calculator extends React.Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        //1、1手动bind 绑定this
+        // this.handleChange = this.handleChange.bind(this);
         this.state = {temperature: ''};
     }
-    handleChange(e){
-        this.setState({temperature:e.target.value});
-    }
+    // 2、箭头函数代替手动 bind
+    handleChange = (e) => this.setState({
+        temperature:e.target.value
+    })
+    //1、2 手动bind的函数，可以使用es6 箭头函数代替
+    // handleChange(e){
+    //     this.setState({temperature:e.target.value});
+    // }
     render(){
         const temperature= this.state.temperature;
         return(
