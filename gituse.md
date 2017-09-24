@@ -9,7 +9,7 @@
 + 1、git add file 添加文件
 + 2、git commit -m '本次提交的注释'
 
-### 三、常用命令
+### 三、常用命令 (1)
 + ls 查看当前仓库下面都有什么
 + pwd 查看当前命令行所在目录
 + git status查看当前仓库状态(是否有文件改动)
@@ -19,6 +19,29 @@
 + rm filename 删除文件(命令行删除还是手动删除都要重新add/commit)
 + 如果误删还没commit可以git checkout -- filename恢复文件
 + git show [commit number]在命令行查看该次提交前后文件的对比，新增变化
+
+### 三、常用命令(2)：合并指定的文件或者文件夹到当前分支
++ 场景：主分支是master，有多个开发分支dev1,dev2
++ dev1上有一个项目文件夹叫 app，app目录如下
++ ![xx](img/checkout_folder_file.png)
+
+
+```javascript
+
+	  git checkout branchName fileName
+	  git checkout branchName folderName/fileName
+	注：一下都是在主分支master上执行的命令
+	//1 把dev下所有的文件合并到主分支 master 上
+	git checkout dev app
+	// index.css更新了，现在只需要单独合并index.css到master主分支上
+	git checkout dev app/css/index.css
+
+	//这样合并过来的文件或者文件夹在主分支master上都是默认add过了的，
+	//然后需要在master分支上commit,再push即可完成合并更新
+
+
+```
+
 
 ### 四、版本退回
 + 先git log看看最近的提交信息（如有ABC三次提交）
