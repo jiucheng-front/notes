@@ -28,8 +28,8 @@
 
 ```javascript
 
-	  git checkout branchName fileName
-	  git checkout branchName folderName/fileName
+	  git checkout branchName folderName
+	  git checkout branchName path
 	注：一下都是在主分支master上执行的命令
 	//1 把dev1 分支上app下所有的文件合并到主分支 master 上
 	git checkout dev app
