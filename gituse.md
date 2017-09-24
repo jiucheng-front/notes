@@ -31,10 +31,12 @@
 	  git checkout branchName fileName
 	  git checkout branchName folderName/fileName
 	注：一下都是在主分支master上执行的命令
-	//1 把dev下所有的文件合并到主分支 master 上
+	//1 把dev1 分支上app下所有的文件合并到主分支 master 上
 	git checkout dev app
-	// index.css更新了，现在只需要单独合并index.css到master主分支上
+	//2 index.css更新了，现在只需要单独合并index.css到master主分支上
 	git checkout dev app/css/index.css
+	//3 如果dev1 分支上app的js文件夹下有多个JS文件都更新了，需要都合并到主分支
+	git checkout dev app/js
 
 	//这样合并过来的文件或者文件夹在主分支master上都是默认add过了的，
 	//然后需要在master分支上commit,再push即可完成合并更新
