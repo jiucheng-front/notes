@@ -19,6 +19,9 @@ import Calculator from "./component/LiftStateUp";
 import CalculatorTwo from "./component/LiftStateUp2";
 //6.2 有状态和没有状态组件
 import Nav from "./component/8StatefuleComponents";
+//7.1 组合与
+import WelcomeDialog from "./component/7CombinationAndInheritance01";
+
 
 class App extends Component {
     render() {
@@ -62,6 +65,10 @@ class App extends Component {
               <div className="Stateful">
                   <h3>6.2 有状态和没有状态组件</h3>
                   <Nav />
+              </div>
+              <div className="Combination">
+                  <h3>7.1 组合</h3>
+                  <WelcomeDialog />
               </div>
           </div>
         );

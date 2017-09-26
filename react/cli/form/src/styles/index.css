@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.FancyBorder{
+  padding: 15px;
+  border: 2px solid;
+}
+.Fancyborder-blue{
+  border-color: blue;
+}
+.Fancyborder-red{
+  border-color: red;
+}
