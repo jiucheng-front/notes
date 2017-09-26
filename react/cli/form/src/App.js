@@ -21,7 +21,8 @@ import CalculatorTwo from "./component/LiftStateUp2";
 import Nav from "./component/8StatefuleComponents";
 //7.1 组合与
 import WelcomeDialog from "./component/7CombinationAndInheritance01";
-
+//7.2 继承Inheritance
+import Contentbox from "./component/7CombinationAndInheritance02"
 
 class App extends Component {
     render() {
@@ -69,6 +70,10 @@ class App extends Component {
               <div className="Combination">
                   <h3>7.1 组合</h3>
                   <WelcomeDialog />
+              </div>
+              <div className="Contentbox">
+                  <h3>继承Inheritance</h3>
+                  <Contentbox />
               </div>
           </div>
         );
