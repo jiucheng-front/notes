@@ -8,19 +8,19 @@
 + 2 语法：
 ```javascript
 
-    //元素
+    //1 元素
     const title = <h3>React Learning</h3>
-    //属性
+    //2 属性
     const title = <h3 id="main">React Learning</h3>
     const title = <h3 className="main">React Learning</h3>
-    //嵌套元素，需要加上括号: ()
+    //3 嵌套元素，需要加上括号: ()
     const title = (
      <div>
        <h3 className="main">React Learning</h3>
        <p>Let's learn JSX</p>
      </div>
     )
-    // JSX表达式,需要使用大括号 {} 括起来
+    //4 JSX表达式,需要使用大括号 {} 括起来
     function speak(name) {
      return 'Hi,' + name;
     }

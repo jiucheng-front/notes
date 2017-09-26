@@ -17,6 +17,8 @@ import MoreInput from "./component/MoreInput";
 import Calculator from "./component/LiftStateUp";
 //6.1 状态提升2
 import CalculatorTwo from "./component/LiftStateUp2";
+//6.2 有状态和没有状态组件
+import Nav from "./component/8StatefuleComponents";
 
 class App extends Component {
     render() {
@@ -56,6 +58,10 @@ class App extends Component {
               <div className="CalculatorTwo">
                   <h3>6、1 Lifting state Up-2</h3>
                   <CalculatorTwo />
+              </div>
+              <div className="Stateful">
+                  <h3>6.2 有状态和没有状态组件</h3>
+                  <Nav />
               </div>
           </div>
         );
