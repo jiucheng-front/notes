@@ -1,12 +1,13 @@
 import React,{ component } from "react";
-
+//zuobian
 function Contacts() {
     return <div className="Contacts" />;
 }
-
+//youbian
 function Chat() {
     return <div className="Chat" />;
 }
+// 通过props 传递className
 function SplitPane(props) {
     return (
         <div className="SplitPane">
@@ -19,7 +20,7 @@ function SplitPane(props) {
         </div>
     );
 }
-
+//展示组件(zuhe)
 function Contentbox() {
     return (
         <SplitPane
