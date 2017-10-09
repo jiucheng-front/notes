@@ -1,5 +1,5 @@
 import React,{ component } from "react";
-//zuobian
+//zuobianInheritance
 function Contacts() {
     return <div className="Contacts" />;
 }
