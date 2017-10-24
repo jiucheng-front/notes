@@ -41,7 +41,6 @@ class StatelessLink extends React.Component {
         )
     }
 }
-
 class Nav extends React.Component{
     constructor(props){
         super(props);
