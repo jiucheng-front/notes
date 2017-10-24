@@ -1,4 +1,5 @@
-import React,{ component } from "react";
+// import React,{ component } from "react";
+import React from "react";
 // Stateful
 class StatefulLink extends React.Component {
     constructor(props){
@@ -22,9 +23,9 @@ class StatefulLink extends React.Component {
 
 // Statefulless components
 class StatelessLink extends React.Component {
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
     handleClick(){
         this.props.handleClick(this.props.router)
     }

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
 class MoreInput extends React.Component{
     constructor(props){
         super(props);

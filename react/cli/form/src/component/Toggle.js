@@ -1,5 +1,6 @@
 //1 开关切换组件
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
 class Toggle extends React.Component {
     constructor( props ){
         super( props );

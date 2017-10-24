@@ -1,4 +1,5 @@
-import React,{ component } from "react";
+// import React,{ component } from "react";
+import React from "react";
 class NameForm extends React.Component{
     constructor(props) {
         super(props);

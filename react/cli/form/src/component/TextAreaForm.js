@@ -1,4 +1,5 @@
-import React,{component} from "react";
+// import React,{component} from "react";
+import React from "react";
 
 class TextAreaForm extends React.Component{
     constructor(props){

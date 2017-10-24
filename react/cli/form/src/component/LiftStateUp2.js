@@ -1,4 +1,5 @@
-import React,{ component } from "react";
+// import React,{ component } from "react";
+import React from "react";
 //1
 function BoilingVerdict(props) {
     if(props.celsius>=100){
