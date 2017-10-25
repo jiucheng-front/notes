@@ -23,6 +23,8 @@ import Nav from "./component/8StatefuleComponents";
 import WelcomeDialog from "./component/7CombinationAndInheritance01";
 //7.2 继承Inheritance
 import Contentbox from "./component/7CombinationAndInheritance02"
+//8 导入组件集合
+import Layout from "./component/common/layout"
 
 class App extends Component {
     render() {
@@ -74,6 +76,10 @@ class App extends Component {
               <div className="Contentbox">
                   <h3>继承Inheritance</h3>
                   <Contentbox />
+              </div>
+              <div className="together">
+                  <h3>组合组件</h3>
+                  <Layout />
               </div>
           </div>
         );
