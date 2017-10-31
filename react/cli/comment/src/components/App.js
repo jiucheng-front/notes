@@ -7,8 +7,23 @@ import Toogle from "./Toogle";
 
 //icon列表
 import Icon from "./Icon.jsx"
-import Comment from "./comment/comment"
 
+import CommentBox from "./comment/CommentBox"
+// 定义数据
+let comments=[
+    {
+        id:"01",
+        anchor:"你愁啥?",
+        content:"瞅你咋地！",
+        date:"1小时之前"
+    },
+    {
+        id:"02",
+        anchor:"装疯卖傻",
+        content:"枪都不服就服你",
+        date:"5小时之前"
+    }
+]
 class App extends Component {
   render() {
     return (
@@ -20,11 +35,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/entry.js</code> and save to reload.
         </p>
-        <h3>开关小组件</h3>
-        <Toogle />
-        <h3>Icon字体，JSX</h3>
-        <Icon />
-        <Comment />
+        <h3>评论区</h3>
+        <CommentBox data={comments} />
       </div>
     );
   }

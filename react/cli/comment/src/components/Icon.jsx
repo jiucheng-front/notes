@@ -5,7 +5,6 @@ class Icon extends React.Component{
     render() {
         return (
             <div className="iconBox">
-                <h3>Hello JSX, Icon-lists</h3>
                 <p>
                     <span className="icon-close"></span>
                     <span className="icon-down"></span>
