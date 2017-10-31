@@ -7,6 +7,7 @@ import Toogle from "./Toogle";
 
 //icon列表
 import Icon from "./Icon.jsx"
+import Comment from "./comment/comment"
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
         <Toogle />
         <h3>Icon字体，JSX</h3>
         <Icon />
+        <Comment />
       </div>
     );
   }
