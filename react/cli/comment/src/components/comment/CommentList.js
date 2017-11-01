@@ -1,13 +1,18 @@
 "use strict"
 import React from "react"
+import Comment from "./Comment"
 
 class CommentList extends React.Component{
     render(){
+        let commentNodes=this.props.data.map((comment,index) =>{
+            return(
+                //parent component send data to child,must set key attrbuite
+                <Comment key={index} anchor={comment.anchor} content={comment.content} date={comment.date} />
+            )
+        })
         return(
             <div className="CommentList">
-                <p>作者：{this.props.anchor}</p>
-                <p>内容:{this.props.content}</p>
-                <p>时间:{this.props.date}</p>
+                { commentNodes }
             </div>
         )
     }
