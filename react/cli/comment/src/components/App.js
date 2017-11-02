@@ -32,9 +32,6 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/entry.js</code> and save to reload.
-        </p>
         <h3>评论区</h3>
         {/*<CommentBox data={comments} />*/}
         <CommentBox url={"/comments.json"} />

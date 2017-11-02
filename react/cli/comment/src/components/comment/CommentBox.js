@@ -19,7 +19,7 @@ class CommentBox extends React.Component{
         // console.log(this.props.url)
         fetch(this.props.url).then( response =>response.json())
             .then(res =>{
-                // console.log(res)
+                console.log(res)
                 this.setState({ data:res.data })
             })
             .catch(e =>console.log("Opps,error",e) )
