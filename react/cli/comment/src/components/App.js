@@ -36,7 +36,8 @@ class App extends Component {
           To get started, edit <code>src/entry.js</code> and save to reload.
         </p>
         <h3>评论区</h3>
-        <CommentBox data={comments} />
+        {/*<CommentBox data={comments} />*/}
+        <CommentBox url={"/comments.json"} />
       </div>
     );
   }
