@@ -261,6 +261,136 @@ console.log(enPwd);//27z25z1lz2cz2oz2nz2mz34z33z32z3f
 console.log(dePwd);//BLUE123456!
 
 
+// 九、前端JS实现微信授权登录
+/**
+ * 需要
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+ window.onload=function(){
+	 var wechat=new Wechat();
+	 wechat.init();
+ }
+// 内部函数可以暂时忽略
+ function Wechat(){
+	// 1 获取DOM(id)
+	this.getDom=function(id){
+		return document.getElementById(id);
+	}
+	// 2 通用绑定事件
+	this.bind=function(elem,eventType,callback){
+		if(elem.addEventListener){
+			elem.addEventListener(eventType,callback,false);
+		}else{
+			elem.attachEvent("on"+eventType,function(){
+				callback.call(elem);
+			});
+		}
+	}
+	// 3 显示
+	this.showDialog=function(elem){
+		elem.style.display="block";
+	}
+	// 4 隐藏
+	this.hideDialog=function(elem){
+		elem.style.display="none";
+	},
+	// 获取url参数
+	this.getUrlParameter=function(strParame){
+		var args = new Object( );
+		var query = location.search.substring(1);
+		var pairs = query.split("&");
+		for(var i = 0; i < pairs.length; i++) {
+			var pos = pairs[i].indexOf('=');
+			if (pos == -1) continue;
+			var argname = pairs[i].substring(0,pos);
+			var value = pairs[i].substring(pos+1);
+			value = decodeURIComponent(value);
+			args[argname] = value;
+		}
+		return args[strParame];
+	}
+ }
+
+ Wechat.prototype={
+	 init:function(){
+		var _this=this;
+		// 先判断是否需要前端授权(暂时后台做)
+		this.isAuthorizationOr();
+	},
+	//1、 授权还是自动注册
+	isAuthorizationOr:function(){
+		var _this=this;
+		// 判断是微信浏览器打开
+		var isWeChat=function(){
+			var ua = window.navigator.userAgent.toLowerCase();
+			return ua.match(/MicroMessenger/i) == 'micromessenger';
+		}
+		if(isWeChat()){
+			var code=_this.getUrlParameter("code");
+			// code存在已久授权过了
+			if(code){
+				_this.sendData(code);
+			}else{
+			// 不存在跳转到授权
+				this.jumpWechat();
+			}
+		}
+	},
+	//2、 微信授权登录获取信息
+	jumpWechat:function(){
+		// 官方示例：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842
+		// scope为snsapi_userinfo 
+		// https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf0e81c3bee622d60&redirect_uri=http%3A%2F%2Fnba.bluewebgame.com%2Foauth_response.php&response_type=
+		// code&scope=snsapi_userinfo&state=STATE#wechat_redirect 
+		// redirect_uri/?code=CODE&state=STATE：最终只是要code和state的值
+
+		// 以下参数需要拼接(目前写死的)
+		var redirect_uri=encodeURI('https://web-test.langlive.com/v2/html/activity/invite/indexShare.html?anchor_pfid=0&HTTP_USER_UID=1024432&HTTP_USER_TOKEN=1a4fa129ee3ec2da00f851cd48db9266&pfid=1024432&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect');
+		window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx07e7877a19ca99cd&redirect_uri='+redirect_uri;
+		alert('aa');
+	},
+	//3、 send data去注册
+	sendData:function(code){
+		// 发送给后台
+		alert(code);
+	},
+	// 4、获取URL指定参数的值
+	getUrlParameter:function(strParame){
+		var args = new Object( );
+		var query = location.search.substring(1);
+		var pairs = query.split("&");
+		for(var i = 0; i < pairs.length; i++) {
+			var pos = pairs[i].indexOf('=');
+			if (pos == -1) continue;
+			var argname = pairs[i].substring(0,pos);
+			var value = pairs[i].substring(pos+1);
+			value = decodeURIComponent(value);
+			args[argname] = value;
+		}
+		return args[strParame];
+	}
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
