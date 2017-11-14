@@ -1,7 +1,8 @@
 #### react notes
 + ReactDOM.render(compon,root)组件渲染到根元素
-+ 组件名称必须以大写字母开头。
++ 组件名称必须以大写字母开头。 
 + 组合组件：在compon里嵌套其他组件
++ 测试sourceTree
 
 ### 一、JSX
 + 1 原理：不是HTML，需要使用Babel转义器将JSX语法或者ES6语法转义为浏览器识别的JS
