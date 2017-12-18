@@ -387,7 +387,15 @@ function arrayEqual(arr1, arr2) {
 	return true;
 }
 
+/**
+ * 
+ * 十一、 设置滚动条距顶部的距离
+ */
 
+function setScrollTop(value) {
+	window.scrollTo(0, value);
+	return value;
+}
 
 
 
