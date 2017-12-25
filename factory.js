@@ -390,6 +390,7 @@ function arrayEqual(arr1, arr2) {
 /**
  * 
  * 十一、 设置滚动条距顶部的距离
+ * 
  */
 
 function setScrollTop(value) {
@@ -397,8 +398,60 @@ function setScrollTop(value) {
 	return value;
 }
 
+/**
+ * 
+ * 十二、 重置數字(保留小數)
+ * 
+ */
+const perateNumber = {
+	numberToMillion:function (count) {
+        var end = '';
+        count = count.toString();
+        var length = count.length;
+        if( length >= 6 && length < 9 ){
+            end = (count / 10000).toFixed(1);
+            var index = end.indexOf(".");
+            var last = end.slice(index+1);
+            if(!Number(last)){
+                end = end.slice(0,index);
+            }
+            end = end + "萬";
+        }else if( length >= 9 ){
+            end = (count / 10000000).toFixed(1);
+            var index = end.indexOf(".");
+            var last = end.slice(index+1);
+            if(!Number(last)){
+                end = end.slice(0,index);
+            }
+            end = end + "千萬";
+        }else if( length < 6 ){
+            end = count;
+        }
+        return end;
+	},
+	//numberToMillion(12346589) "1234.7萬"
 
+	numberToK:function (count) {
+        var end = '';
+        count = count.toString();
+        return end = count.length > 4 ? (count / 1000).toFixed(1) + "K" : count;
+	},
+	//numberToK(456798) "456.8K"
 
+	numberWithComma:function (num) {
+        var num = (num || 0).toString(), result = '';
+        while (num.length > 3) {
+            result = ',' + num.slice(-3) + result;
+            num = num.slice(0, num.length - 3);
+        }
+        if (num) {
+            result = num + result;
+        }
+        return result;
+	}
+	// numberWithComma(1245) "1,245"
+	// numberWithComma(4567889798) "4,567,889,798"
+}
 
 
 
