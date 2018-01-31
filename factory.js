@@ -453,7 +453,50 @@ const perateNumber = {
 	// numberWithComma(4567889798) "4,567,889,798"
 }
 
+// 限制点击次数
 
+var VAR ={
+	repeatTemp:[]
+}
+var COM = {
+	repeat:function(s,t){
+		//限制执行频率，默认为60秒 允许执行时返回false  毫秒
+		t = t ? t * 1000 : 60000;
+		var time = microtime();
+			if(!VAR.repeatTemp[s]){
+				VAR.repeatTemp[s] = time;
+				//允许
+				return false;
+			}else{
+				var ts = t - (time - VAR.repeatTemp[s]);
+				ts = parseInt(ts/1000);
+				if(ts > 0){
+					// alert("频率限制：还有"+ ts +" 秒才可以再执行！");
+					//禁止执行
+					return true;
+				}else{
+					//更新时间
+					VAR.repeatTemp[s] = time;
+					//允许
+					return false;
+				}
+			}
+	}
+}
+function microtime(){
+	return new Date().getTime();
+} 
+function canClick(){
+	var can = COM.repeat('can');
+	if(!can){
+		// 请求接口
+		console.log("可以！")
+	}else{
+		return 
+	}
+	
+}
+document.getElementById("btn").addEventListener("click",canClick)
 
 
 
