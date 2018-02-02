@@ -499,8 +499,87 @@ function canClick(){
 document.getElementById("btn").addEventListener("click",canClick)
 
 
+// 滾動加載
 
+var Scroll = {
+	init(){
+		this.finished = 0;
+		this.scrollLoadList();
+	},
+	scrollLoadList(){
+        var $this = this;
+        function loadmore(obj){
+            if($this.finished==0){
+                // 4.1加载参数
+                var scrollTop = $(obj).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(obj).height();
+                // if(scrollTop + windowHeight > scrollHeight - 60 ){
+                if(scrollTop + windowHeight == scrollHeight ){
+                    // 限制
+                    $this.finished =1;
+                    // 参数变化
+                    $this.pageIndex+=1;
+                    // 4.2 加载loading效果
+                    $this.$replayLoadingWrap.html(T.replayLoading({
+                        loading:true,
+                        loadingTips:"加載中......"
+                        // finished:true,
+                        // finishedTips:"没有更多数据了！"
+                    }))
+                    // 延迟
+                    setTimeout(function(){
+                　　　　 api.getReplayList($this.pageIndex, $this.pageSize, $this.anchorPfid)
+                            .then(function (res) {
+                                if (res.ret_code == "0") {
+                                    let list = res.data.list;
+                                    // console.log(list);
+                                    $this.$replayContentList.append(T.replayList({
+                                        // data: list,
+                                        data: list,
+                                        colCounts: 4,
+                                        rows:5,
+                                        Utils
+                                    }));
+                                    // 4.3 清楚加载中loading效果
+                                    $this.$replayLoadingWrap.html("");
+                                    //图片赖加载
+                                    $this.startLazyLoad();
+                                    // 4.4 是否还有数据
+                                    let listNowLength = $(".list-anchor-detail").length;
+                                    $this.finished = 0;
+                                    if(listNowLength == $this.totalCount){
+                                        // $this.scrollLoadList();
+                                        $this.finished = 1;
+                                        // 4.5 加载完毕
+                                        $this.$replayLoadingWrap.html(T.replayLoading({
+                                            finished:true,
+                                            finishedTips:"沒有更多影片咯~"
+                                        }));
+                                        console.log("加載了"+listNowLength+"条数据！");
+                                    }
+                                // 如果错误也是加载完毕
+                                }else{
+                                    $this.$replayLoadingWrap.html(T.replayLoading({
+                                        finished:true,
+                                        finishedTips:"沒有更多影片咯~"
+                                    }));
+                                }
+                            })
+                            .catch(function (error) {
+                                console.log(error)
+                            })
+                    },1000)
+            　　}
+            }
+        }
+        $(window).scroll(function (){
+            loadmore($(this));
+        });
+    }
+}
 
+Scroll.init();
 
 
 
