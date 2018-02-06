@@ -1,3 +1,4 @@
+
 "use strict";
 function Video(status){
     this.init(status)
