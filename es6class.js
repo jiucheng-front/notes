@@ -24,7 +24,7 @@ class Video {
     }
     _renderHtml(data){
         if(this.signStatus){
-            // 存在
+            // 如果存在
         }else{
             this.boxDom.innerHTML="</p>"+data+"</p>"
         }
