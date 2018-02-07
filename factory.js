@@ -453,7 +453,7 @@ const perateNumber = {
 	// numberWithComma(4567889798) "4,567,889,798"
 }
 
-// 限制点击次数
+//十三、 限制点击次数
 
 var VAR ={
 	repeatTemp:[]
