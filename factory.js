@@ -499,7 +499,7 @@ function canClick(){
 document.getElementById("btn").addEventListener("click",canClick)
 
 
-// 滾動加載
+//十四、 滾動加載
 
 var Scroll = {
 	init(){
