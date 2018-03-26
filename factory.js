@@ -674,6 +674,24 @@ class ResetDate{
 }
 
 
+// 十六、手机号过滤为*号
+
+function resetPhone(phone) {
+	var str = String(phone)
+	var len = str.length;
+	if (len >= 7) {
+		var reg = str.slice(-7, -3)
+		return str.replace(reg, "****")
+	} else if (len < 7 && len >= 6) {
+		//1234567
+		var reg = str.slice(-4, -2)
+		return str.replace(reg, "**")
+	}
+}
+
+// you bug
+
+
 /*
 
 
