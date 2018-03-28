@@ -680,8 +680,45 @@ class ResetDate {
 
 }
 
+/*
+*十六 seconds秒數，返回剩餘的大概時間，有天數直接返回天數，沒天數有小時直接返回小時數，沒有小時數有分鐘數直接返回分鐘數，
+* 沒有分鐘數直接返回傳入的秒數
+*
+**/ 
 
-// 十六、手机号过滤为*号
+function timeToRemaining(seconds) {
+    var times = parseInt(seconds) || 0;
+    var day, hour, minute, second, endOutStr;
+    if (times && times > 0) {
+        day = Math.floor(times / (60 * 60 * 24));
+        hour = Math.floor(times / (60 * 60)) - (day * 24);
+        minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
+        // second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+        second = times
+
+        if (parseInt(day) != 0) {
+            return endOutStr = day + "天"
+        } else {
+            if (parseInt(hour) != 0) {
+                return endOutStr = hour + "小時"
+            } else {
+                if (parseInt(minute) != 0) {
+                    return endOutStr = minute + "分鐘"
+                }else{
+                    return endOutStr = second + "秒"
+                }
+            }
+        }
+    } else {
+        return endOutStr = 0
+    }
+}
+
+timeToRemaining(600000) // 6天
+timeToRemaining(70000) //19小數
+timeToRemaining(600) // 10分鐘
+timeToRemaining(40)  //40秒
+// 十七、手机号过滤为*号
 
 function resetPhone(phone) {
 	var str = String(phone)
