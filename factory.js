@@ -733,7 +733,7 @@ function resetPhone(phone) {
 	}
 }
 
-// you bug
+// 如果匹配的是连续相同的位置有误！
 
 
 /*
