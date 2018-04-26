@@ -718,7 +718,26 @@ timeToRemaining(600000) // 6天
 timeToRemaining(70000) //19小數
 timeToRemaining(600) // 10分鐘
 timeToRemaining(40)  //40秒
-// 十七、手机号过滤为*号
+
+
+// 十七、如何把秒數轉換為年月日時分秒
+function getDateStr(seconds){
+    var date = new Date(seconds*1000)
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+        var currentTime = year + "-" + month + "-" + day + "  " + hour + ":" + minute + ":" + second;
+        return currentTime
+}
+// getDateStr(1524637692)>"2018-4-25  14:28:12"
+
+
+
+
+// 十八、手机号过滤为*号
 
 function resetPhone(phone) {
 	var str = String(phone)
