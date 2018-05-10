@@ -778,6 +778,30 @@ function resetPhone(phone) {
 // 如果匹配的是连续相同的位置有误！
 
 
+// 二十、JS的揭示模式
+var myModule = function    (){
+    var privateName = "Stephen Curry",
+    publicMsg = "Hey there!";
+    function privateHandle(){
+        console.log("Name:"+privateName);
+    }
+    function publicSetName(strName){
+        privateName = strName;
+    }
+    function publicGetName(){
+        privateHandle();
+    }
+    return {
+        setName : publicSetName,
+        greeting : publicMsg,
+        getName : publicGetName
+    }
+}();
+myModule.setName("James")
+myModule.getName()    //Name:James
+myModule.greeting     //"Hey there!"
+
+
 /*
 
 
