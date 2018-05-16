@@ -734,10 +734,33 @@ function getDateStr(seconds){
 }
 // getDateStr(1524637692)>"2018-4-25  14:28:12"
 
+// 十八、如果数组的每一项的ID出现相同的就追加一个属性：如字体颜色
+var arr=[{id:0},{id:0},{id:3},{id:2},{id:0},{id:4},{id:0},{id:1},{id:1},{id:2},{id:2}];
+for(var i=0;i<arr.length;i++){
+	for(var j=i+1;j<arr.length;j++){
+		if(arr[i].id == arr[j].id){
+			arr[i].color = "red";
+			arr[j].color = "red"
+		}
+	}
+}
+console.log(arr)
+//output
+arr=[
+	{id: 0, color: "red"},
+	{id: 0, color: "red"},
+	{id: 3},
+	{id: 2, color: "red"},
+	{id: 0, color: "red"},
+	{id: 4},
+	{id: 0, color: "red"},
+	{id: 1, color: "red"},
+	{id: 1, color: "red"},
+	{id: 2, color: "red"},
+	{id: 2, color: "red"}
+]
 
-
-
-// 十八、手机号过滤为*号
+// 十九、手机号过滤为*号
 
 function resetPhone(phone) {
 	var str = String(phone)
@@ -757,6 +780,30 @@ function resetPhone(phone) {
 }
 
 // 如果匹配的是连续相同的位置有误！
+
+
+// 二十、JS的揭示模式
+var myModule = function    (){
+    var privateName = "Stephen Curry",
+    publicMsg = "Hey there!";
+    function privateHandle(){
+        console.log("Name:"+privateName);
+    }
+    function publicSetName(strName){
+        privateName = strName;
+    }
+    function publicGetName(){
+        privateHandle();
+    }
+    return {
+        setName : publicSetName,
+        greeting : publicMsg,
+        getName : publicGetName
+    }
+}();
+myModule.setName("James")
+myModule.getName()    //Name:James
+myModule.greeting     //"Hey there!"
 
 
 /*
