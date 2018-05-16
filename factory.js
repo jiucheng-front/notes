@@ -742,14 +742,18 @@ function getDateStr(seconds){
 function resetPhone(phone) {
 	var str = String(phone)
 	var len = str.length;
+	var prev,next;
 	if (len >= 7) {
-		var reg = str.slice(-7, -3)
-		return str.replace(reg, "****")
+		prev = str.slice(-len,-7)
+		next = str.slice(-3)
+		str = prev+"****"+next
 	} else if (len < 7 && len >= 6) {
-		//1234567
-		var reg = str.slice(-4, -2)
-		return str.replace(reg, "**")
+		prev = str.slice(-len,-4)
+		next = str.slice(-2)
+		str = prev + "**" + next
 	}
+	console.log(str)
+	return str
 }
 
 // 如果匹配的是连续相同的位置有误！
