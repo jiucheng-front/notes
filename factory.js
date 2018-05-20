@@ -9,6 +9,11 @@
 // 1、封裝AJAX函數
 function nativeAjax(option, success, error) {
 	// 定义domain,方便环境切换
+	/*
+	*window.location.host在IE中有兼容性
+	*
+	*
+	 */
 	var domain = 'https://' + window.location.host + '/';
 	// var domain='http://' + window.location.host + '/';
 	var url = domain + option.urlStr;
@@ -181,7 +186,6 @@ var temp = function (dom) {
 }
 
 // 六、重置form 表单的action
-
 function resetFormActionDomian(id, domain, urlStr) {
 	document.getElementById(id).action = domain + urlStr;
 }
@@ -255,8 +259,8 @@ function decrypto(str, xor, hex) {
 
 // 如何使用
 var pwd = "BLUE123456!";
-var enPwd = encrypto(pwd, 123, 25);
-var dePwd = decrypto(enPwd, 123, 25);
+var enPwd = encrypto(pwd, 135, 25);
+var dePwd = decrypto(enPwd, 135, 25);
 console.log(enPwd); //27z25z1lz2cz2oz2nz2mz34z33z32z3f
 console.log(dePwd); //BLUE123456!
 
@@ -586,8 +590,7 @@ var Scroll = {
 Scroll.init();
 
 // 十五、es6 class用法
-;
-(function (window) {
+;(function (window) {
 	"use strict";
 	class Video {
 		constructor(signStatus) {
@@ -734,7 +737,10 @@ function getDateStr(seconds){
 }
 // getDateStr(1524637692)>"2018-4-25  14:28:12"
 
+
+
 // 十八、如果数组的每一项的ID出现相同的就追加一个属性：如字体颜色
+
 var arr=[{id:0},{id:0},{id:3},{id:2},{id:0},{id:4},{id:0},{id:1},{id:1},{id:2},{id:2}];
 for(var i=0;i<arr.length;i++){
 	for(var j=i+1;j<arr.length;j++){
@@ -759,6 +765,8 @@ arr=[
 	{id: 2, color: "red"},
 	{id: 2, color: "red"}
 ]
+
+
 
 // 十九、手机号过滤为*号
 
@@ -824,8 +832,9 @@ myModule.greeting     //"Hey there!"
 	3 部分文件夹dev分支上app的js文件夹下有多个JS文件都更新了.
 	git checkout dev app/js
 
-	合并过来的文件或者文件夹在主分支master上都是默认add过的，
-	然后需要在master分支上commit,再push即可完成合并更新！
+	此时合并过来的文件或者文件夹都是默认add过的，
+	然后需要在当前分支上commit,再push即可完成合并更新！
+	默认合并过来的会覆盖当前分支上的(注意使用)
 
 
 
