@@ -1,5 +1,6 @@
 {
   "name": "timer",
   "version": "0.1.0",
-  "private": true
+  "private": true,
+  "test":"git reset hard --head^"
 }
