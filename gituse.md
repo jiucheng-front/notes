@@ -49,7 +49,7 @@
 
 ### 四、版本退回
 + 先git log看看最近的提交信息（如有ABC三次提交）
-+ 当前在C：git reset --haed HEAD^回退到上一个版本B(回头退之后再git log看看提交信息是否少一次提交)
++ 当前在C：git reset --hard HEAD^回退到上一个版本B(回头退之后再git log看看提交信息是否少一次提交)
 + 当前回退到了B：git reset --hard 7cc99041be2d如果想回到版本C怎么办(当前命令行一直没关闭是可以的)，7cc99041be2d是版本C提交时候的id的前一段
 + <b>注意</b>：git reflog在命令行关闭后如何查看所有的提交id
 
