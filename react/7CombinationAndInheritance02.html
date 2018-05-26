@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>7 组合VS继承2</title>
+    <!-- Script tags including React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"> </script>
+</head>
+<body>
+<style>
+    .SplitPane:after{
+        display: table;
+        content: "";
+        clear: both;
+    }
+    .SplitPane-left,
+    .SplitPane-right{
+        float: left;
+    }
+    .SplitPane-left{
+        width: 30%;
+    }
+    .SplitPane-right{
+        width: 70%;
+    }
+    .Contacts,
+    .Chat{
+        height: 200px;
+    }
+    .Contacts{
+        background: #5D9D68;
+    }
+    .Chat{
+        background: #A45069;
+    }
+</style>
+<div id="app"></div>
+<script type="text/babel">
+    function Contacts() {
+        return <div className="Contacts" />;
+    }
+
+    function Chat() {
+        return <div className="Chat" />;
+    }
+    function SplitPane(props) {
+        return (
+            <div className="SplitPane">
+                <div className="SplitPane-left">
+                    {props.left}
+                </div>
+                <div className="SplitPane-right">
+                    {props.right}
+                </div>
+            </div>
+        );
+    }
+
+    function App() {
+        return (
+            <SplitPane
+                left={<Contacts />}
+                right={<Chat />} />
+        );
+    }
+    ReactDOM.render(
+            <App />,
+        document.getElementById('app')
+    );
+</script>
+</body>
+</html>

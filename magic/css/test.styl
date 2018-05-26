@@ -1,0 +1,42 @@
+@import "common/common.styl"
+
+.view-invite-anchor
+    @media all and (min-width: $content-width-m)
+        margin-top: $header-height
+
+    for $i in 1 2 3 4 5
+        .section{$i}
+            position relative
+
+            background url('/static/image/activity-invite/section' + $i  + '.jpg') center no-repeat
+            background-size auto 100%
+
+    a.action
+        position: absolute
+        width 570px
+        height 125px
+        left 51%
+        transform: translateX(-50%)
+        font-size 0
+        text-decoration none
+
+    .section1,.section2,.section3,.section4
+        height 881px
+
+        a.action
+            top 85%
+            
+
+        @media all and (min-width 1920px)
+            padding-bottom percentage(@height/1920)
+            height 0
+
+    .section5
+        height 659px
+
+        a.action
+            top 69%
+
+        @media all and (min-width 1920px)
+            padding-bottom percentage(@height/1920)
+            height 0

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>4 计时器03</title>
+  <!-- Script tags including React -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+  <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"> </script>
+</head>
+<body>
+  <div id="app"></div>
+  <!--
+      1、在02的基础上将函数转换为 类 Clock
+      2、使用类就允许我们使用其它特性，例如局部状态、生命周期钩子
+  -->
+  <script type="text/babel">
+    class Clock extends React.Component {
+        render() {
+            return (
+                <div>
+                    <h1>Hi,Timer</h1>
+                    <h3>This is { this.props.date.toLocaleTimeString() }.</h3>
+                </div>
+            );
+        }
+    }
+    function tick(){
+        let root=document.getElementById("app");
+        ReactDOM.render(
+            <Clock date={ new Date()} />,
+            root
+        );
+    }
+    setInterval(tick, 1000);
+  </script>
+</body>
+</html>

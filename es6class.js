@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 "use strict";
 class Video {
     constructor(signStatus){
@@ -36,7 +40,13 @@ class Video {
 
 var ReplayVideos = new Video()
 window.ReplayVideos = ReplayVideos
+<<<<<<< HEAD
 
 // other status
 
 // var ReplayVideos = new Video(true)
+=======
+// other status
+// var ReplayVideos = new Video(true)
+// 注意class中的this受限於是否使用箭頭函數！
+>>>>>>> master

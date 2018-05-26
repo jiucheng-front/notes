@@ -1,0 +1,24 @@
+{
+  "code":"0",
+  "msg":"success",
+  "data":[
+    {
+      "id":"01",
+      "anchor":"你愁啥?",
+      "content":"瞅你咋地！",
+      "date":"1小时之前"
+    },
+    {
+      "id":"02",
+      "anchor":"装疯卖傻",
+      "content":"枪都不服就服你",
+      "date":"5小时之前"
+    },
+    {
+      "id":"03",
+      "anchor":"二宝",
+      "content":"MDZZ",
+      "date":"10小时之前"
+    }
+  ]
+}
