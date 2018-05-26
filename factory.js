@@ -722,7 +722,6 @@ timeToRemaining(70000) //19小數
 timeToRemaining(600) // 10分鐘
 timeToRemaining(40)  //40秒
 
-
 // 十七、如何把秒數轉換為年月日時分秒
 function getDateStr(seconds){
     var date = new Date(seconds*1000)
