@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>条件渲染1</title>
+  <!-- Script tags including React -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+  <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"> </script>
+</head>
+<body>
+  <div id="app"></div>
+  <!--
+      1、isLoggedIn true和false之间渲染不同的值
+  -->
+  <script type="text/babel">
+    function UserGreeting(props){
+        return <h3>欢迎回来~~~</h3>;
+    }
+    function GuestGreeting(props){
+        return <h3>请登录！</h3>;
+    }
+    function Greeting(props){
+        const isLoggedIn=props.isLoggedIn;
+        if(isLoggedIn){
+            return <UserGreeting />;
+        }
+        return <GuestGreeting />;
+    }
+    ReactDOM.render(
+        <Greeting isLoggedIn={ false } />,
+        document.getElementById("app")
+    );
+  </script>
+</body>
+</html>
