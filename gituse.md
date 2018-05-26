@@ -1,17 +1,7 @@
-# wex5
-
-WeX5 –  应用快速开发框架
-<p>定位：开发面向消费者和公众的开放应用系统</p>
-<p>适用：一般app、电商app、客服app、会员app、微店微商等</p>
-<p>前端：安卓app/苹果app/微信服务号/PC web app</p>
-<p>后端：后端数据处理组件，对接各主流技术平台</p>
-<p>费用：完全开源，彻底免费，无任何限制</p>
-
-<<<<<<< HEAD
-##	git 使用
-=======
-## git 使用
->>>>>>> master
+#### 分支合并指定文件
++ 当前在master分支，把dev扥之上dev_branch.md文件合并到master:git checkou dev dev_branch.md，此时在master分支上已经add过了，需要commit再push.（git checkout branchName fileName是強行覆蓋）
++ 参考链接：http://nvie.com/posts/a-successful-git-branching-model/
++ 参考链接：https://barro.github.io/2016/02/a-succesful-git-branching-model-considered-harmful/
 
 #### 一、git版本控制系统
 + git init初始化仓库，自动创建一个.git文件监视该仓库
@@ -21,21 +11,45 @@ WeX5 –  应用快速开发框架
 + 1、git add file 添加文件
 + 2、git commit -m '本次提交的注释'
 
-### 三、常用命令
+### 三、常用命令 (1)
 + ls 查看当前仓库下面都有什么
 + pwd 查看当前命令行所在目录
 + git status查看当前仓库状态(是否有文件改动)
-+ git diff查看改动后新加的内容
++ git diff查看改动后新加的内容(在没有commit之前是可以的，commit之后看不到)
 + git log [--pretty=oneline]查看所有的提交信息
 + git checkout -- file放弃工作区的修改，没有--就是切换到另一个分支了
 + rm filename 删除文件(命令行删除还是手动删除都要重新add/commit)
 + 如果误删还没commit可以git checkout -- filename恢复文件
-+ git push origin dev單獨提交dev分支
 + git show [commit number]在命令行查看该次提交前后文件的对比，新增变化
+
+### 三、常用命令(2)：合并指定的文件或者文件夹到当前分支
++ 场景：主分支是master，有多个开发分支dev1,dev2
++ dev1上有一个项目文件夹叫 app，app目录如下
++ ![xx](img/checkout_folder_file.png)
+
+
+```javascript
+
+	  git checkout branchName folderName
+	  git checkout branchName path
+	注：一下都是在主分支master上执行的命令
+	//1 把dev1 分支上app下所有的文件合并到主分支 master 上
+	git checkout dev app
+	//2 index.css更新了，现在只需要单独合并index.css到master主分支上
+	git checkout dev app/css/index.css
+	//3 如果dev1 分支上app的js文件夹下有多个JS文件都更新了，需要都合并到主分支
+	git checkout dev app/js
+
+	//这样合并过来的文件或者文件夹在主分支master上都是默认add过了的，
+	//然后需要在master分支上commit,再push即可完成合并更新
+
+
+```
+
 
 ### 四、版本退回
 + 先git log看看最近的提交信息（如有ABC三次提交）
-+ 当前在C：git reset --haed HEAD^回退到上一个版本B(回头退之后再git log看看提交信息是否少一次提交)
++ 当前在C：git reset --hard HEAD^回退到上一个版本B(回头退之后再git log看看提交信息是否少一次提交)
 + 当前回退到了B：git reset --hard 7cc99041be2d如果想回到版本C怎么办(当前命令行一直没关闭是可以的)，7cc99041be2d是版本C提交时候的id的前一段
 + <b>注意</b>：git reflog在命令行关闭后如何查看所有的提交id
 
@@ -68,18 +82,6 @@ WeX5 –  应用快速开发框架
 + git branch -d dev
 + **因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。**
 
-<<<<<<< HEAD
-####  小结：Git鼓励大量使用分支：
-+ 查看分支：git branch
-+ 创建分支：git branch <name>
-+ 切换分支：git checkout <name>
-+ 创建+切换分支：git checkout -b <name>
-+ 合并某分支到当前分支：git merge <name>
-+ 删除分支：git branch -d <name>
-
-#### 8.2、解决冲突
-+ 不同分支上对相同的文件都做了修改并add/commit之后合git merge name会报错
-=======
 #### 小结：Git鼓励大量使用分支：
 + 查看分支：git branch
 + 创建分支：git branch branchName
@@ -90,17 +92,16 @@ WeX5 –  应用快速开发框架
 
 #### 8.2、解决冲突
 + 不同分支上对相同的文件都做了修改并add/commit之后合git merge branchName会报错
->>>>>>> master
 + ![冲突](img/chongtu.png)
 + 打开冲突的文件如下
 + ![冲突](img/errorfile.png)
 + 选择一个重新add/commit就可以了
 + 此时就可以删除多余的分支了
-+ git branch -d name
++ git branch -d branchName
 + 上面命令之后可以git branch查看分支是否被删除
 + 工作结束
 
-#### 小结
+#### 总结
 + 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
 + 用git log --graph命令可以看到分支合并图如下(只截一点)。
 + ![冲突](img/001.png)
@@ -131,7 +132,7 @@ WeX5 –  应用快速开发框架
 + 1、git stash apply 恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；
 + 2、另一种方式是用git stash pop，恢复的同时把stash内容也删了
 
-#### 小结
+#### 总结
 + 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
 当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。
 
@@ -144,7 +145,7 @@ WeX5 –  应用快速开发框架
 + git branch -D feature01 强行删除
 + 就OK了
 
-#### 小结
+#### 总结
 + 开发一个新feature，最好新建一个分支；
 + 如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。
 
@@ -222,3 +223,24 @@ WeX5 –  应用快速开发框架
 + git tag -a <tagname> -m "blablabla..."可以指定标签信息；
 + git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
 + 命令git tag可以查看所有标签。
+
+=============================
+#### 标签操作(因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。)
++ 命令git push origin <tagname>可以推送一个本地标签
++ 命令git push origin --tags可以推送全部未推送过的本地标签
++ 命令git tag -d <tagname>可以删除一个本地标签
++ 命令git push origin :refs/tags/<tagname>可以删除一个远程标签
+
+### 十三、github使用
+####  13.1如何clone和参与项目
++ 可以clone自己的仓库到本地进行操作
++ 想参与别人的先fork别人的仓库到自己账号名下再clone这个fork倒自己账号的的仓库到本地，进行修扩展push到自己的仓库后，可以在github上发送pull request,即可让原来作者看到。
++ .gitignore忽略不想提交的文件
+
+### 13.2 配置别名
++ 有时候会觉得git命令繁琐，可以自己配置别名如：
++ git config --global alias.st status，此时git st===git status
++ 当然还有别的命令可以简写，很多人都用co表示checkout，ci表示commit，br表示branch
++ git config --global alias.co checkout
++ git config --global alias.ci commit
++ git config --global alias.br branch

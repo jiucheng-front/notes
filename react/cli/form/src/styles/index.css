@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.FancyBorder{
+  padding: 15px;
+  border: 2px solid;
+}
+.Fancyborder-blue{
+  border-color: blue;
+}
+.Fancyborder-red{
+  border-color: red;
+}
+
+/*7CombinationAndInheritance02*/
+.SplitPane:after{
+  display: table;
+  content: "";
+  clear: both;
+}
+.SplitPane-left,
+.SplitPane-right{
+  float: left;
+}
+.SplitPane-left{
+  width: 30%;
+}
+.SplitPane-right{
+  width: 70%;
+}
+.Contacts,
+.Chat{
+  height: 200px;
+}
+.Contacts{
+  background: #5D9D68;
+}
+.Chat{
+  background: #A45069;
+}

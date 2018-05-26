@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>4 计时器06</title>
+  <!-- Script tags including React -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+  <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"> </script>
+</head>
+<body>
+  <div id="app"></div>
+  <!--
+  -->
+  <script type="text/babel">
+    function FormattedDate(props){
+        return <h3>This is { props.date.toLocaleTimeString() }.</h3>;
+    }
+    class Clock extends React.Component {
+        constructor(props){
+            super(props);
+            this.state={ date:new Date() }
+        }
+        trck(){
+            this.setState({
+                date:new Date()
+            });
+        }
+        componentDidMount() {
+            this.timer = setInterval(
+                () => this.trck(),
+                1000
+            );
+        }
+        omponentWillUnmount(){
+            clearInterval(this.timer);
+        }
+        render() {
+            return (
+                <div>
+                    <h1>Hi,Timer</h1>
+                    <FormattedDate date={ this.state.date } />
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(
+        <Clock />,
+        document.getElementById("app")
+    );
+  </script>
+</body>
+</html>
