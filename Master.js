@@ -13,7 +13,7 @@ class Master {
         this._init()
     }
     _init() {
-        this.status = !this.status
+        this.status = this.status == 0 ? 1 : 0
         this.callBack(this.status)
     }
 }
