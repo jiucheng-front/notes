@@ -16,6 +16,10 @@ class Master {
         this.status = this.status == 0 ? 1 : 0
         this.callBack(this.status)
     }
+    _resetStatus(state) {
+        var a = 0
+
+    }
 }
 
 module.exports = Master
