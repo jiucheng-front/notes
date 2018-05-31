@@ -9,6 +9,7 @@ class Master {
         this.branch = branch || "master"
         this.anthor = anthor || "Stephen Curry"
         this.callBack = callBack
+        this.type = "black"
         // 
         this._init()
     }
@@ -17,8 +18,7 @@ class Master {
         this.callBack(this.status)
     }
     _resetStatus(state) {
-        var a = 0
-
+        this.status = this.type == "black" ? 1 : (this.type == "red" ? 2 : 3)
     }
 }
 
