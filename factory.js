@@ -885,6 +885,44 @@ var a = [0, 1, 'bb', 2, 3, 4, 'aa', ];
 removeItem(a, 'aa', 1)
 console.log(a) //[0, "bb", 2, 3, 4]
 
+// 二十二、如何实现深浅拷贝
+/**
+ * 浅：被拷贝者变化，拷贝者也变化
+ * 深：被拷贝者变化，拷贝者没有变化
+ * Array 和 Object的深浅拷贝，Function 待
+ */
+function deepClone(obj) {
+	let cloneObj = Array.isArray(obj) ? [] : {}
+	if (obj && typeof obj === "object") {
+		for (var key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				if (obj[key] && typeof obj[key] === "object") {
+					cloneObj[key] = deepClone(obj[key])
+				} else {
+					cloneObj[key] = obj[key]
+				}
+			}
+		}
+	}
+	return cloneObj
+}
+// test Array
+var a=[0,[1,2],3,[4,5],6]
+var b=deepClone(a)
+a[1][0]="a"
+console.log(a)
+console.log(b)
+// test Object
+var c={
+	a:0,
+	b:{
+		d:"d"
+	},
+	e:"e"
+}
+var e=deepClone(c)
+c.b.d="dd"
+console.log(c,e)
 
 /*
 
