@@ -10,9 +10,9 @@
 function nativeAjax(option, success, error) {
 	// 定义domain,方便环境切换
 	/*
-	*window.location.host在IE中有兼容性
-	*
-	*
+	 *window.location.host在IE中有兼容性
+	 *
+	 *
 	 */
 	var domain = 'https://' + window.location.host + '/';
 	// var domain='http://' + window.location.host + '/';
@@ -590,7 +590,8 @@ var Scroll = {
 Scroll.init();
 
 // 十五、es6 class用法
-;(function (window) {
+;
+(function (window) {
 	"use strict";
 	class Video {
 		constructor(signStatus) {
@@ -684,55 +685,55 @@ class ResetDate {
 }
 
 /*
-*十六 seconds秒數，返回剩餘的大概時間，有天數直接返回天數，沒天數有小時直接返回小時數，沒有小時數有分鐘數直接返回分鐘數，
-* 沒有分鐘數直接返回傳入的秒數
-*
-**/ 
+ *十六 seconds秒數，返回剩餘的大概時間，有天數直接返回天數，沒天數有小時直接返回小時數，沒有小時數有分鐘數直接返回分鐘數，
+ * 沒有分鐘數直接返回傳入的秒數
+ *
+ **/
 
 function timeToRemaining(seconds) {
-    var times = parseInt(seconds) || 0;
-    var day, hour, minute, second, endOutStr;
-    if (times && times > 0) {
-        day = Math.floor(times / (60 * 60 * 24));
-        hour = Math.floor(times / (60 * 60)) - (day * 24);
-        minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
-        // second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-        second = times
+	var times = parseInt(seconds) || 0;
+	var day, hour, minute, second, endOutStr;
+	if (times && times > 0) {
+		day = Math.floor(times / (60 * 60 * 24));
+		hour = Math.floor(times / (60 * 60)) - (day * 24);
+		minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
+		// second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+		second = times
 
-        if (parseInt(day) != 0) {
-            return endOutStr = day + "天"
-        } else {
-            if (parseInt(hour) != 0) {
-                return endOutStr = hour + "小時"
-            } else {
-                if (parseInt(minute) != 0) {
-                    return endOutStr = minute + "分鐘"
-                }else{
-                    return endOutStr = second + "秒"
-                }
-            }
-        }
-    } else {
-        return endOutStr = 0
-    }
+		if (parseInt(day) != 0) {
+			return endOutStr = day + "天"
+		} else {
+			if (parseInt(hour) != 0) {
+				return endOutStr = hour + "小時"
+			} else {
+				if (parseInt(minute) != 0) {
+					return endOutStr = minute + "分鐘"
+				} else {
+					return endOutStr = second + "秒"
+				}
+			}
+		}
+	} else {
+		return endOutStr = 0
+	}
 }
 
 timeToRemaining(600000) // 6天
 timeToRemaining(70000) //19小數
 timeToRemaining(600) // 10分鐘
-timeToRemaining(40)  //40秒
+timeToRemaining(40) //40秒
 
 // 十七、如何把秒數轉換為年月日時分秒
-function getDateStr(seconds){
-    var date = new Date(seconds*1000)
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var day = date.getDate();
-        var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-        var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-        var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-        var currentTime = year + "-" + month + "-" + day + "  " + hour + ":" + minute + ":" + second;
-        return currentTime
+function getDateStr(seconds) {
+	var date = new Date(seconds * 1000)
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var day = date.getDate();
+	var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+	var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+	var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+	var currentTime = year + "-" + month + "-" + day + "  " + hour + ":" + minute + ":" + second;
+	return currentTime
 }
 // getDateStr(1524637692)>"2018-4-25  14:28:12"
 
@@ -740,10 +741,32 @@ function getDateStr(seconds){
 
 // 十八、如果数组的每一项的ID出现相同的就追加一个属性：如字体颜色
 
-var arr=[{id:0},{id:0},{id:3},{id:2},{id:0},{id:4},{id:0},{id:1},{id:1},{id:2},{id:2}];
-for(var i=0;i<arr.length;i++){
-	for(var j=i+1;j<arr.length;j++){
-		if(arr[i].id == arr[j].id){
+var arr = [{
+	id: 0
+}, {
+	id: 0
+}, {
+	id: 3
+}, {
+	id: 2
+}, {
+	id: 0
+}, {
+	id: 4
+}, {
+	id: 0
+}, {
+	id: 1
+}, {
+	id: 1
+}, {
+	id: 2
+}, {
+	id: 2
+}];
+for (var i = 0; i < arr.length; i++) {
+	for (var j = i + 1; j < arr.length; j++) {
+		if (arr[i].id == arr[j].id) {
 			arr[i].color = "red";
 			arr[j].color = "red"
 		}
@@ -751,18 +774,48 @@ for(var i=0;i<arr.length;i++){
 }
 console.log(arr)
 //output
-arr=[
-	{id: 0, color: "red"},
-	{id: 0, color: "red"},
-	{id: 3},
-	{id: 2, color: "red"},
-	{id: 0, color: "red"},
-	{id: 4},
-	{id: 0, color: "red"},
-	{id: 1, color: "red"},
-	{id: 1, color: "red"},
-	{id: 2, color: "red"},
-	{id: 2, color: "red"}
+arr = [{
+		id: 0,
+		color: "red"
+	},
+	{
+		id: 0,
+		color: "red"
+	},
+	{
+		id: 3
+	},
+	{
+		id: 2,
+		color: "red"
+	},
+	{
+		id: 0,
+		color: "red"
+	},
+	{
+		id: 4
+	},
+	{
+		id: 0,
+		color: "red"
+	},
+	{
+		id: 1,
+		color: "red"
+	},
+	{
+		id: 1,
+		color: "red"
+	},
+	{
+		id: 2,
+		color: "red"
+	},
+	{
+		id: 2,
+		color: "red"
+	}
 ]
 
 
@@ -772,13 +825,13 @@ arr=[
 function resetPhone(phone) {
 	var str = String(phone)
 	var len = str.length;
-	var prev,next;
+	var prev, next;
 	if (len >= 7) {
-		prev = str.slice(-len,-7)
+		prev = str.slice(-len, -7)
 		next = str.slice(-3)
-		str = prev+"****"+next
+		str = prev + "****" + next
 	} else if (len < 7 && len >= 6) {
-		prev = str.slice(-len,-4)
+		prev = str.slice(-len, -4)
 		next = str.slice(-2)
 		str = prev + "**" + next
 	}
@@ -790,27 +843,47 @@ function resetPhone(phone) {
 
 
 // 二十、JS的揭示模式
-var myModule = function    (){
-    var privateName = "Stephen Curry",
-    publicMsg = "Hey there!";
-    function privateHandle(){
-        console.log("Name:"+privateName);
-    }
-    function publicSetName(strName){
-        privateName = strName;
-    }
-    function publicGetName(){
-        privateHandle();
-    }
-    return {
-        setName : publicSetName,
-        greeting : publicMsg,
-        getName : publicGetName
-    }
+var myModule = function () {
+	var privateName = "Stephen Curry",
+		publicMsg = "Hey there!";
+
+	function privateHandle() {
+		console.log("Name:" + privateName);
+	}
+
+	function publicSetName(strName) {
+		privateName = strName;
+	}
+
+	function publicGetName() {
+		privateHandle();
+	}
+	return {
+		setName: publicSetName,
+		greeting: publicMsg,
+		getName: publicGetName
+	}
 }();
 myModule.setName("James")
-myModule.getName()    //Name:James
-myModule.greeting     //"Hey there!"
+myModule.getName() //Name:James
+myModule.greeting //"Hey there!"
+
+
+// 二十一、刪除数组指定的选项，
+function removeItem(arr) {
+	var args = [].slice.call(arguments);
+	args.slice(0, 1);
+	var removeIndex;
+	args.forEach(function (item, index) {
+		while ((removeIndex = arr.indexOf(item)) >= 0) {
+			arr.splice(removeIndex, 1)
+		}
+	})
+}
+
+var a = [0, 1, 'bb', 2, 3, 4, 'aa', ];
+removeItem(a, 'aa', 1)
+console.log(a) //[0, "bb", 2, 3, 4]
 
 
 /*
