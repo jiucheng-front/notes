@@ -21,6 +21,9 @@
 + rm filename 删除文件(命令行删除还是手动删除都要重新add/commit)
 + 如果误删还没commit可以git checkout -- filename恢复文件
 + git show [commit number]在命令行查看该次提交前后文件的对比，新增变化
++ git fetch -p origin   清除缓存
++ git branch -D branchName 删除本地分支	
++ git push origin -d branchName(分知名)  刪除远程分支
 
 ### 三、常用命令(2)：合并指定的文件或者文件夹到当前分支
 + 场景：主分支是master，有多个开发分支dev1,dev2
