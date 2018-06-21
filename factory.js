@@ -907,25 +907,79 @@ function deepClone(obj) {
 	return cloneObj
 }
 // test Array
-var a=[0,[1,2],3,[4,5],6]
-var b=deepClone(a)
-a[1][0]="a"
+var a = [0, [1, 2], 3, [4, 5], 6]
+var b = deepClone(a)
+a[1][0] = "a"
 console.log(a)
 console.log(b)
 // test Object
-var c={
-	a:0,
-	b:{
-		d:"d"
+var c = {
+	a: 0,
+	b: {
+		d: "d"
 	},
-	e:"e"
+	e: "e"
 }
-var e=deepClone(c)
-c.b.d="dd"
-console.log(c,e)
+var e = deepClone(c)
+c.b.d = "dd"
+console.log(c, e)
 
+/**
+ * 二十三、倒计时
+ */
+// 渲染倒計時
+function startDownTime($elem, date) {
+	// date是秒數：最大小時——2*60*60
+	let time = date || 0
+	if (time <= 0) {
+		time = 0
+		return
+	} else if (time > 2 * 60 * 60) {
+		time = 2 * 60 * 60
+	}
 
+	let hour = Math.floor(time / 3600)
+	time = Math.round(time)
 
+	let s = time % 60
+	let m = Math.floor(time / 60 % 60)
+	if (hour && hour > 0 && m == 0 && s == 0) {
+		hour >= 0 && hour--
+			m = 59
+		s = 60
+	}
+	let str = ''
+	// 定時器
+	$elem.countId = setInterval(() => {
+		if (time < 0) {
+			m = 0
+			s = 1
+		}
+		s--
+		if (s < 0) {
+			s = 59
+			m > 0 && m--
+		}
+
+		if (m <= 0) {
+			hour >= 0 && hour--
+		}
+
+		if (hour > 0) {
+			str = `${hour}:${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`
+		} else {
+			str = `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`
+		}
+		str += " 後封盤"
+		// console.log(str)
+		$elem.html(str)
+		if ((hour <= 0 && m <= 0 && s <= 0) || time < 0) {
+			clearInterval($elem.countId)
+			$elem.countId = -1
+			// 如果倒计时为0要替换HTML
+		}
+	}, 1000)
+}
 
 
 
