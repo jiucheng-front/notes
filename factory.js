@@ -637,58 +637,62 @@ Scroll.init();
 })(window)
 
 
-// 十五、日期格式化
 
-class ResetDate {
-	timeToMillion(startStr, endStr) {
-		var times;
-		if (endStr) {
-			var startT = new Date(startStr).getTime()
-			var endT = new Date(endStr).getTime()
-			times = (endT - startT) / 1000
-		} else if (startStr && startStr != 0) {
-			times = startStr
-		}
-		var day, hour, minute, endOutStr;
-		if (times > 0) {
-			// console.log(times)
-			day = Math.floor(times / (60 * 60 * 24));
-			hour = Math.floor(times / (60 * 60)) - (day * 24);
-			minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
-			// second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-
-			if (parseInt(day) != 0) {
-				endOutStr = day + "天" + hour + "小時" + minute + "分鐘"
-			} else {
-				if (parseInt(hour) != 0) {
-					endOutStr = hour + "小時" + minute + "分鐘"
-				} else {
-					endOutStr = minute + "分鐘"
-				}
-			}
-		} else {
-			endOutStr = 0
-		}
-		// if (day <= 9) day = '0' + day;
-		// if (hour <= 9) hour = '0' + hour;
-		// if (minute <= 9) minute = '0' + minute;
-		// if (second <= 9) second = '0' + second;
-		return endOutStr
+/**
+ * 十五、计算2个标准日期的时间差，或者剩余时间
+ * timeToMillion(startStr, endStr)
+ * @param {startStr} 必须，endStr不存在时候是>0的秒数，endStr存在的时候startStr必须是标准时间格式且小于endStr
+ * @param {endStr} 可选，如果存在必须是标准时间格式且大于startStr
+ */
+function timeToMillion(startStr, endStr) {
+	var times;
+	if (endStr) {
+		var startT = new Date(startStr).getTime()
+		var endT = new Date(endStr).getTime()
+		times = (endT - startT) / 1000
+	} else if (startStr && startStr != 0) {
+		times = startStr
 	}
-	/**
-	 * timeToMillion(9613920)>"111天6小時32分鐘"
-	 * 
-	 * timeToMillion("2017-11-20 13:58:47", "2017-11-22 15:09:10")  >"2天1小時10分鐘"
-	 * 
-	 **/
+	var day, hour, minute, endOutStr;
+	if (times > 0) {
+		// console.log(times)
+		day = Math.floor(times / (60 * 60 * 24));
+		hour = Math.floor(times / (60 * 60)) - (day * 24);
+		minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
+		// second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
 
+		if (parseInt(day) != 0) {
+			endOutStr = day + "天" + hour + "小時" + minute + "分鐘"
+		} else {
+			if (parseInt(hour) != 0) {
+				endOutStr = hour + "小時" + minute + "分鐘"
+			} else {
+				endOutStr = minute + "分鐘"
+			}
+		}
+	} else {
+		endOutStr = 0
+	}
+	// if (day <= 9) day = '0' + day;
+	// if (hour <= 9) hour = '0' + hour;
+	// if (minute <= 9) minute = '0' + minute;
+	// if (second <= 9) second = '0' + second;
+	return endOutStr
 }
+// Example
+imeToMillion(9613920) // => "111天6小時32分鐘"
+timeToMillion("2017-11-20 13:58:47", "2017-11-22 15:09:10") // => "2天1小時10分鐘"
 
-/*
- *十六 seconds秒數，返回剩餘的大概時間，有天數直接返回天數，沒天數有小時直接返回小時數，沒有小時數有分鐘數直接返回分鐘數，
+
+
+/**
+ * 十六 、返回剩余时间
+ * @param {seconds} 必须，Number
+ * seconds秒數，返回剩餘的大概時間，有天數直接返回天數，
+ * 沒天數有小時直接返回小時數，沒有小時數有分鐘數直接返回分鐘數，
  * 沒有分鐘數直接返回傳入的秒數
  *
- **/
+ */
 
 function timeToRemaining(seconds) {
 	var times = parseInt(seconds) || 0;
@@ -717,9 +721,8 @@ function timeToRemaining(seconds) {
 		return endOutStr = 0
 	}
 }
-
+//Example
 timeToRemaining(600000) // 6天
-timeToRemaining(70000) //19小數
 timeToRemaining(600) // 10分鐘
 timeToRemaining(40) //40秒
 
@@ -742,7 +745,8 @@ function getDateStr(seconds) {
 	var currentTime = year + "-" + month + "-" + day + "  " + hour + ":" + minute + ":" + second;
 	return currentTime
 }
-//Example: getDateStr(1524637692)>"2018-4-25  14:28:12"
+//Example
+getDateStr(1524637692) // => "2018-4-25  14:28:12"
 
 
 /**
@@ -782,8 +786,9 @@ function addProWithValue(arr, key) {
 	console.log(arr)
 	return arr;
 }
+// Example
 addProWithValue(arr, "id")
-//output
+// output
 arr = [{
 	id: 0,
 	color: "red"
@@ -811,8 +816,7 @@ arr = [{
  * @param {phone}：必须(Number/String)且length>=6
  * 返回：String
  * 非大陆地区可能有小于11位大于6位的手机号
- * 如：resetPhone(88613585673010) => 8861358****010
- * resetPhone(13585673010) => 1358****010
+ * 
  */
 
 function resetPhone(phone) {
@@ -831,7 +835,9 @@ function resetPhone(phone) {
 	console.log(str)
 	return str
 }
-
+// Example
+resetPhone(88613585673010) // => 8861358****010
+resetPhone(13585673010) // => 1358****010
 
 
 /**
@@ -860,6 +866,7 @@ var myModule = function () {
 		getName: publicGetName
 	}
 }();
+// Example
 myModule.setName("James")
 myModule.getName() //Name:James
 myModule.greeting //"Hey there!"
@@ -884,7 +891,7 @@ function removeItem(arr) {
 		}
 	})
 }
-
+// Example
 var a = [0, 1, 'bb', 2, 3, 4, 'aa', ];
 removeItem(a, 'aa', 1)
 console.log(a) //[0, "bb", 2, 3, 4]
@@ -913,13 +920,13 @@ function deepClone(obj) {
 	}
 	return cloneObj
 }
-// test Array
+// Example Array
 var a = [0, [1, 2], 3, [4, 5], 6]
 var b = deepClone(a)
 a[1][0] = "a"
 console.log(a)
 console.log(b)
-// test Object
+// Example Object
 var c = {
 	a: 0,
 	b: {
@@ -936,10 +943,9 @@ console.log(c, e)
  * startDownTime($elem, date)
  * @param {$elem,date}
  * $elem：必须，DOM元素，可以为null,可以循环中调用startDownTime为多个DOM元素设定倒计时显示
- * date：必须大于0的秒数
+ * date：必须, >0 && <= 2*60*60 的秒数,这里限制最大7200秒即2小时
  * 
  */
-// 渲染倒計時
 function startDownTime($elem, date) {
 	// date是秒數：最大小時——2*60*60
 	let time = date || 0
@@ -982,9 +988,10 @@ function startDownTime($elem, date) {
 		} else {
 			str = `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`
 		}
-		str += " 後封盤"
-		// console.log(str)
-		$elem.html(str)
+		str += " 後要干嘛？"
+		console.log(str)
+		// 渲染到指定DOM
+		// $elem.html(str)
 		if ((hour <= 0 && m <= 0 && s <= 0) || time < 0) {
 			clearInterval($elem.countId)
 			$elem.countId = -1
@@ -992,6 +999,8 @@ function startDownTime($elem, date) {
 		}
 	}, 1000)
 }
+//	Example
+startDownTime(document.body, 2 * 60 * 60)
 
 
 
