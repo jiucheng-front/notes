@@ -142,7 +142,13 @@ function pushHtml(id, html) {
 	return document.getElementById(id).innerHTML = html;
 }
 
-// 四、封装綁定事件
+
+/**
+ * 五、封装綁定事件
+ * @param {*} type 必须，绑定事件类型
+ * @param {*} selector 必须，nodeName / className / id
+ * @param {*} callback 必须，绑定成功后的回调，继续操作DOM
+ */
 function on(type, selector, callback) {
 	document.addEventListener(type, function (e) {
 		e.preventDefault();
@@ -152,9 +158,17 @@ function on(type, selector, callback) {
 		}
 	})
 }
+// Example
+on("click", "btn", function () {
+	console.log("给btn按钮绑定了点击事件")
+})
 
 
-// 五、类似JQ的 prevAll和nextAll
+
+/**
+ * 六、原生JS获取之前(prevAll)或者之后(nextAll)的所有兄弟元素
+ * 	类似JQ的 prevAll和nextAll
+ */
 HTMLElement.prototype.prevAll = function () {
 	var parent = this.parentElement;
 	var children = parent.children;
@@ -182,19 +196,30 @@ HTMLElement.prototype.nextAll = function () {
 	}
 	return arr;
 }
-
+// Example
 var temp = function (dom) {
 	console.log("prevAll=", dom.prevAll());
 	console.log("nextAll=", dom.nextAll());
 }
 
-// 六、重置form 表单的action
+
+/**
+ * 七、原生重置form 表单的action
+ * @param {*} id 必须，string,元素ID 
+ * @param {*} domain 必须
+ * @param {*} urlStr 必须
+ */
 function resetFormActionDomian(id, domain, urlStr) {
 	document.getElementById(id).action = domain + urlStr;
 }
 
-// 七、获取URL参数
-// 6、获取url参数
+
+
+/**
+ * 八、获取URL中指定某个参数的值
+ * @param {*} strParame 必须,string，返回指定的值
+ * 
+ */
 function getUrlParameter(strParame) {
 	var args = new Object();
 	var query = location.search.substring(1);
@@ -209,13 +234,18 @@ function getUrlParameter(strParame) {
 	}
 	return args[strParame];
 }
-
-// "dsaldlas.csadja.com/fhlfh.html?key=10&id=hello";
+// Example	"dsaldlas.csadja.com/fhlfh.html?key=10&id=hello";
 var key = getUrlParameter("key"); //10
 var id = getUrlParameter("hello"); //10
 
-// 八、简单的密码加密和解密
 
+
+/**
+ * 九、简单的加密和解密
+ * @param {*} str 必须，string,要加密的对象 
+ * @param {*} xor 必须，加密解密的计算参数
+ * @param {*} hex 必须，加密解密的计算参数
+ */
 // 加密
 function encrypto(str, xor, hex) {
 	if (typeof str !== 'string' || typeof xor !== 'number' || typeof hex !== 'number') {
@@ -259,8 +289,7 @@ function decrypto(str, xor, hex) {
 	let resultStr = resultList.join('');
 	return resultStr;
 }
-
-// 如何使用
+// Example
 var pwd = "BLUE123456!";
 var enPwd = encrypto(pwd, 135, 25);
 var dePwd = decrypto(enPwd, 135, 25);
@@ -268,14 +297,10 @@ console.log(enPwd); //27z25z1lz2cz2oz2nz2mz34z33z32z3f
 console.log(dePwd); //BLUE123456!
 
 
-// 九、前端JS实现微信授权登录
+
 /**
- * 需要
- * 
- * 
- * 
- * 
- * 
+ * 十、前端JS实现微信授权登录
+ * 详细参考官网文档
  */
 
 window.onload = function () {
@@ -283,45 +308,7 @@ window.onload = function () {
 	wechat.init();
 }
 // 内部函数可以暂时忽略
-function Wechat() {
-	// 1 获取DOM(id)
-	this.getDom = function (id) {
-		return document.getElementById(id);
-	}
-	// 2 通用绑定事件
-	this.bind = function (elem, eventType, callback) {
-		if (elem.addEventListener) {
-			elem.addEventListener(eventType, callback, false);
-		} else {
-			elem.attachEvent("on" + eventType, function () {
-				callback.call(elem);
-			});
-		}
-	}
-	// 3 显示
-	this.showDialog = function (elem) {
-		elem.style.display = "block";
-	}
-	// 4 隐藏
-	this.hideDialog = function (elem) {
-			elem.style.display = "none";
-		},
-		// 获取url参数
-		this.getUrlParameter = function (strParame) {
-			var args = new Object();
-			var query = location.search.substring(1);
-			var pairs = query.split("&");
-			for (var i = 0; i < pairs.length; i++) {
-				var pos = pairs[i].indexOf('=');
-				if (pos == -1) continue;
-				var argname = pairs[i].substring(0, pos);
-				var value = pairs[i].substring(pos + 1);
-				value = decodeURIComponent(value);
-				args[argname] = value;
-			}
-			return args[strParame];
-		}
-}
+function Wechat() {}
 
 Wechat.prototype = {
 	init: function () {
