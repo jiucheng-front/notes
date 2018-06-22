@@ -723,7 +723,14 @@ timeToRemaining(70000) //19小數
 timeToRemaining(600) // 10分鐘
 timeToRemaining(40) //40秒
 
-// 十七、如何把秒數轉換為年月日時分秒
+
+/**
+ * 十七、如何把秒數轉換為:年月日時分秒
+ * @param {seconds} 必须，单位秒，有效时间的秒数
+ * @param {splitWith} 可以扩展添加分割符号：-/
+ * 如：2018-4-25  14:28:12
+ * 或：2018/4/25  14:28:12
+ */
 function getDateStr(seconds) {
 	var date = new Date(seconds * 1000)
 	var year = date.getFullYear();
@@ -735,15 +742,15 @@ function getDateStr(seconds) {
 	var currentTime = year + "-" + month + "-" + day + "  " + hour + ":" + minute + ":" + second;
 	return currentTime
 }
-// getDateStr(1524637692)>"2018-4-25  14:28:12"
+//Example: getDateStr(1524637692)>"2018-4-25  14:28:12"
 
 
 /**
  * 十八、过滤数组（双重遍历）根据某一项设定指定的属性
  * 如：如果数组的每一项的ID出现相同的就追加一个属性：如字体颜色
  * addProWithValue(arr, key)
- * arr：必须，arr[i](必须是Object)
- * key：arr[i]对象的一个属性名字
+ * @param {arr}：必须，arr[i](必须是Object)
+ * @param {key}：arr[i]对象的一个属性名字
  * 可以继续扩展
  */
 
@@ -801,7 +808,7 @@ arr = [{
 
 /**
  * 十九、手机号过滤为*号
- * phone：必须(Number/String)且length>=6
+ * @param {phone}：必须(Number/String)且length>=6
  * 返回：String
  * 非大陆地区可能有小于11位大于6位的手机号
  * 如：resetPhone(88613585673010) => 8861358****010
@@ -830,7 +837,7 @@ function resetPhone(phone) {
 /**
  * 二十、JS的揭示模式
  * 模块封装，属性私有化，对外抛出唯一的API可以操作内部属性和值，方便复用。
- * 
+ * @param {}
  */
 var myModule = function () {
 	var privateName = "Stephen Curry",
@@ -861,8 +868,11 @@ myModule.greeting //"Hey there!"
 /**
  * 二十一、刪除数组指定的选项，
  * removeItem(arr[,value1,value2..])
- * arr：必须切length存在
+ * @param {arr,value1,value2,..}
+ * arr：必须，且length存在
+ * value1..必须，要删除的指定项
  * arguments：隐形参数（要被删除的选项的值）
+ * 
  */
 function removeItem(arr) {
 	var args = [].slice.call(arguments);
@@ -879,11 +889,14 @@ var a = [0, 1, 'bb', 2, 3, 4, 'aa', ];
 removeItem(a, 'aa', 1)
 console.log(a) //[0, "bb", 2, 3, 4]
 
-// 二十二、如何实现深浅拷贝
+
 /**
+ * 二十二、如何实现深浅拷贝Array/Object
  * 浅：被拷贝者变化，拷贝者也变化
  * 深：被拷贝者变化，拷贝者没有变化
- * Array 和 Object的深浅拷贝，Function 待
+ * deepClone(obj)
+ * @param {obj} 必须Array/Object
+ * Function 待
  */
 function deepClone(obj) {
 	let cloneObj = Array.isArray(obj) ? [] : {}
@@ -920,8 +933,10 @@ console.log(c, e)
 
 /**
  * 二十三、倒计时
+ * startDownTime($elem, date)
+ * @param {$elem,date}
  * $elem：必须，DOM元素，可以为null,可以循环中调用startDownTime为多个DOM元素设定倒计时显示
- * time：必须大于0的秒数
+ * date：必须大于0的秒数
  * 
  */
 // 渲染倒計時
