@@ -300,14 +300,14 @@ console.log(dePwd); //BLUE123456!
 
 /**
  * 十、前端JS实现微信授权登录
- * 详细参考官网文档
+ * 详细可参考官网文档
  */
 
 window.onload = function () {
 	var wechat = new Wechat();
 	wechat.init();
 }
-// 内部函数可以暂时忽略
+
 function Wechat() {}
 
 Wechat.prototype = {
@@ -371,7 +371,12 @@ Wechat.prototype = {
 }
 
 
-//  十、判断两个数组是否相等
+/**
+ * 十一、判断两个数组是否相等
+ * @param {*} arr1 必须，Array 
+ * @param {*} arr2 必须，Array
+ * 返回：true/false
+ */
 function arrayEqual(arr1, arr2) {
 	if (arr1 === arr2) return true;
 	if (arr1.length != arr2.length) return false;
@@ -381,9 +386,10 @@ function arrayEqual(arr1, arr2) {
 	return true;
 }
 
+
+
 /**
- * 
- * 十一、 设置滚动条距顶部的距离
+ * 十二、 设置滚动条距顶部的距离
  * 
  */
 
@@ -392,64 +398,70 @@ function setScrollTop(value) {
 	return value;
 }
 
+
 /**
- * 
- * 十二、 重置數字(保留小數)
+ * 十三、 几种重置數字(保留小數)
  * 
  */
-const perateNumber = {
-	numberToMillion: function (count) {
-		var end = '';
-		count = count.toString();
-		var length = count.length;
-		if (length >= 6 && length < 9) {
-			end = (count / 10000).toFixed(1);
-			var index = end.indexOf(".");
-			var last = end.slice(index + 1);
-			if (!Number(last)) {
-				end = end.slice(0, index);
-			}
-			end = end + "萬";
-		} else if (length >= 9) {
-			end = (count / 10000000).toFixed(1);
-			var index = end.indexOf(".");
-			var last = end.slice(index + 1);
-			if (!Number(last)) {
-				end = end.slice(0, index);
-			}
-			end = end + "千萬";
-		} else if (length < 6) {
-			end = count;
+// 1 转换为万或者千万，最大支持千万
+function numberToMillion(count) {
+	var end = '';
+	count = count.toString();
+	var length = count.length;
+	if (length >= 6 && length < 9) {
+		end = (count / 10000).toFixed(1);
+		var index = end.indexOf(".");
+		var last = end.slice(index + 1);
+		if (!Number(last)) {
+			end = end.slice(0, index);
 		}
-		return end;
-	},
-	//numberToMillion(12346589) "1234.7萬"
-
-	numberToK: function (count) {
-		var end = '';
-		count = count.toString();
-		return end = count.length > 4 ? (count / 1000).toFixed(1) + "K" : count;
-	},
-	//numberToK(456798) "456.8K"
-
-	numberWithComma: function (num) {
-		var num = (num || 0).toString(),
-			result = '';
-		while (num.length > 3) {
-			result = ',' + num.slice(-3) + result;
-			num = num.slice(0, num.length - 3);
+		end = end + "萬";
+	} else if (length >= 9) {
+		end = (count / 10000000).toFixed(1);
+		var index = end.indexOf(".");
+		var last = end.slice(index + 1);
+		if (!Number(last)) {
+			end = end.slice(0, index);
 		}
-		if (num) {
-			result = num + result;
-		}
-		return result;
+		end = end + "千萬";
+	} else if (length < 6) {
+		end = count;
 	}
-	// numberWithComma(1245) "1,245"
-	// numberWithComma(4567889798) "4,567,889,798"
+	return end;
 }
+// Example
+numberToMillion(12346589) // => "1234.7萬"
 
-//十三、 限制点击次数
+// 2 转换为带K(或者指定符号)
+function numberToK(count) {
+	var end = '';
+	count = count.toString();
+	return end = count.length > 4 ? (count / 1000).toFixed(1) + "K" : count;
+}
+// Example
+numberToK(456798) // => "456.8K"
 
+// 3 从尾部没三位用符号隔开
+function numberWithComma(num) {
+	var num = (num || 0).toString(),
+		result = '';
+	while (num.length > 3) {
+		result = ',' + num.slice(-3) + result;
+		num = num.slice(0, num.length - 3);
+	}
+	if (num) {
+		result = num + result;
+	}
+	return result;
+}
+// Example 
+numberWithComma(4567889798) // => "4,567,889,798"
+
+
+
+/**
+ * 十四、限制点击（单击）次数
+ */
 var VAR = {
 	repeatTemp: []
 }
@@ -493,10 +505,13 @@ function canClick() {
 	}
 
 }
+// Example
 document.getElementById("btn").addEventListener("click", canClick)
 
 
-//十四、 滾動加載
+/**
+ * 十五、滾動加載
+ */
 
 var Scroll = {
 	init() {
@@ -576,11 +591,14 @@ var Scroll = {
 		});
 	}
 }
-
+// Example
 Scroll.init();
 
-// 十五、es6 class用法
-;
+
+/**
+ * 十六、es6 class用法
+ * 
+ */
 (function (window) {
 	"use strict";
 	class Video {
@@ -629,7 +647,7 @@ Scroll.init();
 
 
 /**
- * 十五、计算2个标准日期的时间差，或者剩余时间
+ * 十七、计算2个标准日期的时间差，或者剩余时间
  * timeToMillion(startStr, endStr)
  * @param {startStr} 必须，endStr不存在时候是>0的秒数，endStr存在的时候startStr必须是标准时间格式且小于endStr
  * @param {endStr} 可选，如果存在必须是标准时间格式且大于startStr
@@ -676,7 +694,7 @@ timeToMillion("2017-11-20 13:58:47", "2017-11-22 15:09:10") // => "2天1小時10
 
 
 /**
- * 十六 、返回剩余大概整数时间
+ * 十八 、返回剩余大概整数时间
  * @param {seconds} 必须，Number
  * seconds秒數，返回剩餘的大概時間，有天數直接返回天數，
  * 沒天數有小時直接返回小時數，沒有小時數有分鐘數直接返回分鐘數，
@@ -718,7 +736,7 @@ timeToRemaining(40) //40秒
 
 
 /**
- * 十七、如何把秒數轉換為:年月日時分秒
+ * 十九、如何把秒數轉換為:年月日時分秒
  * @param {seconds} 必须，单位秒，有效时间的秒数
  * @param {splitWith} 可以扩展添加分割符号：-/
  * 如：2018-4-25  14:28:12
@@ -740,7 +758,7 @@ getDateStr(1524637692) // => "2018-4-25  14:28:12"
 
 
 /**
- * 十八、过滤数组（双重遍历）根据某一项设定指定的属性
+ * 二十、过滤数组（双重遍历）根据某一项设定指定的属性
  * 如：如果数组的每一项的ID出现相同的就追加一个属性：如字体颜色
  * addProWithValue(arr, key)
  * @param {arr}：必须，arr[i](必须是Object)
@@ -802,7 +820,7 @@ arr = [{
 
 
 /**
- * 十九、手机号过滤为*号
+ * 二十一、手机号过滤为*号
  * @param {phone}：必须(Number/String)且length>=6
  * 返回：String
  * 非大陆地区可能有小于11位大于6位的手机号
@@ -831,7 +849,7 @@ resetPhone(13585673010) // => 1358****010
 
 
 /**
- * 二十、JS的揭示模式
+ * 二十二、JS的揭示模式
  * 模块封装，属性私有化，对外抛出唯一的API可以操作内部属性和值，方便复用。
  * @param {}
  */
@@ -863,7 +881,7 @@ myModule.greeting //"Hey there!"
 
 
 /**
- * 二十一、刪除数组指定的选项，
+ * 二十三、刪除数组指定的选项，
  * removeItem(arr[,value1,value2..])
  * @param {arr,value1,value2,..}
  * arr：必须，且length存在
@@ -888,7 +906,7 @@ console.log(a) //[0, "bb", 2, 3, 4]
 
 
 /**
- * 二十二、如何实现深浅拷贝Array/Object
+ * 二十四、如何实现深浅拷贝Array/Object
  * 浅：被拷贝者变化，拷贝者也变化
  * 深：被拷贝者变化，拷贝者没有变化
  * deepClone(obj)
@@ -929,7 +947,7 @@ c.b.d = "dd"
 console.log(c, e)
 
 /**
- * 二十三、倒计时
+ * 二十五、倒计时
  * startDownTime($elem, date)
  * @param {$elem,date}
  * $elem：必须，DOM元素，可以为null,可以循环中调用startDownTime为多个DOM元素设定倒计时显示
