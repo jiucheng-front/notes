@@ -1,18 +1,27 @@
-/*
+/** 
+ * 常用函数总结：持续更新
  * @Author: wangjianfei
  * @Date:   2017-04-28 15:32:29
  * @Last Modified by:   wangjianfei
  * @Last Modified time: 2017-05-22 11:16:44
  */
 'use strict';
-// 一、AJAX封装
-// 1、封裝AJAX函數
+
+/**
+ * 一、封裝AJAX函數
+ * @param {*} option 必须，请求参数
+ * option
+ * 		ajaxType:必须，请求类型，GET/POST
+ * 		urlStr:必须，接口URL
+ * 		ajaxData:必须，GET时候为null,POST的时候为Object{ key:value }
+ * @param {*} success 必须，成功回调函数
+ * @param {*} error 必须，失败回调函数
+ */
+
 function nativeAjax(option, success, error) {
 	// 定义domain,方便环境切换
 	/*
 	 *window.location.host在IE中有兼容性
-	 *
-	 *
 	 */
 	var domain = 'https://' + window.location.host + '/';
 	// var domain='http://' + window.location.host + '/';
@@ -49,55 +58,38 @@ function nativeAjax(option, success, error) {
 	}
 	xhrRequest.send(str);
 }
-// 2、POST：定義請求參數
+// Example、POST：定義請求參數
 var postOption = {
 	ajaxType: "POST",
-	urlStr: "v2/html/broke/get_broke_ranked_info",
+	urlStr: "/info",
 	ajaxData: {
 		"HTTP_USER_TOKEN": token,
 		"HTTP_USER_UID": pfid,
-		"anchor_pfid": anchor_pfid,
-		"broke_pfid": pfid,
-		"date": date
 	}
 }
-// 3、调用AJAX
 nativeAjax(postOption, function (data) {
-	// 3.1、请求成功回调
 	console.log(data);
 }, function (error) {
-	// 3.2、请求失败回调,返回HTTP状态码
 	console.log(error);
 });
-//4、GET：定义请求参数
+//	Example、GET：定义请求参数
 var getOption = {
 	ajaxType: "GET",
-	urlStr: "v2/html/broke/get_broke_ranked_info",
+	urlStr: "/good_list",
 	ajaxData: null
 }
 nativeAjax(getOption, function (data) {
-	// 成功函数
 	console.log(data);
 }, function (error) {
-	// 失败返回HTTP状态码
 	console.log(error);
-
 });
-// 使用说明
-// 、option必须
-option = {
-	//1、ajaxType必须："GET"或者"POST"
-	ajaxType: "",
-	//2、urlStr必须："string类型"
-	urlStr: "",
-	//3、必须：POST时候为object{key:value}，GET的时候直接为：null
-	ajaxData: null
-}
-//  success请求成功回调必须
-//  error请求失败回调必须
 
 
-// 二、判断是否是IOS
+
+/**
+ * 二、判断是否是IOS
+ * 
+ */
 function isIos() {
 	var u = navigator.userAgent,
 		app = navigator.appVersion;
@@ -106,17 +98,25 @@ function isIos() {
 	return isiOS;
 }
 
-//1、ClassName切换,是否含有指定class
+/**
+ * 三、关于原生JS操作className
+ * 1：是否含有某个class,返回：true/false
+ * 2：没有指定的className就追加指定的className
+ * 3：有指定的className就删除指定的className
+ * @param {*} elem 必须，原生DOM 
+ * @param {*} cls 必须，String,指定的className
+ */
+// 1、是否函数指定的className
 function hasClass(elem, cls) {
 	return elem.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
 }
-// 2、没有就追加指定class
+// 2、没有就追加指定className
 function addClass(elem, cls) {
 	if (!hasClass(elem, cls)) {
 		elem.className += " " + cls;
 	}
 }
-// 3、有就移除指定class
+// 3、有就移除指定className
 function removeClass(elem, cls) {
 	if (hasClass(elem, cls)) {
 		var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
@@ -125,16 +125,19 @@ function removeClass(elem, cls) {
 }
 
 
-// 三、获取DOM
-// 3.1
+/**
+ * 四、DOM操作
+ * 
+ */
+// 4.1封装指定符号获取DOM
 window.$ = HTMLElement.prototype.$ = function (selector) {
 	return (this == window ? document : this).querySelectorAll(selector);
 }
-// 3.2
+// 4.2根据ID获取指定DOM
 function getEleId(id) {
 	return document.getElementById(id);
 }
-// 5、追加HTML
+// 4.3 向指定DOM追加HTML,id,html都是必须
 function pushHtml(id, html) {
 	return document.getElementById(id).innerHTML = html;
 }
@@ -686,7 +689,7 @@ timeToMillion("2017-11-20 13:58:47", "2017-11-22 15:09:10") // => "2天1小時10
 
 
 /**
- * 十六 、返回剩余时间
+ * 十六 、返回剩余大概整数时间
  * @param {seconds} 必须，Number
  * seconds秒數，返回剩餘的大概時間，有天數直接返回天數，
  * 沒天數有小時直接返回小時數，沒有小時數有分鐘數直接返回分鐘數，
