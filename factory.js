@@ -738,8 +738,14 @@ function getDateStr(seconds) {
 // getDateStr(1524637692)>"2018-4-25  14:28:12"
 
 
-
-// 十八、如果数组的每一项的ID出现相同的就追加一个属性：如字体颜色
+/**
+ * 十八、过滤数组（双重遍历）根据某一项设定指定的属性
+ * 如：如果数组的每一项的ID出现相同的就追加一个属性：如字体颜色
+ * addProWithValue(arr, key)
+ * arr：必须，arr[i](必须是Object)
+ * key：arr[i]对象的一个属性名字
+ * 可以继续扩展
+ */
 
 var arr = [{
 	id: 0
@@ -754,69 +760,43 @@ var arr = [{
 }, {
 	id: 4
 }, {
-	id: 0
-}, {
-	id: 1
-}, {
-	id: 1
-}, {
-	id: 2
-}, {
 	id: 2
 }];
-for (var i = 0; i < arr.length; i++) {
-	for (var j = i + 1; j < arr.length; j++) {
-		if (arr[i].id == arr[j].id) {
-			arr[i].color = "red";
-			arr[j].color = "red"
+
+function addProWithValue(arr, key) {
+	for (var i = 0; i < arr.length; i++) {
+		for (var j = i + 1; j < arr.length; j++) {
+			if (arr[i][key] == arr[j][key]) {
+				arr[i].color = "red";
+				arr[j].color = "red"
+			}
 		}
 	}
+	console.log(arr)
+	return arr;
 }
-console.log(arr)
+addProWithValue(arr, "id")
 //output
 arr = [{
-		id: 0,
-		color: "red"
-	},
-	{
-		id: 0,
-		color: "red"
-	},
-	{
-		id: 3
-	},
-	{
-		id: 2,
-		color: "red"
-	},
-	{
-		id: 0,
-		color: "red"
-	},
-	{
-		id: 4
-	},
-	{
-		id: 0,
-		color: "red"
-	},
-	{
-		id: 1,
-		color: "red"
-	},
-	{
-		id: 1,
-		color: "red"
-	},
-	{
-		id: 2,
-		color: "red"
-	},
-	{
-		id: 2,
-		color: "red"
-	}
-]
+	id: 0,
+	color: "red"
+}, {
+	id: 0,
+	color: "red"
+}, {
+	id: 3
+}, {
+	id: 2,
+	color: "red"
+}, {
+	id: 0,
+	color: "red"
+}, {
+	id: 4
+}, {
+	id: 2,
+	color: "red"
+}];
 
 
 /**
