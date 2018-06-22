@@ -819,8 +819,14 @@ arr = [{
 ]
 
 
-
-// 十九、手机号过滤为*号
+/**
+ * 十九、手机号过滤为*号
+ * phone：必须(Number/String)且length>=6
+ * 返回：String
+ * 非大陆地区可能有小于11位大于6位的手机号
+ * 如：resetPhone(88613585673010) => 8861358****010
+ * resetPhone(13585673010) => 1358****010
+ */
 
 function resetPhone(phone) {
 	var str = String(phone)
@@ -839,10 +845,13 @@ function resetPhone(phone) {
 	return str
 }
 
-// 如果匹配的是连续相同的位置有误！
 
 
-// 二十、JS的揭示模式
+/**
+ * 二十、JS的揭示模式
+ * 模块封装，属性私有化，对外抛出唯一的API可以操作内部属性和值，方便复用。
+ * 
+ */
 var myModule = function () {
 	var privateName = "Stephen Curry",
 		publicMsg = "Hey there!";
