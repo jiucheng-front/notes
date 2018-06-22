@@ -869,7 +869,12 @@ myModule.getName() //Name:James
 myModule.greeting //"Hey there!"
 
 
-// 二十一、刪除数组指定的选项，
+/**
+ * 二十一、刪除数组指定的选项，
+ * removeItem(arr[,value1,value2..])
+ * arr：必须切length存在
+ * arguments：隐形参数（要被删除的选项的值）
+ */
 function removeItem(arr) {
 	var args = [].slice.call(arguments);
 	args.slice(0, 1);
@@ -926,6 +931,9 @@ console.log(c, e)
 
 /**
  * 二十三、倒计时
+ * $elem：必须，DOM元素，可以为null,可以循环中调用startDownTime为多个DOM元素设定倒计时显示
+ * time：必须大于0的秒数
+ * 
  */
 // 渲染倒計時
 function startDownTime($elem, date) {
