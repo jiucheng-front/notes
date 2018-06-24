@@ -515,8 +515,24 @@ document.getElementById("btn").addEventListener("click", canClick)
 
 var Scroll = {
 	init() {
-		this.finished = 0;
-		this.scrollLoadList();
+		this.finished = 0
+		this.pageIndex = 1
+		this.pageSize = 20
+		this.timer = null
+		this._loadList(this.pageIndex, this.pageSize)
+	},
+	_loadList(pageIndex, pageSize) {
+		ajax("GET", "xxxx/aaa").then(res => {
+			if (res.ret_code == "0") {
+				// 1 操作数据和DOM
+				// 2 是否需要滚动加载
+				if (res.data.total > this.pageSize) {
+					this.scrollLoadList();
+				}
+			}
+		}).catch(error => {
+			console.log(error)
+		})
 	},
 	scrollLoadList() {
 		var $this = this;
@@ -533,13 +549,6 @@ var Scroll = {
 					$this.finished = 1;
 					// 参数变化
 					$this.pageIndex += 1;
-					// 4.2 加载loading效果
-					$this.$replayLoadingWrap.html(T.replayLoading({
-						loading: true,
-						loadingTips: "加載中......"
-						// finished:true,
-						// finishedTips:"没有更多数据了！"
-					}))
 					// 延迟
 					setTimeout(function () {　　　　
 						api.getReplayList($this.pageIndex, $this.pageSize, $this.anchorPfid)
