@@ -1026,16 +1026,27 @@ startDownTime(document.body, 2 * 60 * 60)
  * 	ended：当前是否播放完毕
  * 
  */
+
+//  可以考虑用状态
+const AUDIO_STATE = {
+	INIT: 0,
+	CANPLAY: 1,
+	END: 2,
+}
 class PlayAudio {
 	constructor(option) {
 		this.voiceUrlList = []
+		this.audio = document.getElementById("audio-play")
+		this._bindEvents()
 		this._getSrcFromSocket()
+	}
+	_bindEvents() {
+		
 	}
 	// 实时监听函数
 	_getSrcFromSocket(url) {
 		this.voiceUrlList.push(url)
 		this._autoPlayAudio(this.voiceUrlList)
-
 	}
 	_autoPlayAudio(list) {
 		let length = list.length
@@ -1044,15 +1055,14 @@ class PlayAudio {
 			let url = list[0]
 			audio.src = url
 
-			// 是否加载完成？
 			audio.addEventListener("canplaythrough", () => {
 				audio.play()
 			})
-			// 播放完毕，下一个
 			audio.addEventListener("ended", () => {
 				this.voiceUrlList.shift()
-				this._autoLoadUrlToPlay(this.voiceUrlList)
+				this._autoPlayAudio(this.voiceUrlList)
 			})
+
 		} else {
 			document.getElementById("audio-play").src = ""
 		}
