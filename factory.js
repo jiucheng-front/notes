@@ -1041,7 +1041,11 @@ class PlayAudio {
 		this._getSrcFromSocket()
 	}
 	_bindEvents() {
-		
+		// 当前是否播放完毕
+		this.audio.addEventListener("ended", () => {
+			this.voiceUrlList.shift()
+			this._autoPlayAudio(this.voiceUrlList)
+		})
 	}
 	// 实时监听函数
 	_getSrcFromSocket(url) {
@@ -1054,15 +1058,10 @@ class PlayAudio {
 			let audio = document.getElementById("audio-play")
 			let url = list[0]
 			audio.src = url
-
+			// 是否加载完毕可以播放
 			audio.addEventListener("canplaythrough", () => {
 				audio.play()
 			})
-			audio.addEventListener("ended", () => {
-				this.voiceUrlList.shift()
-				this._autoPlayAudio(this.voiceUrlList)
-			})
-
 		} else {
 			document.getElementById("audio-play").src = ""
 		}
