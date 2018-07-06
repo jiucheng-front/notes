@@ -1019,6 +1019,46 @@ function startDownTime($elem, date) {
 //	Example
 startDownTime(document.body, 2 * 60 * 60)
 
+/**
+ * 二十六、audio 队列播放(有就就播放，多个播放完当前就播放下一个)
+ * 	原生：audio
+ *  canplaythrough：src是否加载完成
+ * 	ended：当前是否播放完毕
+ * 
+ */
+class PlayAudio {
+	constructor(option) {
+		this.voiceUrlList = []
+		this._getSrcFromSocket()
+	}
+	// 实时监听函数
+	_getSrcFromSocket(url) {
+		this.voiceUrlList.push(url)
+		this._autoPlayAudio(this.voiceUrlList)
+
+	}
+	_autoPlayAudio(list) {
+		let length = list.length
+		if (length) {
+			let audio = document.getElementById("audio-play")
+			let url = list[0]
+			audio.src = url
+
+			// 是否加载完成？
+			audio.addEventListener("canplaythrough", () => {
+				audio.play()
+			})
+			// 播放完毕，下一个
+			audio.addEventListener("ended", () => {
+				this.voiceUrlList.shift()
+				this._autoLoadUrlToPlay(this.voiceUrlList)
+			})
+		} else {
+			document.getElementById("audio-play").src = ""
+		}
+	}
+}
+
 
 
 // 如何使用checkout 合并指定的文件夹和文件(合并后会覆盖)
