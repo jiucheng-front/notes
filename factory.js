@@ -1069,6 +1069,37 @@ class PlayAudio {
 }
 
 
+/**
+ *  二十七、判斷數組是否符合某個標準
+ *  如：列表的選項中是否有任意三個選項的數量是重複的，
+ * 
+ *  @param {list,minNum,minLength} 必須
+ * 	list至少有 minLength 個大於等於minNum的選項
+ * 
+ */
+function isEnough(list, minNum, minLength) {
+	var length = list.length;
+	var fullList = [];
+	for (var i = 0; i < length; i++) {
+		if (list[i].num >= minNum) {
+			fullList.push(list[i])
+		}
+	}
+	var totalNum = 0;
+	var fullLength = fullList.length;
+	if (fullLength && fullLength >= minLength) {
+		for (var i = 0; i < fullLength; i++) {
+			totalNum += fullList[i].num;
+		}
+		return totalNum >= (minNum * minLength) ? 1 : 0
+	} else {
+		return 0
+	}
+}
+
+var enough1 = isEnough([{num: 2}, {num: 1}, {num: 3}, {num: 4}], 2, 3) // 1 (true)
+var enough2 = isEnough([{num: 1}, {num: 3}, {num: 1}, {num: 1}], 2, 3) // 0 (false)
+
 
 // 如何使用checkout 合并指定的文件夹和文件(合并后会覆盖)
 /*	
