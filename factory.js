@@ -8,7 +8,7 @@
 'use strict';
 
 /**
- * 一、封裝AJAX函數
+ * 一、1.1 封裝AJAX函數
  * @param {*} option 必须，请求参数
  * option
  * 		ajaxType:必须，请求类型，GET/POST
@@ -83,6 +83,63 @@ nativeAjax(getOption, function (data) {
 }, function (error) {
 	console.log(error);
 });
+
+
+/**
+ * 一、1.2  使用Promise 封裝簡單的Ajax函數
+ *  es6: Promise(resolve,reject) 
+ * 	@param {resolve,reject} 2個參數都是回調函數，
+ * 	resolve 類似：success 回調
+ * 	rejcect 類似：error 回調
+ * 
+ **/
+
+const Ajax = (method, url, data) => {
+	let xhrRequest = null
+	if (window.XMLHttpRequest) {
+		xhrRequest = new XMLHttpRequest()
+	} else {
+		xhrRequest = new ActiveXObject('Microsoft.XMLHTTP')
+	}
+
+	return new Promise((resolve, reject) => {
+		let str = null
+		xhrRequest.open(method, url, true)
+
+		if (method === "POST" && data != null) {
+			xhrRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=utf-8")
+			for (var key in data) {
+				str += '&' + key + '=' + data[key]
+				str = str.slice(1)
+			}
+		}
+
+		xhrRequest.onreadystatechange = function () {
+			if (xhrRequest.readyState == 4) {
+				if (xhrRequest.status == 200) {
+					resolve(xhrRequest.responseText)
+				} else {
+					reject(xhrRequest.status)
+				}
+			}
+		}
+
+		xhrRequest.send(str)
+	})
+}
+
+module.exports = Ajax
+
+
+Ajax("GET", "sss/cccas/ddd").then(response => {
+	if(response){
+		// 成功了
+	}
+}).catch(error => {
+	console.log(error)
+})
+
+
 
 
 
@@ -1097,8 +1154,24 @@ function isEnough(list, minNum, minLength) {
 	}
 }
 
-var enough1 = isEnough([{num: 2}, {num: 1}, {num: 3}, {num: 4}], 2, 3) // 1 (true)
-var enough2 = isEnough([{num: 1}, {num: 3}, {num: 1}, {num: 1}], 2, 3) // 0 (false)
+var enough1 = isEnough([{
+	num: 2
+}, {
+	num: 1
+}, {
+	num: 3
+}, {
+	num: 4
+}], 2, 3) // 1 (true)
+var enough2 = isEnough([{
+	num: 1
+}, {
+	num: 3
+}, {
+	num: 1
+}, {
+	num: 1
+}], 2, 3) // 0 (false)
 
 
 // 如何使用checkout 合并指定的文件夹和文件(合并后会覆盖)
