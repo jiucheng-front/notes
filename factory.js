@@ -542,8 +542,6 @@ const CAN_IS_REPEAT = {
             let ts = t - (time - CAN_STORE.repeatTemp[id]);
             ts = parseInt(ts / 1000)
             if (ts > 0) {
-                let msg = "操作過於頻繁！請稍後再試"
-                Toast.send(msg)
                 //禁止执行
                 return true
             } else {
@@ -561,6 +559,8 @@ function canClick() {
 	let isRepeat = CAN_IS_REPEAT.repeat("repeat", 3)
 	if(!isRepeat){
 		// 正常todo
+	}else{
+		// 操作頻繁
 	}
 }
 // Example
