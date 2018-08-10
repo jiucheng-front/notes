@@ -437,7 +437,7 @@ Wechat.prototype = {
 function arrayEqual(arr1, arr2) {
 	if (arr1 === arr2) return true;
 	if (arr1.length != arr2.length) return false;
-	for (vari = 0; i < arr1.length; ++i) {
+	for (var i = 0; i < arr1.length; ++i) {
 		if (arr1[i] !== arr2[i]) return false;
 	}
 	return true;
@@ -498,7 +498,7 @@ function numberToK(count) {
 // Example
 numberToK(456798) // => "456.8K"
 
-// 3 从尾部没三位用符号隔开
+// 3 从尾部每三位用符号隔开
 function numberWithComma(num) {
 	var num = (num || 0).toString(),
 		result = '';
