@@ -518,6 +518,8 @@ numberWithComma(4567889798) // => "4,567,889,798"
 
 /**
  * 十四、限制点击（单击）次数
+ *  repeat(id,num) @param {id:"String",哪個按鈕的點擊；num:"Number",多少秒后可以點擊}
+ * 
  */
 const CAN_STORE = {
     repeatTemp: [],
@@ -613,18 +615,10 @@ var Scroll = {
 							.then(function (res) {
 								if (res.ret_code == "0") {
 									let list = res.data.list;
-									// console.log(list);
-									$this.$replayContentList.append(T.replayList({
-										// data: list,
-										data: list,
-										colCounts: 4,
-										rows: 5,
-										Utils
-									}));
+									// 渲染列表
+
 									// 4.3 清楚加载中loading效果
 									$this.$replayLoadingWrap.html("");
-									//图片赖加载
-									$this.startLazyLoad();
 									// 4.4 是否还有数据
 									let listNowLength = $(".list-anchor-detail").length;
 									$this.finished = 0;
@@ -632,18 +626,11 @@ var Scroll = {
 										// $this.scrollLoadList();
 										$this.finished = 1;
 										// 4.5 加载完毕
-										$this.$replayLoadingWrap.html(T.replayLoading({
-											finished: true,
-											finishedTips: "沒有更多影片咯~"
-										}));
 										console.log("加載了" + listNowLength + "条数据！");
 									}
 									// 如果错误也是加载完毕
 								} else {
-									$this.$replayLoadingWrap.html(T.replayLoading({
-										finished: true,
-										finishedTips: "沒有更多影片咯~"
-									}));
+									// error
 								}
 							})
 							.catch(function (error) {
@@ -659,7 +646,7 @@ var Scroll = {
 	}
 }
 // Example
-Scroll.init();
+Scroll.init()
 
 
 /**
