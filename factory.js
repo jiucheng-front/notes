@@ -1052,8 +1052,9 @@ function startDownTime($elem, date) {
 		}
 		str += " 後要干嘛？"
 		console.log(str)
-		// 渲染到指定DOM
+		// 渲染到指定DOM:JQ/Native
 		// $elem.html(str)
+		// $elem.innerHTML = str
 		if ((hour <= 0 && m <= 0 && s <= 0) || time < 0) {
 			clearInterval($elem.countId)
 			$elem.countId = -1
