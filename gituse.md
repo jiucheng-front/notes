@@ -59,7 +59,7 @@
 ### 五、版本回退总结
 + git reset --hard commit-id在版本历史之间穿梭
 + git log可以查看提交历史
-+ git reflog查看历史历史操作(方便重返未来)
++ git reflog查看当前分支的历史操作(方便重返未来)
 
 ### 六、工作区(Working Directory)和暂存区(Stage)
 + Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
