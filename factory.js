@@ -132,7 +132,7 @@ module.exports = Ajax
 
 
 Ajax("GET", "sss/cccas/ddd").then(response => {
-	if(response){
+	if (response) {
 		// 成功了
 	}
 }).catch(error => {
@@ -522,46 +522,46 @@ numberWithComma(4567889798) // => "4,567,889,798"
  * 
  */
 const CAN_STORE = {
-    repeatTemp: [],
-    initTime: function () {
-        return new Date().getTime();
-    }
+	repeatTemp: [],
+	initTime: function () {
+		return new Date().getTime();
+	}
 }
 const CAN_IS_REPEAT = {
-    repeat: function (id, num) {
-        /**
-         *  id ：string,標識符，哪個點擊事件
-         *  num : 整數 t秒內只可以點擊一次
-         *  num 不存在，限制执行频率，默认为60秒 允许执行时返回false  毫秒
-         */
-        let t = num ? num * 1000 : 60000;
-        let time = CAN_STORE.initTime()
-        if (!CAN_STORE.repeatTemp[id]) {
-            CAN_STORE.repeatTemp[id] = time
-            //允许
-            return false
-        } else {
-            let ts = t - (time - CAN_STORE.repeatTemp[id]);
-            ts = parseInt(ts / 1000)
-            if (ts > 0) {
-                //禁止执行
-                return true
-            } else {
-                //更新时间
-                CAN_STORE.repeatTemp[id] = time
-                //允许
-                return false
-            }
-        }
-    }
+	repeat: function (id, num) {
+		/**
+		 *  id ：string,標識符，哪個點擊事件
+		 *  num : 整數 t秒內只可以點擊一次
+		 *  num 不存在，限制执行频率，默认为60秒 允许执行时返回false  毫秒
+		 */
+		let t = num ? num * 1000 : 60000;
+		let time = CAN_STORE.initTime()
+		if (!CAN_STORE.repeatTemp[id]) {
+			CAN_STORE.repeatTemp[id] = time
+			//允许
+			return false
+		} else {
+			let ts = t - (time - CAN_STORE.repeatTemp[id]);
+			ts = parseInt(ts / 1000)
+			if (ts > 0) {
+				//禁止执行
+				return true
+			} else {
+				//更新时间
+				CAN_STORE.repeatTemp[id] = time
+				//允许
+				return false
+			}
+		}
+	}
 }
 
 function canClick() {
 	// 3 秒內只能點擊一次
 	let isRepeat = CAN_IS_REPEAT.repeat("repeat", 3)
-	if(!isRepeat){
+	if (!isRepeat) {
 		// 正常todo
-	}else{
+	} else {
 		// 操作頻繁
 	}
 }
@@ -610,7 +610,7 @@ var Scroll = {
 					// 参数变化
 					$this.pageIndex += 1;
 					// 延迟
-					setTimeout(function () {　　　　
+					setTimeout(function () {
 						api.getReplayList($this.pageIndex, $this.pageSize, $this.anchorPfid)
 							.then(function (res) {
 								if (res.ret_code == "0") {
@@ -636,7 +636,7 @@ var Scroll = {
 							.catch(function (error) {
 								console.log(error)
 							})
-					}, 1000)　　
+					}, 1000)
 				}
 			}
 		}
@@ -1025,7 +1025,7 @@ function startDownTime($elem, date) {
 	let m = Math.floor(time / 60 % 60)
 	if (hour && hour > 0 && m == 0 && s == 0) {
 		hour >= 0 && hour--
-			m = 59
+		m = 59
 		s = 60
 	}
 	let str = ''
@@ -1161,6 +1161,49 @@ var enough2 = isEnough([{
 }, {
 	num: 1
 }], 2, 3) // 0 (false)
+
+
+/**
+ *  二十八、JS 如何獲得 uuid 
+ * 	如："56733344-5702-9247-2196-AD3598C0388"
+ * 
+ *  @param {count} 非必須，要追加的隨機字母的個數
+ * 
+ */
+function GetRandomStr(count) {
+	var that = this;
+	this.count = count || 3;
+	this.ABC = ["A", "B", "C", "D", "E", "F", "G", "H"];
+	// 1 随机获得 min-max 之间的正整数
+	this.getRandomNum = function (max, min) {
+		return String(Math.round(Math.random() * (max - min)) + min);
+	}
+	// 2 随机冲字母中获得指定个数个
+	this.getRandomABC = function (ABC, count) {
+		var abc = []
+		for (var i = 0; i < count; i++) {
+			abc.push(ABC[Math.floor(Math.random() * ABC.length)])
+		}
+		return abc
+	}
+	console.log(this.getRandomABC(this.ABC, this.count));
+	// 3 向指定字符串中随机位置追加指定个数的字母:paramArr 字母数组
+	this.outRandomSplice = function (paramArr) {
+		var str = that.getRandomNum(99999999, 10000000)
+		var strArr = str.split('')
+		for (var i = 0; i < paramArr.length; i++) {
+			strArr.splice(Math.floor(Math.random() * str.length), 0, paramArr[i])
+		}
+		return strArr.join('');
+	}
+	this.endOut = function () {
+		return that.getRandomNum(99999999, 10000000) + "-" + that.getRandomNum(9999, 1000) + "-" + that.getRandomNum(9999, 1000) + "-" + that.getRandomNum(9999, 1000) + "-" + that.outRandomSplice(that.getRandomABC(that.ABC, that.count));
+	}
+}
+var ss = new GetRandomStr()
+ss.endOut()   //"56733344-5702-9247-2196-AD3598C0388"
+
+
 
 
 // 如何使用checkout 合并指定的文件夹和文件(合并后会覆盖)
