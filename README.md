@@ -1,6 +1,5 @@
 
-## git 使用
-
+## git 使用简单教程
 #### 一、git版本控制系统
 + git init初始化仓库，自动创建一个.git文件监视该仓库
 + mkdir flodName创建文件夹
