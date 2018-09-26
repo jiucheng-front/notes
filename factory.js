@@ -1220,6 +1220,24 @@ let inputIsNum = checkIsNum(123456)
 inputIsNum ? "是數字" : "不是數字"
 
 
+/**
+ *  三十、JS 位移判断，如：根据某个参数位移处理
+ *  @param {flag,w} 必须，flag参数，w 将要位移的位置
+ * 
+ */
+
+function publicIsTrue(flag, w) {
+    if ((flag & 1 << w) == 1 << w) {
+        return true
+    } else {
+        return false
+    }
+}
+
+//example
+var admin = publicIsTrue(2,1) // true
+
+
 
 
 
