@@ -1221,7 +1221,7 @@ inputIsNum ? "是數字" : "不是數字"
 
 
 /**
- *  三十、JS 位移判断，如：根据某个参数位移处理
+ *  三十、JS 位移判断，如：根据某个参数做位位運算位运算
  *  @param {flag,w} 必须，flag参数，w 将要位移的位置
  * 
  */
@@ -1235,9 +1235,73 @@ function publicIsTrue(flag, w) {
 }
 
 //example
-var admin = publicIsTrue(2,1) // true
+var admin = publicIsTrue(2, 1) // true
 
+/**
+ *  三十一、简单实用axios封装公用AJAX
+ *  @param {paramMethod,paramUrl,paramData}
+ *  paramMethod: 必须
+ *  paramUrl：paramData
+ *  paramData：可选
+ *  Qs => qs npm 包
+ *  getRootPath : reset root path
+ *  getRequestHeader: get header info
+ */
 
+function axiosAjax(paramMethod, paramUrl, paramData) {
+    const apiUrl = getRootPath(paramUrl)
+    const options = {
+        method: paramMethod,
+        headers: getRequestHeader(),
+        url: apiUrl,
+    }
+    if (paramMethod === "GET" && paramData) {
+        let str = Qs.stringify(paramData)
+        options.url = apiUrl + "?" + str
+    }
+    if (paramMethod === "POST" && paramData) {
+        let bodyFormData = new FormData()
+        for (let key in paramData) {
+            bodyFormData.set(key, paramData[key])
+        }
+        options.data = bodyFormData
+    }
+    return axios(options)
+}
+
+// example
+// 1
+axiosAjax("GET", "/abc/api/info").then(res => {
+    let result = res.data;
+    if (result.ret_code == "0") {
+        //
+    }
+}).catch(error => {
+    consto.log(error)
+})
+
+let param = {
+    id: 124,
+    name: "abc",
+}
+// 2
+axiosAjax("GET", "/abc/api/info", param).then(res => {
+    let result = res.data;
+    if (result.ret_code == "0") {
+        //
+    }
+}).catch(error => {
+    consto.log(error)
+})
+// 3
+axiosAjax("POST", "/abc/api/info", param).then(res => {
+    let result = res.data;
+    if (result.ret_code == "0") {
+        //
+    }
+}).catch(error => {
+    consto.log(error)
+})
 
 
 
