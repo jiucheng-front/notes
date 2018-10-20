@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>const声明的是常量</title>
+</head>
+<body>
+    <script>
+        
+        //1.0 const声明的都是只读的
+        // const KEY="Hello";
+        // KEY="hI";
+        // console.log(KEY);//这样会报错！
+
+        //1.1 外部不可见
+        // if(true){
+        //     const PI=3.14;
+        // }
+        // console.log(PI);//报错：PI is not defined
+
+        //1.2
+        if(true){
+            const PI=3.14;
+            console.log(PI);
+        }
+    </script>
+</body>
+</html>

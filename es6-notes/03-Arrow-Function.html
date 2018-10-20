@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>箭头函数</title>
+</head>
+<body>
+    <script>
+        //一、 Arrow Function (箭头函数)
+        //1.0
+        var getone=function(name,age){
+            console.log(name+" "+age);
+        }
+        var gettwo=(name,age) =>{
+            console.log(name+" "+age);
+        }
+        var getthree=(name,age) =>console.log(name+" "+age);
+        var greet= msg=> console.log("message");
+        getone("Rouse",20);
+        gettwo("Jack",18);
+        getthree("Lucy",22);
+        greet();
+        //1.1
+        var obj={
+            name:"Jack",
+            said:function(){
+                console.log(this.name);
+            },
+            speak:(name,age)=>{
+                //箭头函数内部的this不是obj
+                console.log(name+" "+age);
+            }
+        }
+        obj.said();
+        obj.speak("Jack","20");
+        //1.2 可以重定向，把this指向当前对象
+        var person={
+            name:"Kurry",
+            handleMsg:function(message,handle){
+                handle(message);
+            },
+            // receive:function(){
+            //     var that=this;
+            //     this.handleMsg("Hello",function(message){
+            //         console.log(message+" "+that.name)
+            //     });
+            // },
+            receive:function(){
+                this.handleMsg("Hello",message=>console.log(message+" "+this.name));
+            }
+        }
+        person.receive();
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>传播者(...)</title>
+</head>
+<body>
+    
+    <script>
+        //...的使用
+        //1.0
+        var arr=[1,2,3,4];
+        console.log(arr);//[1,2,3,4]
+        console.log(...arr);//1 2 3 4
+
+        //1.1
+        var one=[1,2,3];
+        var two=[4,5,6];
+        one.push(...two);
+        one.push(...two);
+        console.log(one);//[1,2,3,4,5,6,4,5,6]
+
+        //1.2
+        let a=[1,2,3];
+        let b=[4,5,6];
+        function addThree(x,y,z){
+            let result=x+y+z;
+            console.log(result);
+        }
+        addThree(...a);//6
+        addThree(...b);//15
+    </script>
+</body>
+</html>

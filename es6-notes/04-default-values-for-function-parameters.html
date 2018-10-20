@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数参数的默认值</title>
+</head>
+<body>
+    <script>
+        
+        //1.0-1.3结果一样，越来越简便
+        //1.0
+        // function receive(complate){
+        //     complate();
+        // }
+        // receive(function(){
+        //     console.log("complate");
+        // });
+        //receive();
+
+        //1.1
+        // function receive(complate=function(){
+        //     console.log("complate");
+        // }){
+        //     complate();
+        // }
+        //receive();
+
+        //1.2
+        // function receive(complate=()=>console.log("complate")){
+        //     complate();
+        // }
+        // receive();
+
+        //1.3
+        let receive=(complate=() => console.log("complate")) => complate();
+        receive();
+    </script>
+</body>
+</html>

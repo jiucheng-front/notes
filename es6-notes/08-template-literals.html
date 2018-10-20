@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板字符串</title>
+</head>
+<body>
+    <script>
+        
+        // 1.0
+        // var msg="Hello";
+        // var say=msg+" ,马云";
+        // console.log(say);//Hello , 马云
+        
+        //1.1
+        var msg="Hello";
+        var say=`${msg} , 马云`;
+        var s=`
+            ${msg} , 
+                        马云
+                What 
+                        Fuck
+                    is going on ?
+            `;
+        console.log(say);//Hello , 马云
+        console.log(s);// 空格会保留
+
+        //1.2 
+        let x=1;
+        let y=2;
+        let eq=`${x}+${y}=${x+y}`;
+        console.log(eq);//1+2=3
+
+        //1.3
+        // .0
+        // let message=`It's： ${new Date().getHours()} I'm sleepy`;
+        // console.log(message);
+        // .1
+        // let message=tag`It's： ${new Date().getHours()} I'm sleepy`;
+        // function tag(str,...values){
+        //     console.log(str);
+        //     console.log(values);
+        // }
+        // .2
+        let message=tag`It's： ${new Date().getHours()} I'm ${""}`;
+        function tag(str,...values){
+            if(values[0]<24){
+                values[1]="awake";
+                return `${str[0]}${values[0]}${str[1]}${values[1]}`;
+            }
+        }
+        console.log(message);
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>结构赋值</title>
+</head>
+<body>
+    <script>
+        //1.0
+        var {color,position}={
+            color:"red",
+            name:"马化腾",
+            state:"上海",
+            position:"中国"
+        }
+        console.log(color);
+        console.log(position);
+
+
+        //1.1
+        function getObj(){
+            return {
+                color:"red",
+                name:"马化腾",
+                state:"上海",
+                position:"中国"
+            }
+        }
+        var {name,state}=getObj();
+        console.log(name);
+        console.log(state);
+
+        //1.2 
+        var [one,,,,last]=["AA","BB","CC","DD","EE"];
+        console.log(one);
+        console.log(last);
+
+        //1.3
+        var company=[
+            {
+                "id":"001",
+                "comp_name":"文思海辉",
+                "comp_address":"上海市黄浦区",
+                "comp_nature":"IT软件",
+                "comp_stock":"已上市",
+                "comp_people":"10000人以上",
+                "hot_pos_name":"前端工程师",
+                "hot_pos_no":"2086",
+                "comp_pic":"/static/images/logo_1.jpg"
+            },
+            {
+                "id":"002",
+                "comp_name":"中澜电子",
+                "comp_address":"上海市浦东新区张江",
+                "comp_nature":"IT软件",
+                "comp_stock":"已上市",
+                "comp_people":"10000人以上",
+                "hot_pos_name":"web前端",
+                "hot_pos_no":"2094",
+                "comp_pic":"/static/images/logo_2.jpg"
+            },
+            {
+                "id":"003",
+                "comp_name":"钱咖",
+                "comp_address":"上海市黄浦区五里桥",
+                "comp_nature":"移动互联网",
+                "comp_stock":"未融资",
+                "comp_people":"100-499人",
+                "hot_pos_name":"高级前端工程师",
+                "hot_pos_no":"21",
+                "comp_pic":"/static/images/logo_3.jpg"
+            }
+        ];
+        
+        company.forEach(({comp_name})=> console.log(comp_name));//文思海辉  中澜电子   钱咖
+
+        var [,中澜电子]=company;
+        function getPlace({comp_address}){
+            console.log(comp_address);
+        }
+        getPlace(中澜电子);
+    </script>
+</body>
+</html>

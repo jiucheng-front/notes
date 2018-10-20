@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>modules</title>
+</head>
+<body>
+    <script>
+        // 需要node环境，这里全都注释了
+        // 模块化的步骤：
+        // 如：a.js内部（例如xx是对象有fn方法）
+        // 1 声明模块(var,let,const:声明变量/常量/对象)
+        // 2 导出模块(mdule.export或者 exports {变量/常量/对象名字})
+        // b.js内部
+        // 3 导入模块 import xx from a.js
+        // 4 使用模块：xx.fn
+
+
+        //例如：node环境下：main.js入口文件，js下有a.js
+
+        //a.js代码如下
+         //1 声明模块
+        // let obj={
+        //     name:"马云",
+        //     age:50,
+        //     said:()=>{
+        //         console.log("obj");
+        //     }
+        // }
+        // let car={
+        //     color:"blue",
+        //     speed:50,
+        //     start:function(){
+        //         console.log("car正在开始");
+        //     }
+        // }
+        // // 2 导出模块
+        // export { obj, car }
+
+        // //main.js的代码如下
+        // //3 导入模块
+        // import {obj,car} from "./js/a.js";
+        // //4使用模块
+        // obj.said();
+        // car.start();
+    </script>
+</body>
+</html>

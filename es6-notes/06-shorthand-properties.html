@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>速记属性</title>
+</head>
+<body>
+    <script>
+        //1.0这一点es5也行
+        // var name="马云";
+        // var age="50";
+        // var person={name,age}
+        // console.log(person);//{name="马云",age="50"}
+
+        //1.1
+        // let name="马云";
+        // let age=50;
+        // let person={name,age};
+        // console.log(person);
+
+        //1.2 
+        let name="马云";
+        let age=50;
+        let person={name,age};
+        let moc="马化腾";
+        let team={person,moc}
+        console.log(team);
+    </script>
+</body>
+</html>

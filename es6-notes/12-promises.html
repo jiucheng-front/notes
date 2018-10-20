@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promises</title>
+</head>
+<body>
+    
+    <script>
+        //1.0 可以用于发送Ajax
+        // var d=new Promise((resolve,reject) => {
+        //     if(true){
+        //     // if(false){
+        //         resolve("success!!");
+        //     }else{
+        //         reject("ERROR");
+        //     }
+        // });
+        // d.then((data) => console.log(data));// if true,success
+        // d.catch((error) => console.log(error));//if false,error
+
+
+        //1.1 
+        // var d=new Promise((resolve,reject) => {
+        //     setTimeout(() =>{
+        //         if(true){
+        //         // if(false){
+        //             resolve("success!!");
+        //         }else{
+        //             reject("ERROR");
+        //         }
+        //     },2000);
+        // });
+        // d.then((data) => console.log(data),(error) =>{
+        //     console.log("发现错误： "+error);
+        // });
+
+
+        //1.2
+        var d=new Promise((resolve,reject) => {
+            setTimeout(() =>{
+                if(true){
+                // if(false){
+                    resolve("success!!");
+                }else{
+                    reject("ERROR");
+                }
+            },2000);
+        });
+        d.then((data) => {
+            console.log("success1: "+data);
+            return "productions";//result for next then
+        })
+        .then((data) =>{
+            console.log("success2: "+data);
+        })
+        .catch((error) => console.log(error))
+    </script>
+</body>
+</html>

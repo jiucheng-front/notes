@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>剩下的参数</title>
+</head>
+<body>
+    <script>
+        
+        //其余参数语法允许我们将不定数量的参数表示为数组。
+
+        //1.0
+        function fn(...Args){
+            console.log(Args.length);
+        }
+        fn();
+        fn(5);
+        fn(5,6,7);
+        fn(1,2,3,4,5,6);
+
+        // 1.1
+        function sortRestArgs(...Args){
+            var sortedReArg=Args.sort();
+            return sortedReArg;
+        }
+        console.log(sortRestArgs(8,6,5,9));//5 6 8 9
+
+        //下面是原生的对比，肯定会错的
+        function sortArguments(){
+            var sortArgu=arguments.sort();
+            return sortArgu;
+        }
+        console.log(sortArguments(5,3,7,1));// throws a TypeError: arguments.sort is not a function
+    </script>
+</body>
+</html>

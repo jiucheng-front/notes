@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array-from</title>
+</head>
+<body>
+    <ul>
+        <li class="item">8</li>
+        <li class="item">5</li>
+        <li class="item">13</li>
+        <li class="item">3</li>
+        <li class="item">20</li>
+        <li class="item">8</li>
+        <li class="item">CSS</li>
+    </ul>
+    <script>
+        const items=document.querySelectorAll(".item");
+        console.log(items);//__proto__ 是NODELISTS
+        const lists=Array.from(items);
+        console.log(lists);// __proto__是Array
+        
+        
+        // 此时lists是类数组就可以使用数组的一些方法
+        lists
+            .filter(list => parseFloat(list.innerHTML)<10)
+            .forEach(list => list.style.color="green");
+    </script>
+</body>
+</html>

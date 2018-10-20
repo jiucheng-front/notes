@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parameter Object Destructuring </title>
+</head>
+<body>
+    <script>
+        //ES6参数对象使用必需值进行解析
+        //不仅可以在使用ES6参数对象解析时提供默认值，还可以要求存在某些属性
+
+            function ajax({
+                type="get",
+                data={},
+                url=requiredParameter("url"),
+                success=requiredParameter("success"),
+                error=() => {},
+                isAsync= true 
+            }={}){
+                console.log(JSON.stringify({type,url,data,success,error,isAsync},null,2));
+            }
+
+            // 
+            function requiredParameter(name){
+                throw new Error(`Missing parameter "${name}"`);
+            }
+
+            //
+            try {
+                ajax({
+                    //打开和关闭下面注释查看输出结果
+                    // url:"http://my.api.com",
+                    success:() => {}
+                });
+            }catch(e){
+                console.warn(e.message);
+            }
+        
+    </script>
+</body>
+</html>

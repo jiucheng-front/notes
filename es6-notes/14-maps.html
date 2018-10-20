@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maps的用法</title>
+</head>
+<body>
+    <script>
+        
+        //简要介绍使用ES6的Maps
+        /*API
+        *set()
+        *get()
+        *size
+        *clear()
+        *has()
+        */
+        //1.0 API
+        var myMap=new Map();
+        myMap.set("name","习大大");//(key,value)
+        myMap.set("job","国家主席");
+        console.log(myMap.get("name"));//习大大
+        console.log(myMap.get("job"));//国家主席
+        console.log(myMap.has("name"));//true
+        console.log(myMap.size);
+
+        // myMap.clear();//清空了
+        // console.log(myMap.get("name"));//underfined
+        // console.log(myMap.has("job"));//false
+        // console.log(myMap.size);
+
+        //1.1 iterators迭代器
+        //keys()
+        //values()
+        //entryies()
+        for(var key of myMap.keys()){
+            console.log(key);//name joc
+        }
+        for(var value of myMap.values()){
+            console.log(value);//习大大  国家主席
+        }
+        for(var [key,value] of myMap.entries()){
+            console.log(key+" = "+ value);
+        }
+
+        //1.2
+        var obj={};
+        var fn=function(){};
+        myMap.set(obj,"myobj");
+        myMap.set(fn,"myFunction");
+        for(var [key,value] of myMap.entries()){
+            console.log(key+" = "+ value);
+        }
+    </script>
+</body>
+</html>
