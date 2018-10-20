@@ -1,41 +1,41 @@
-window.onload=function onLoginLoaded() {
-    if(isPostBack == "False") {
+window.onload = function onLoginLoaded() {
+    if (isPostBack == "False") {
         GetLastUser();
     }
 }
+
 function GetLastUser() {
-    var id = "49BAC005-7D5B-4231-8CEA-16939BEACD67";//GUID标识符
+    var id = "49BAC005-7D5B-4231-8CEA-16939BEACD67"; //GUID标识符
     var usr = GetCookie(id);
     if (usr != null) {
         document.getElementById('txtUserName').value = usr;
-    }
-    else {
+    } else {
         document.getElementById('txtUserName').value = "001";
     }
     GetPwdAndChk();
 }
 //点击登录时触发客户端事件
 function SetPwdAndChk() {
-//取用户名
+    //取用户名
     var usr = document.getElementById('txtUserName').value;
-//                alert(usr);
-//将最后一个用户信息写入到Cookie
+    //                alert(usr);
+    //将最后一个用户信息写入到Cookie
     SetLastUser(usr);
-//如果记住密码选项被选中
-    if(document.getElementById('chkRememberPwd').checked == true) {
-    //取密码值
+    //如果记住密码选项被选中
+    if (document.getElementById('chkRememberPwd').checked == true) {
+        //取密码值
         var pwd = document.getElementById('txtPassword').value;
-//                    alert(pwd);
+        //                    alert(pwd);
         var expdate = new Date();
         expdate.setTime(expdate.getTime() + 14 * (24 * 60 * 60 * 1000));
-    //将用户名和密码写入到Cookie
+        //将用户名和密码写入到Cookie
         SetCookie(usr, pwd, expdate);
-    }
-    else {
-    //如果没有选中记住密码,则立即过期
+    } else {
+        //如果没有选中记住密码,则立即过期
         ResetCookie();
     }
 }
+
 function SetLastUser(usr) {
     var id = "49BAC005-7D5B-4231-8CEA-16939BEACD67";
     var expdate = new Date();
@@ -50,8 +50,7 @@ function GetPwdAndChk() {
     if (pwd != null) {
         document.getElementById('chkRememberPwd').checked = true;
         document.getElementById('txtPassword').value = pwd;
-    }
-    else {
+    } else {
         document.getElementById('chkRememberPwd').checked = false;
         document.getElementById('txtPassword').value = "";
     }
@@ -72,6 +71,7 @@ function GetCookie(name) {
     return null;
 }
 var isPostBack = "<%= IsPostBack %>";
+
 function getCookieVal(offset) {
     var endstr = document.cookie.indexOf(";", offset);
     if (endstr == -1) endstr = document.cookie.length;
@@ -88,6 +88,7 @@ function SetCookie(name, value, expires) {
     var secure = (argc > 5) ? argv[5] : false;
     document.cookie = name + "=" + escape(value) + ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) + ((path == null) ? "" : ("; path=" + path)) + ((domain == null) ? "" : ("; domain=" + domain)) + ((secure == true) ? "; secure" : "");
 }
+
 function ResetCookie() {
     var usr = document.getElementById('txtUserName').value;
     var expdate = new Date();
@@ -105,17 +106,15 @@ function ResetCookie() {
 |    版权所有： (C) 2006-2007 北京东方常智科技有限公司                    |
 |    编写时间： 2007年9月13日 21:00                                        |
 *************************************************************************/
-function setCookie(name, value) 
-{ 
-    var argv = setCookie.arguments; 
-    var argc = setCookie.arguments.length; 
-    var expires = (argc > 2) ? argv[2] : null; 
-    if(expires!=null) 
-    { 
-        var LargeExpDate = new Date (); 
-        LargeExpDate.setTime(LargeExpDate.getTime() + (expires*1000*3600*24));         
-    } 
-    document.cookie = name + "=" + escape (value)+((expires == null) ? "" : ("; expires=" +LargeExpDate.toGMTString())); 
+function setCookie(name, value) {
+    var argv = setCookie.arguments;
+    var argc = setCookie.arguments.length;
+    var expires = (argc > 2) ? argv[2] : null;
+    if (expires != null) {
+        var LargeExpDate = new Date();
+        LargeExpDate.setTime(LargeExpDate.getTime() + (expires * 1000 * 3600 * 24));
+    }
+    document.cookie = name + "=" + escape(value) + ((expires == null) ? "" : ("; expires=" + LargeExpDate.toGMTString()));
 }
 /************************************************************************
 |    函数名称： getCookie                                                |
@@ -125,22 +124,18 @@ function setCookie(name, value)
 |    版权所有： (C) 2006-2007 北京东方常智科技有限公司                    |
 |    编写时间： 2007年9月13日 21:02                                        |
 *************************************************************************/
-function getCookie(Name) 
-{ 
-    var search = Name + "=" 
-    if(document.cookie.length > 0) 
-    { 
-        offset = document.cookie.indexOf(search) 
-        if(offset != -1) 
-        { 
-            offset += search.length 
-            end = document.cookie.indexOf(";", offset) 
-            if(end == -1) end = document.cookie.length 
-            return unescape(document.cookie.substring(offset, end)) 
-        } 
-        else return "" 
-    } 
-} 
+function getCookie(Name) {
+    var search = Name + "="
+    if (document.cookie.length > 0) {
+        offset = document.cookie.indexOf(search)
+        if (offset != -1) {
+            offset += search.length
+            end = document.cookie.indexOf(";", offset)
+            if (end == -1) end = document.cookie.length
+            return unescape(document.cookie.substring(offset, end))
+        } else return ""
+    }
+}
 
 /************************************************************************
 |    函数名称： deleteCookie                                            |
@@ -149,12 +144,11 @@ function getCookie(Name)
 |    维护记录： Spark(创建）                                        |
 |    版权所有： (C) 2006-2007 北京东方常智科技有限公司                |
 |    编写时间： 2007年9月15日 18:10                                    |
-*************************************************************************/    
-function deleteCookie(name) 
-{ 
-                     var expdate = new Date(); 
-                     expdate.setTime(expdate.getTime() - (86400 * 1000 * 1)); 
-    setCookie(name, "", expdate); 
+*************************************************************************/
+function deleteCookie(name) {
+    var expdate = new Date();
+    expdate.setTime(expdate.getTime() - (86400 * 1000 * 1));
+    setCookie(name, "", expdate);
 }
 
 // 使用方法：
@@ -162,7 +156,7 @@ function deleteCookie(name)
 //1、存储Cookie
 //2、参数说明： 1、参数1：Cookie存储Name，参数2：Cookie要存储的值
 //3、例子如下：
-setCookie('Method',match);
+setCookie('Method', match);
 
 //1、获取Cookie
 //2、参数说明： 1、参数1：Cookie存储的Name
