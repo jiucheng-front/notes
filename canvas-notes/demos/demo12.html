@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制动画帧</title>
+    <style>
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+
+    <script>
+        (function(){
+            var canvas=document.querySelector('#elm');
+            var ctx=canvas.getContext('2d');
+            canvas.width=600;
+            canvas.height=600;
+            canvas.style.border='1px solid #000';
+
+            var img2=new Image();
+            //根据该图片得到的每个小人的宽高(40,65)
+            img2.src='images/DMMban.png';
+            img2.onload=function(){
+                //ctx.drawImage(img2,80,130,40,65,280,260,40,65);
+                var frameIndex=0;
+                setInterval(function(){
+                    //3、清除上一帧,
+                    // 重新清除的话画布里面的所有内容都被清空
+                    //ctx.clearRect(280,260,40,65);
+                    ctx.clearRect(0,0,canvas.width,canvas.height);
+                    ctx.drawImage(
+                            img2,
+                            frameIndex*40,
+                            0,
+                            40,
+                            65,
+                            280,
+                            260,
+                            40,
+                            65
+                    );
+                    frameIndex++;
+                    //frameIndex%=4;
+                    if(frameIndex>3)frameIndex=0;
+                },1000/10);
+            }
+
+        })()
+    </script>
+</div>
+</body>
+</html>

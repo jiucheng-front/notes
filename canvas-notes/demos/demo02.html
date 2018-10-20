@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制五子棋棋盘</title>
+    <style>
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <canvas id="elm"></canvas>
+    </div>
+    <script>
+        (function(){
+            var canvas=document.querySelector('#elm');
+            var ctx=canvas.getContext('2d');
+            canvas.width=600;
+            canvas.height=600;
+            canvas.style.border='1px solid #000';
+
+            //绘制表格
+            var rectX=20;
+            //1、绘制横线
+            for(var i=0;i<canvas.width/rectX;i++){
+                ctx.moveTo(0,i*rectX);//如果不设置初始位置当前画笔没有位置
+                ctx.lineTo(canvas.width,i*rectX);
+                //绘制竖线
+                ctx.moveTo(i*rectX,0);
+                ctx.lineTo(i*rectX,canvas.height);
+            }
+            ctx.strokeStyle='#999';
+            ctx.stroke();
+        })()
+    </script>
+</body>
+</html>

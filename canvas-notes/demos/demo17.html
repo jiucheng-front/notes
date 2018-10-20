@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变换</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+    <p id="point"></p>
+</div>
+<script>
+    (function(){
+        var canvas=document.querySelector('#elm');
+        var ctx=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=500;
+        canvas.style.border='1px solid #000';
+        ctx.fillRect(10,10,50,50);
+
+        ctx.save();//1 把上面的ctx的状态保存一下,如状态：1
+
+        //2  下面是改变了ctx的很多状态
+        //把画布移动到100,100
+        ctx.translate(100,100);
+        //旋转30度画布
+        ctx.rotate(30*Math.PI/180);
+        //放大或者缩小，是整个画布方法或者缩小
+        ctx.scale(.5,.5);
+        // 设置透明度
+        ctx.globalAlpha=.4;
+        ctx.moveTo(0,0);
+        ctx.lineTo(400,0);
+        ctx.moveTo(0,0);
+        ctx.lineTo(0,400);
+        ctx.stroke();
+        ctx.fillRect(10,10,50,50);
+
+        // 3如果想回到最初的ctx状态：1
+        ctx.restore();
+        ctx.beginPath();
+        ctx.fillStyle='green';
+        ctx.fillRect(200,300,100,50);
+
+    })()
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制动画帧(按钮控制)</title>
+    <style>
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+        h3{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <h3>面向过程版本</h3>
+    <canvas id="elm"></canvas>
+    <p>
+        <button id="left">左</button>
+        <button id="right">右</button>
+        <button id="up">上</button>
+        <button id="down">下</button>
+    </p>
+    <script>
+        //    面向过程版本
+        (function(){
+            var canvas=document.querySelector('#elm');
+            var ctx=canvas.getContext('2d');
+            canvas.width=600;
+            canvas.height=600;
+            canvas.style.border='1px solid #000';
+            console.log(ctx.canvas.width);
+            //4、1 按钮状态
+            var dirindex=0;
+            var img2=new Image();
+            //根据该图片得到的每个小人的宽高(40,65)
+            img2.src='images/DMMban.png';
+            img2.onload=function(){
+                //context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+                var frameIndex=0;
+                setInterval(function(){
+                    //3、清除上一帧,
+                    // 重新清除的话画布里面的所有内容都被清空
+                    //ctx.clearRect(280,260,40,65);
+                    ctx.clearRect(0,0,canvas.width,canvas.height);
+                    ctx.drawImage(
+                            img2,
+                            frameIndex*40,  //左上角依次+40
+                            dirindex*65,   //从上往下递增
+                            40,             //裁剪的宽
+                            65,             //裁剪的高
+                            280,            //绘制在画布的x坐标
+                            260,            //绘制在画布的y左边
+                            40,             //绘制出来的宽
+                            65              //绘制出来的高
+                    );
+                    frameIndex++;
+                    //frameIndex%=4;
+                    if(frameIndex>3)frameIndex=0;
+                },1000/10);
+            }
+
+            //4 ：绑定事件,点击按钮绘制不同方向走动的小人，主要看DMMban.png
+            var btnleft=document.getElementById('left');
+            btnleft.onclick=function(){
+                dirindex=1;
+                console.log(dirindex);
+            }
+            var btnright=document.getElementById('right');
+            btnright.onclick=function(){
+                dirindex=2;
+            }
+            var btnup=document.getElementById('up');
+            btnup.onclick=function(){
+                dirindex=3;
+            }
+            var btndown=document.getElementById('down');
+            btndown.onclick=function(){
+                dirindex=0;
+            }
+        })()
+    </script>
+</div>
+</body>
+</html>

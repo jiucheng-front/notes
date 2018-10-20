@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制动画帧(面向对象)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="js/15prototype.js"></script>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+    <p>
+        <button id="left">左</button>
+        <button id="right">右</button>
+        <button id="up">上</button>
+        <button id="down">下</button>
+        <button id="start">开始</button>
+        <button id="stop">停止</button>
+    </p>
+</div>
+<script>
+    (function(){
+        var canvas=document.querySelector('#elm');
+        var ctx=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=500;
+        canvas.style.border='1px solid #000';
+
+        //封装一个对象出来
+        //width，height,imgSrc,speed,dir
+        //行为：
+        var s=new Person({
+            x:280,
+            y:260,
+            w:40,
+            h:65,
+            imgsrc:'images/DMMban.png',
+            originw:40,
+            originh:65,
+            fps:8
+        });
+        s.render(ctx);
+
+        //4 ：绑定事件,点击按钮绘制不同方向走动的小人，主要看DMMban.png
+        var btnleft=document.getElementById('left');
+        btnleft.onclick=function(){
+//            dirindex=1;
+            s.changeDir('left');
+        }
+        var btnright=document.getElementById('right');
+        btnright.onclick=function(){
+//            dirindex=2;
+            s.changeDir('right');
+        }
+        var btnup=document.getElementById('up');
+        btnup.onclick=function(){
+//            dirindex=3;
+            s.changeDir('up');
+        }
+        var btndown=document.getElementById('down');
+        btndown.onclick=function(){
+//            dirindex=0;
+            s.changeDir('down');
+        }
+
+        //开始
+        var btnstart=document.getElementById('start');
+        btnstart.onclick=function(){
+            s.render(ctx);
+        }
+        //停止
+        var btnstop=document.getElementById('stop');
+        btnstop.onclick=function(){
+            s.changeDir('stop');
+        }
+    })()
+</script>
+</body>
+</html>

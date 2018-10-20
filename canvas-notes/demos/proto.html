@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>proto-prototype</title>
+    <style>
+        h3{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>看console</h3>
+<script>
+   //构造函数
+//    function Person(){
+//        this.name='xxx';
+//        this.age=20;
+//        this.said=function(){
+//            console.log('This is '+this.name);
+//        }
+//    }
+//    //1 实例对象dog1和dog2的公用方法 speak
+//    Person.prototype.speak=function(){
+//        console.log('I am '+this.name+'，今年 '+this.age);
+//    }
+//    var person1=new Person();
+//    var person2=new Person();
+//    person1.name='马云';
+//    person1.age=30;
+//    person1.said();
+//    person2.name='王健林';
+//    person2.age=50;
+//    person2.said();
+//    person1.speak();
+//    person2.speak();
+
+    //2 上面的升级版本-----------------------------------------
+//    function Person(name,age){
+//        this.name=name;
+//        this.age=age;
+//    }
+//   //1 实例对象dog1和dog2的公用方法 speak
+//      Person.prototype.said=function(){
+//          console.log('This is '+this.name);
+//      }
+//       Person.prototype.speak=function(){
+//           console.log('I am '+this.name+'，今年 '+this.age);
+//       }
+//       var person1=new Person('马云','40');
+//       var person2=new Person('王健林','50');
+//       person1.said();
+//       person2.said();
+//       person1.speak();
+//       person2.speak();
+
+    //3 再升级版本--------------------------------------
+//    function Person(option){
+//        this.name=option.name;
+//        this.age=option.age;
+//    }
+//   Person.prototype.said=function(){
+//       console.log('This is '+this.name);
+//   }
+//   Person.prototype.speak=function(){
+//       console.log('I am '+this.name+'，今年 '+this.age);
+//   }
+//   var person1=new Person({name:'马云',age:40});
+//   var person2=new Person({name:'王健林',age:50});
+//   person1.said();
+//   person2.said();
+//   person1.speak();
+//   person2.speak();
+
+    //4 还可以再次升级---------------------------------
+    function Person(option){
+        this.init(option);
+    }
+   //重新设定原型
+    Person.prototype={
+        init:function(option){
+            this.name=option.name||'';
+            this.age=option.age||'';
+        },
+        said:function(){
+            console.log('This is '+this.name);
+        },
+        speak:function(){
+            console.log('I am '+this.name+'，今年 '+this.age);
+        }
+    }
+   var person1=new Person({name:'马云',age:40});
+   var person2=new Person({name:'王健林',age:50});
+   person1.said();
+   person2.said();
+   person1.speak();
+   person2.speak();
+</script>
+</body>
+</html>

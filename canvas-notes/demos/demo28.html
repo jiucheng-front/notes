@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装面向对象版本的进度条</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<script src="src/konva.1.3.0.min.js"></script>
+<!--自定义封装面向对象版本进度条-->
+<script src="js/progressBar.js"></script>
+<div id="container"></div>
+<script>
+//1 创建舞台
+var stage=new Konva.Stage({
+    container:'container',
+    width:window.innerWidth,
+    height:window.innerHeight
+});
+//2 创建一个层
+var layer=new Konva.Layer();
+//3 把这个层添加到舞台上去
+stage.add(layer);
+
+// 中心点坐标
+var cenX=stage.width()/2;
+var cenY=stage.height()/2;
+
+//
+var option={
+    x:1/8*stage.width(),
+    y:1/2*stage.height(),
+    w:3/4 *stage.width(),
+    h:1/12 *stage.height(),
+    fillStyle:'green',
+    strokeStyle:'pink'
+}
+// 创建 进度条对象实例
+var p=new ProgressBar(option);
+//把进度条放到 层中
+p.addToGroupOrLayer(layer);
+
+//渲染层
+layer.draw();
+p.changeValue(.9);
+</script>
+</body>
+</html>

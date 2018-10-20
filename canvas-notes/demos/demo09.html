@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制饼状图以及文字</title>
+    <style>
+        .main{
+            width: 600px;
+            margin: 0 auto;
+            /*color: purple;*/
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+    <script>
+        (function(){
+            var canvas=document.querySelector('#elm');
+            var ctx=canvas.getContext('2d');
+            canvas.width=600;
+            canvas.height=600;
+            canvas.style.border='1px solid #000';
+
+            //1 绘制饼状图
+            var data=[
+                {
+                    "value":.2,
+                    "color":'#41C1FA',
+                    "title":"Html"
+                },
+                {
+                    "value":.2,
+                    "color":'#0E6DB0',
+                    "title":"CSS"
+                },
+                {
+                    "value":.1,
+                    "color":'green',
+                    "title":"PHP"
+                },
+                {
+                    "value":.15,
+                    "color":'purple',
+                    "title":"Javascript"
+                },
+                {
+                    "value":.13,
+                    "color":'red',
+                    "title":"VUE"
+                },
+                {
+                    "value":.11,
+                    "color":'blue',
+                    "title":"angular.1.0"
+                },
+                {
+                    "value":.11,
+                    "color":'#999',
+                    "title":"React"
+                }
+            ];
+            // 生活中都是从竖直方向顺时针开始
+            var tempangle=-90;//记录绘制到哪个角度，起始-90度
+            var x=300,y=300;
+            var radius=100;
+            //1 从-90度开始
+            for(var i=0;i<data.length;i++){
+                ctx.beginPath();
+                ctx.moveTo(x,y);
+                //1、1当前扇形的角度
+                var angle=data[i].value*360;
+                ctx.fillStyle=data[i].color;
+                //1、2开始从tempangle 角度开始
+                var startangle=tempangle*Math.PI/180;
+                //1、3绘制到指定的 角度
+                var endangle=(tempangle+angle)*Math.PI/180;
+                //1、4开始调用绘制
+                ctx.arc(x,y,radius,startangle,endangle);
+
+                //2、 绘制文字
+                ctx.font = '20px "微软雅黑"';
+                var text=data[i].title+' '+data[i].value*100+'%';//将要绘制的文字
+                var x1,y1;
+                // 计算文字要放的角度，每次放一次会变化
+                var textangle=tempangle+ 1/2*angle;
+                // 计算文字的坐标
+                x1=x+Math.cos(textangle*Math.PI/180)*(radius+20);
+                y1=y+Math.sin(textangle*Math.PI/180)*(radius+20);
+                //2、1在90度-270度之间文
+                //如果文字在圆形左侧那就文字结尾对其当前坐标
+                if(textangle>90&&textangle<270){
+                    ctx.textAlign='end';
+                }
+                ctx.fillText(text,x1,y1);
+
+                //1 、填充扇形
+                ctx.fill();
+                //每次累加tempangle
+                tempangle+=angle;
+            }
+            var ss=ctx.measureText('你好我是jask');
+            console.log(ss);
+            console.log(ss.width);
+        })()
+    </script>
+</div>
+</body>
+</html>

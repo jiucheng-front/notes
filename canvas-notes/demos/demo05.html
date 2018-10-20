@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制一个矩形</title>
+    <style>
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+
+    <script>
+        (function(){
+            var canvas=document.querySelector('#elm');
+            var ctx=canvas.getContext('2d');
+            canvas.width=600;
+            canvas.height=600;
+            canvas.style.border='1px solid #000';
+
+            //1 描边绘制矩形 法一
+            //rect(x,y,width,height);
+            //x，y:是矩形左上角的坐标
+            //width，height是矩形的宽高
+            ctx.rect(100,100,200,100);
+            ctx.stroke();
+
+            //2 描边绘制矩形，法二
+            ctx.beginPath();
+            ctx.strokeStyle='green';
+            ctx.strokeRect(100,210,200,100);
+
+            //3、填充矩形
+            ctx.fillRect(100,320,200,100);//默认黑色背景
+
+            //4、删除矩形
+            ctx.clearRect(110,330,180,80);//默认白色背景
+        })()
+    </script>
+</div>
+</body>
+</html>

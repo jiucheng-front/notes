@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>把一个画布绘制到另一个画布上去</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm1"></canvas>
+    <canvas id="elm2"></canvas>
+</div>
+<!--面向对象的矩形封装-->
+<script src="js/ItcastRect.js"></script>
+<script>
+    (function(){
+        var canvas1=document.querySelector('#elm1');
+        var canvas2=document.querySelector('#elm2');
+        var ctx1=canvas1.getContext('2d');
+        var ctx2=canvas2.getContext('2d');
+        canvas1.width=600;
+        canvas1.height=300;
+        canvas2.width=600;
+        canvas2.height=300;
+        canvas1.style.border='1px solid #000';
+        canvas2.style.border='1px solid #000';
+
+        //1 使用面向对象的方式绘制
+        var rect=new ItcastRect({
+            x:50,
+            y:50,
+            w:80,
+            h:20,
+            opacity:.5,
+            rotation:30,
+            scaleX:1.5,
+            scaleY:1.5,
+            strokeStyle:'blue',
+            fillStyle:'purple'
+        });
+        rect.render(ctx1);
+
+        //把canvas1绘制到canvas2上面去
+        ctx2.drawImage(canvas1,0,0);
+
+    })()
+</script>
+</body>
+</html>

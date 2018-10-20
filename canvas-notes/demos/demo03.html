@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制简单的折线图表</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <canvas id="elm"></canvas>
+        <p id="point"></p>
+    </div>
+    <script>
+        (function(){
+            var canvas=document.querySelector('#elm');
+            var ctx=canvas.getContext('2d');
+            canvas.width=600;
+            canvas.height=500;
+            canvas.style.border='1px solid #000';
+
+            //1、绘制Y轴
+            ctx.moveTo(50,400);
+            ctx.lineTo(50,50);
+            //1.1绘制左边箭头
+            ctx.moveTo(50,50);
+            ctx.lineTo(40,60);
+            //1.2绘制右边箭头
+            ctx.moveTo(50,50);
+            ctx.lineTo(60,60);
+            //1.3绘制Y轴10等分
+            var rowY=10;
+            var beginY=100;
+            var endY=400;
+            var temp=(endY-beginY)/rowY;
+            for(var i=0;i<(temp);i++){
+                ctx.moveTo(50,i*rowY+beginY);
+                ctx.lineTo(60,i*rowY+beginY);
+            }
+            //2、绘制X轴
+            ctx.moveTo(50,400);
+            ctx.lineTo(550,400);
+            //2.1绘制上箭头
+            ctx.moveTo(550,400);
+            ctx.lineTo(540,390);
+            //2.2绘制下箭头
+            ctx.moveTo(550,400);
+            ctx.lineTo(540,410);
+            //2.3绘制X轴10等分
+            var rowX=50;
+            var endX=450;
+            var tempx=endX/rowX;
+            for(var x=0;x<tempx;x++){
+                ctx.moveTo(x*rowX+rowX,400);
+                ctx.lineTo(x*rowX+rowX,390);
+            }
+            ctx.strokeStyle='#4DAC96';
+            ctx.stroke();
+
+            //3、绘制折现
+            ctx.beginPath();//开启一个新的状态
+            ctx.moveTo(50,400);
+            ctx.lineTo(100,250);
+
+            ctx.moveTo(100,250);
+            ctx.lineTo(150,220);
+
+            ctx.moveTo(150,220);
+            ctx.lineTo(200,300);
+
+            ctx.moveTo(200,300);
+            ctx.lineTo(250,260);
+
+            ctx.moveTo(250,260);
+            ctx.lineTo(300,180);
+
+            ctx.moveTo(300,180);
+            ctx.lineTo(350,200);
+
+            ctx.moveTo(350,200);
+            ctx.lineTo(400,190);
+
+            ctx.moveTo(400,190);
+            ctx.lineTo(450,160);
+
+            ctx.strokeStyle='#e4393c';
+            ctx.stroke();
+
+            //4、鼠标移动获得坐标,是鼠标相对于页面的坐标
+            // 显示坐标的元素
+            var msg=document.getElementById('point');
+            // 获得坐标
+            function getCoordinates(e){
+                pointx= e.clientX;
+                pointy= e.clientY;
+                msg.innerHTML='坐标是： （'+pointx+','+pointy+")";
+            }
+            // 清除坐标
+            function clearCoordinates(){
+                msg.innerHTML='';
+            }
+            canvas.onmousemove=getCoordinates;
+            canvas.onmouseout=clearCoordinates;
+
+        })()
+    </script>
+</body>
+</html>

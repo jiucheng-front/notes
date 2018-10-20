@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装的面向对象绘制圆形</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+</div>
+<!--引入封装的原型绘制函数-->
+<script src="js/ItcastArc.js"></script>
+<script>
+    (function(){
+        var canvas=document.querySelector('#elm');
+        var ctx=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=500;
+        canvas.style.border='1px solid #000';
+
+
+        ctx.beginPath();
+        ctx.moveTo(100,100);
+        ctx.fillStyle='green';
+        ctx.arc(100,100,50,0*Math.PI/180,30*Math.PI/180);
+        ctx.fill();
+
+        //原型方法绘制 圆或者弧形
+        //为何弧形的rotate()旋转跟矩形的旋转会不一样？？
+        //scale(x,y)为何角度没有缩放？只是半径缩放？
+        //不够优化？
+        var arc=new ItcastArc({
+            x:300,
+            y:300,
+            r:50,
+            eAngle:30,
+            opacity:.5,
+            fillStyle:'blue',
+            strokeStyle:'blue',
+            scaleX:1.5,
+            scaleY:1.5,
+            rotation:30
+        });
+        arc.render(ctx);
+        //绘制20个圆形，每次的半径是0-20的随机数
+        function drawarc(n){
+            for(var i=0;i<n;i++){
+                var arcs=new ItcastArc({
+                    x:Math.random()*500,
+                    y:Math.random()*400,
+                    r:Math.random()*50,
+                    eAngle:360,
+                    opacity:Math.random()
+                });
+                arcs.render(ctx);
+            }
+        }
+//        var t=setInterval(function(){
+//            ctx.clearRect(0,0,canvas.width,canvas.height);
+//            drawarc(20);
+//        },1000);
+    })()
+</script>
+</body>
+</html>

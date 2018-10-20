@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的四种调用模式</title>
+    <style>
+        h3{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>看console</h3>
+    <script>
+        //第一种：函数执行模式
+        function add(a,b){
+            console.log(this);
+            return a+b;
+        }
+        add(10,20)//this===window
+
+        //第二种：对象方法的调用模式
+        var obj={
+            name:'aaa',
+            age:20,
+            said:function(){
+                console.log(this);
+            }
+        }
+        obj.said();//this===obj，此处this指代被调用者
+        //所有的事件响应方法都是  对象方法调用模式
+
+
+        //第三种：构造器的调用模式
+        function School(){
+            this.said=function(){
+                console.log(this);
+            }
+        }
+        var nanj=new School();
+        nanj.said();//对象调用自己的方法，this===nanj
+
+
+        //第四种：call和apply调用模式
+        function change(a,b){
+            this.detial=a*b;
+            console.log(this);
+        }
+        var p={};
+        change.call(p,4,5);//此处的this===p
+        console.log(p.detial);
+        var q=[];
+        change.call(q,5,10)//this===q
+        console.log(q.detial);
+
+        //apply和call一样的用法，只不过apply第二个参数用数组进行传递
+        var arr=[];
+        change.apply(arr,[10,10]);//this===arr
+        console.log(arr.detial);
+
+        var str={};
+        change.apply(str,[20,20]);//this===str
+        console.log(str.detial);
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制一条二次方曲线</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+    <p id="point"></p>
+</div>
+<script>
+    (function(){
+        var canvas=document.querySelector('#elm');
+        var ctx=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=500;
+        canvas.style.border='1px solid #000';
+
+        //context.quadraticCurveTo(cpx,cpy,x,y);
+        //cpx： 贝塞尔控制点的 x 坐标
+        //cpy： 贝塞尔控制点的 y 坐标
+        //x ： 结束点的 x 坐标
+
+        ctx.beginPath();
+        ctx.moveTo(50,50);
+        ctx.quadraticCurveTo(60,150,200,50);
+        ctx.stroke();
+
+        //绘制一条三次贝塞尔曲线
+        //context.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y);
+        //cp1x： 第一个贝塞尔控制点的 x 坐标
+        //cp1y： 第一个贝塞尔控制点的 y 坐标
+        //cp2x： 第二个贝塞尔控制点的 x 坐标
+        //cp2y： 第二个贝塞尔控制点的 y 坐标
+        //x: 结束点的 x 坐标
+        //y: 结束点的 y 坐标
+        ctx.beginPath();
+        ctx.moveTo(100,200);
+        ctx.bezierCurveTo(100,300,400,300,400,200);
+        ctx.stroke();
+    })()
+</script>
+</body>
+</html>

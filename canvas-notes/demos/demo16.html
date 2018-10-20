@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制简单的折线图表</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+    <p id="point"></p>
+</div>
+<script>
+    (function(){
+        var canvas=document.querySelector('#elm');
+        var ctx=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=500;
+        canvas.style.border='1px solid #000';
+
+
+        ctx.fillStyle = "rgba(255,0,0, .9)"
+        ctx.shadowColor = "teal";
+        ctx.shadowBlur = 10;
+        ctx.shadowOffsetX = 10;
+        ctx.shadowOffsetY = 10;
+        ctx.fillRect(10, 10, 50, 50);
+
+        //创建线性渐变的对象，
+        //(x1,y1,x2,y2)
+        ctx.beginPath();
+        var grd=ctx.createLinearGradient(100,10,400,60);
+        //添加一个渐变颜色，第一个参数介于 0.0 与 1.0 之间的值，
+        //表示渐变中开始与结束之间的位置。
+        grd.addColorStop(0,"black");
+        grd.addColorStop(1,"green");  //添加一个渐变颜色
+        ctx.fillStyle =grd;           //关键点，把渐变设置到 填充的样式
+        ctx.fillRect(100, 10, 300, 50);
+
+        //创建圆形的渐变
+//        + x0: 渐变的开始圆的 x 坐标
+//        + y0: 渐变的开始圆的 y 坐标
+//        + r0: 开始圆的半径
+//        + x1: 渐变的结束圆的 x 坐标
+//        + y1: 渐变的结束圆的 y 坐标
+//        + r1: 结束圆的半径
+        ctx.beginPath();
+        var rlg = ctx.createRadialGradient(200,200,10,200,200,50);
+        rlg.addColorStop(0, 'red');    //添加一个渐变颜色
+        rlg.addColorStop(.4, 'navy');
+        rlg.addColorStop(1, 'purple');
+        ctx.fillStyle = rlg;//设置 填充样式为延续渐变的样式
+        ctx.fillRect(100, 100, 200, 200);
+
+    })()
+    var obj={
+        index:0,
+        t:null,
+        add:function(){
+            obj.index++;
+            if(obj.index>5)obj.index=0;
+            console.log(obj.index);
+        },
+        move:function(){
+            var self=this;
+            this.t=setInterval(obj.add,2000);
+        },
+        clear:function(){
+            clearInterval(obj.t);
+            console.log('定时器已经停止')
+        }
+    }
+    obj.move();
+    setTimeout(obj.clear,6000);
+</script>
+</body>
+</html>

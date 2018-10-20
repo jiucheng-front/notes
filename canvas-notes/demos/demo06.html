@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制弧形</title>
+    <script src="src/flexible.js"></script>
+    <style>
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+        canvas{
+            width: 11.11rem;
+            height: 11.11rem;
+        }
+    </style>
+</head>
+<body>
+<h3 style="font-size:1rem;width: 2rem;height: 2rem;">测试</h3>
+<div class="main">
+    <canvas id="elm"></canvas>
+
+    <script>
+        (function(){
+            var canvas=document.querySelector('#elm');
+            var ctx=canvas.getContext('2d');
+//            let width=600;
+//            let height=600;
+//            canvas.width=width;
+//            canvas.height=height;
+//            if (window.devicePixelRatio) {
+//                canvas.style.width = width + "px";
+//                canvas.style.height = height + "px";
+//                canvas.height = height * window.devicePixelRatio;
+//                canvas.width = width * window.devicePixelRatio;
+//                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+//            }
+            canvas.style.border='1px solid #000';
+//            ctx.globalCompositeOperation = 'source-atop';
+            //ctx.arc(x,y,r,startAngle,andAngle,counterclockwise)
+            //x,y圆心的左边
+            //r圆的半径
+            //startAngle，andAngle开始和结束的角度，注意是弧度π,
+            //JS里是：Math.PI
+            //counterclockwise：是否是逆时针。true是逆时针，false：顺时针
+
+            //弧度和角度的转换方式
+            //180度=Math.PI
+            //如：60度 ：60*Math.PI / 180
+
+
+            ctx.moveTo(300,300);
+            ctx.arc(300,300,100,0*Math.PI/180,60*Math.PI/180,true);//默认是false可以不写
+            ctx.lineWidth=8;
+            //true/false是不一样的
+            ctx.scale(.2,.2);
+            ctx.closePath();
+//            ctx.fill();
+            ctx.stroke();
+        })()
+    </script>
+</div>
+</body>
+</html>

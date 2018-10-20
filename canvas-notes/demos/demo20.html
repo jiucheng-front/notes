@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>把画布转换为base64位</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            color: purple;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+    <!--接收canvas转换为base64的img-->
+    <img src="" alt="canvasBase64" id="dataimg">
+</div>
+
+
+<!--面向对象的矩形封装-->
+<script src="js/ItcastRect.js"></script>
+<script>
+    (function(){
+        var canvas=document.querySelector('#elm');
+        var ctx=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=500;
+        canvas.style.border='1px solid #000';
+
+        //1 使用面向对象的方式绘制
+        var rect=new ItcastRect({
+            x:50,
+            y:200,
+            w:80,
+            h:20,
+            opacity:.5,
+            rotation:30,
+            scaleX:1.5,
+            scaleY:1.5,
+            strokeStyle:'blue',
+            fillStyle:'purple'
+        });
+        rect.render(ctx);
+
+        //2 把canvas转为一个图片
+//        var dataimg=canvas.toDataURL('image/png',.8);
+        //console.log(dataimg);
+//        var img=document.getElementById('dataimg');
+//        img.src=dataimg;
+
+
+        //设置定时器让该矩形移动
+        var t=setInterval(function(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            rect.x++;
+            rect.rotation++;
+            if(rect.x>600){
+                rect.x=0;
+            };
+            rect.render(ctx);
+            //放在这里也会跟着动
+            var dataimg=canvas.toDataURL('image/png',.8);
+            var img=document.getElementById('dataimg');
+            img.src=dataimg;
+        },10);
+    })()
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>beginPath()基于状态的绘制</title>
+    <style>
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+
+    <script>
+        (function(){
+            var canvas=document.querySelector('#elm');
+            var ctx=canvas.getContext('2d');
+            canvas.width=600;
+            canvas.height=600;
+            canvas.style.border='1px solid #000';
+
+            ctx.strokeStyle='#e4393c';
+            ctx.lineWidth=4;
+            //1 绘制第一条线
+            //状态1
+            ctx.beginPath();//开始就默认有个状态，没必要
+            ctx.moveTo(100,100);
+            ctx.lineTo(300,100);
+            ctx.stroke();
+
+            //2 绘制第二条线
+            ctx.beginPath();//开启一个新的状态,可以继承之前的样式，颜色，宽度等
+                            // 如果重新设置只对当前状态有效
+            ctx.strokeStyle='green';
+            ctx.lineWidth=10;
+            ctx.moveTo(100,200);
+            ctx.lineTo(300,200);
+            ctx.stroke();
+
+            //3 绘制第三条线
+            ctx.beginPath();
+            ctx.strokeStyle='#00D2DC';
+            ctx.lineWidth=20;
+            ctx.moveTo(100,300);
+            ctx.lineTo(300,300);
+            ctx.stroke();
+        })()
+    </script>
+</div>
+</body>
+</html>

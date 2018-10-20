@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制简单的三角形</title>
+</head>
+<body>
+    <!--通过属性设置宽高，不要用CSS去设置,用CSS会导致拉伸-->
+    <!--IE9以上支持该标签-->
+    <!--<canvas width="500" height="300"></canvas>-->
+    <canvas id="elm"></canvas>
+    <script>
+        //1 拿到该标签
+        var canvas=document.getElementById('elm');
+        //1.1可以通过代码设置宽高
+        canvas.width=600;
+        canvas.height=600;
+        // 2拿到上下文
+        var ctx=canvas.getContext('2d');
+        //3.1绘制坐标
+        //moveTo(x,y)
+        ctx.moveTo(100,100);//画笔移动到这里
+        ctx.lineTo(200,100);
+        ctx.lineTo(100,200);
+//        ctx.lineTo(100,100);//绘制到结尾
+        ctx.closePath();//闭合路径，直接闭合首位
+        //3.2填充
+        //设置描边的宽度
+        ctx.lineWidth=4;
+        //描边之前设置描边样式
+        ctx.strokeStyle='rgba(195,9,5,.5)';//跟上颜色：rgb(),rgba()
+        ctx.stroke();//描边
+        //4 绘制图形内填充
+        //4.1设置填充的样式
+        ctx.fillStyle='green';
+        ctx.fill();//填充后描边的宽度由4变为2
+    </script>
+</body>
+</html>

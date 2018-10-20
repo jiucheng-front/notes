@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象的使用</title>
+</head>
+<body>
+<script>
+    //1 在构造函数中添加属性
+//    function School(){
+//        this.name='北京大学';
+//    }
+//    //2 在原型中添加方法
+//    School.prototype.said=function(){
+//        console.log(this.name);
+//    }
+//    //注意：在没有公用属性或者常量值的情况下，尽量不要在原型中添加属性
+//    var sh=new School();
+//    sh.name='上海交通大学';
+//    sh.said();
+
+
+
+    //1 升级1----------------------
+//    function School(name,age){
+//        this.name=name;
+//        this.age=20;
+//    }
+//    School.prototype.said=function(){
+//        console.log(this.name);
+//    }
+//    var sh=new School('交通大学',20);
+//    sh.said();
+
+
+    // 2  升级2版------------------------------
+//    function School(option){
+//        this.name=option.name;
+//        this.age=option.age;
+//    }
+//    School.prototype.said=function(){
+//        console.log(this.name);
+//    }
+//    var sh=new School({
+//        name:'上海交通大学',
+//        age:20
+//    });
+//    sh.said();
+
+
+    //3 升级3版-----------------------------------------
+    function School(option){
+        this._init(option);//带下划线一般是内部私有，只做简单区分
+    }
+    School.prototype={
+        _init:function(option){
+            this.name=option.name;
+            this.age=option.age;
+        },
+        angleToRad:function(angle){
+            return angle*Math.PI/180;
+        },
+        said:function(){
+            console.log(this.name);
+            console.log(this.angleToRad(90));
+        }
+    }
+    var sh=new School({
+        name:'上海交通大学',
+        age:20
+    });
+    sh.said();
+
+
+</script>
+</body>
+</html>

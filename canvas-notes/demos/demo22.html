@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas优化</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+</div>
+<!--面向对象的矩形封装-->
+<script src="js/ItcastRect.js"></script>
+<script>
+    (function(){
+        var canvas=document.querySelector('#elm');
+        var ctx=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=500;
+        canvas.style.border='1px solid #000';
+        //创建canvas标签
+        var canvas2=document.createElement('canvas');
+        canvas2.width=canvas.width;
+        canvas2.height=canvas.height;
+        ctx2=canvas2.getContext('2d');
+        var rect=new ItcastRect({
+            x:50,
+            y:50,
+            w:40,
+            h:40,
+            opacity:.5,
+            rotation:30,
+            scaleX:1.5,
+            scaleY:1.5,
+            strokeStyle:'blue',
+            fillStyle:'purple'
+        });
+        rect.render(ctx2);
+//        for(var i=0;i<10;i++){
+//            var rects=new ItcastRect({
+//                x:Math.random()*500,
+//                y:Math.random()*500,
+//                w:Math.random()*40,
+//                h:Math.random()*40,
+//                opacity:Math.random(),
+//                rotation:30,
+//                fillStyle:'purple'
+//            })
+//            rects.render(ctx2);
+//        }
+//        ctx.drawImage(canvas2,0,0);
+        var t=setInterval(function(){
+            ctx2.clearRect(0,0,canvas2.width,canvas2.height);
+            rect.x++;
+            rect.rotation++;
+            if(rect.x>600){
+                rect.x=0;
+            };
+            rect.render(ctx2);
+
+            //把canvas1绘制到canvas2上面去
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            //内存中计算好之后批量绘制，性能更好
+            ctx.drawImage(canvas2,0,0);
+        },10);
+
+
+
+    })()
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制图片裁剪</title>
+    <style>
+        .main{
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <canvas id="elm"></canvas>
+
+    <script>
+        (function(){
+            var canvas=document.querySelector('#elm');
+            var ctx=canvas.getContext('2d');
+            canvas.width=600;
+            canvas.height=600;
+            canvas.style.border='1px solid #000';
+
+
+            var img1=new Image();
+            //context.drawImage(img,x,y,width,height);
+            img1.src='images/img01.jpg';
+            img1.onload=function(){
+                var width=img1.width;
+                var height=img1.height;
+                var towidth=600;
+                ctx.drawImage(img1,0,0,towidth,height*towidth/width);
+            }
+            //2 图片裁剪，如：images/DMMban.png，已知宽高，按照等比分可以得到每个小人的宽高
+            //context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+            //sx,sy 裁剪的左上角坐标，
+            //swidth：裁剪图片的高度。 sheight:裁剪的高度
+            //其他同上
+            var img2=new Image();
+            //根据该图片得到的每个小人的宽高(40,65)
+            img2.src='images/DMMban.png';
+            img2.onload=function(){
+                ctx.drawImage(img2,80,130,40,65,280,260,40,65)
+            }
+
+        })()
+    </script>
+</div>
+</body>
+</html>
