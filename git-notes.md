@@ -28,7 +28,7 @@
 ### 三、常用命令(2)：合并指定的文件或者文件夹到当前分支
 + 场景：主分支是master，有多个开发分支dev1,dev2
 + dev1上有一个项目文件夹叫 app，app目录如下
-+ ![xx](img/checkout_folder_file.png)
++ ![xx](images/checkout_folder_file.png)
 
 
 ```javascript
@@ -63,7 +63,7 @@
 
 ### 六、工作区(Working Directory)和暂存区(Stage)
 + Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
-+ ![xx](img/001.jpg)
++ ![xx](images/001.jpg)
 + 其实第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；
 + 第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。
 + 在git commit成功之后暂存区就是空白了，被默认推送到git自动创建的master分支上了
@@ -95,9 +95,9 @@
 
 #### 8.2、解决冲突
 + 不同分支上对相同的文件都做了修改并add/commit之后合git merge branchName会报错
-+ ![冲突](img/chongtu.png)
++ ![冲突](images/chongtu.png)
 + 打开冲突的文件如下
-+ ![冲突](img/errorfile.png)
++ ![冲突](images/errorfile.png)
 + 选择一个重新add/commit就可以了
 + 此时就可以删除多余的分支了
 + git branch -d branchName
@@ -107,7 +107,7 @@
 #### 总结
 + 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
 + 用git log --graph命令可以看到分支合并图如下(只截一点)。
-+ ![冲突](img/001.png)
++ ![冲突](images/001.png)
 
 #### 8.3、分支管理策略
 + fast forward合并策略看不到有合并的历史记录
@@ -212,13 +212,13 @@
 + git tag 可以用命令git tag查看所有标签
 + 默认标签是打在最新提交的commit上的，**如果之前的一次提交忘记打怎么办？**方法是找到历史提交的commit id，然后打上就可以了
 + git log --pretty=oneline --abbrev-commit 可以看到之前的commit-id如下图
-+ ![tag](img/002.png)
++ ![tag](images/002.png)
 + 如果想对："在featurel上添加内容"这次提交打上标签改，它对应的commit-id是：4e1342c,即可在命令行输入:git tag v0.8 4e1342c
 + 再次输入:git tag 就会看到刚刚追加的tag
-+ ![tag](img/003.png)
++ ![tag](images/003.png)
 + **注意**标签不是按时间顺序列出，而是按字母排序的。可以用git show <tagname>查看标签信息
 + 用命令git show <tagname>可以看到说明文字如：git show v0.8
-+ ![tag](img/004.png)
++ ![tag](images/004.png)
 + 还可以通过-s用私钥签名一个标签(过于复杂略)
 
 #### 总结

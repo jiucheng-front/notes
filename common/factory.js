@@ -1304,6 +1304,28 @@ axiosAjax("POST", "/abc/api/info", param).then(res => {
 })
 
 
+/**
+ * @param {btnId}  必须返回顶部按钮的id
+ */
+function backTop(btnId){
+    var btn = document.getElementById(btnId);
+    var d = document.documentElement;
+    var b = document.body;
+    window.onscroll = set;
+    btn.style.display = "none";
+    btn.onclick = function() {
+        btn.style.display = "none";
+        window.onscroll = null;
+        this.timer = setInterval(function() {
+            d.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
+            b.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
+            if ((d.scrollTop + b.scrollTop) == 0) clearInterval(btn.timer, window.onscroll = set);
+        }, 10);
+    };
+    function set() {
+        btn.style.display = (d.scrollTop + b.scrollTop > 100) ? 'block': "none";
+    }
+}
 
 // 如何使用checkout 合并指定的文件夹和文件(合并后会覆盖)
 /*	
