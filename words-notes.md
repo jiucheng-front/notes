@@ -7,16 +7,16 @@
             <td> </td>
         </tr>
 		<tr>
-            <td>Sigin up</td>
+            <td>Sign up</td>
             <td>注册</td>
         </tr>
 		<tr>
-            <td>Sigin in</td>
+            <td>Sign in</td>
             <td>登录</td>
         </tr>
 		<tr>
-            <td>Sigin out</td>
-            <td>退出</td>
+            <td>Sign out</td>
+            <td>退出/登出</td>
         </tr>
 		<tr>
             <td>your profile</td>
