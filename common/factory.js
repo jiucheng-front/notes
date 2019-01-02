@@ -743,7 +743,7 @@ function timeToMillion(startStr, endStr) {
     return endOutStr
 }
 // Example
-imeToMillion(9613920) // => "111天6小時32分鐘"
+timeToMillion(9613920) // => "111天6小時32分鐘"
 timeToMillion("2017-11-20 13:58:47", "2017-11-22 15:09:10") // => "2天1小時10分鐘"
 
 
