@@ -1,5 +1,6 @@
 ### JS高級程序設計
 
+#### 一、Object
 > 5.1 Object 类型
 
 ```javascript
@@ -19,7 +20,7 @@
 
 ```
 
-#### 一、Array 
+#### 二、Array 
 
 > 5.2.1 Array 检测
 
@@ -161,7 +162,7 @@
 
 ```
 
-#### Function类型：函数的名字仅仅是一个包含指针的变量而已
+#### 三、Function类型：函数的名字仅仅是一个包含指针的变量而已
 
 > 5.5.4 函数内部的属性：arguments和this
 
@@ -273,11 +274,55 @@
 	sayColor.call(this)    //red
 	sayColor.call(window)  //red
 	sayColor.call(obj)     //blue
+	
+	//Eg:
+	function Person(name,age){
+	    this.name=name;
+	    this.age=age;
+	}
+	Person.prototype.said=function(){
+	     console.log(this.name);
+	}
+	var teacher=new Person();
+	var soldier={
+	    name:"库里"
+	};
+	teacher.said.apply(soldier); 	//库里
+	teacher.said.call(soldier);  	//库里
+	teacher.said.apply({name:"Durent"})  //Durent
+	teacher.said.call({name:"Iguodala"}) //Iguodala
 
 	//2.3 ECMAScript5还定义了一个：bind()方法，该方法会创建一个实例，其this值会被绑定到传给bind()函数的值,如：
 		
 	var objSayColor = sayColor.bind(obj);
 	objSayColor()  // blue
 	
+
+```
+
+#### 四、String 常用方法
+> concat 不改变原字符串
+
+```javascript
+
+	var str = "Hello"
+	var greeting = str.concat(" World")
+	console.log(str) 		//Hello
+	console.log(greeting)   //Hello World
+
+```
+
+> 字符串操作方法：基于原字符串创建新字符串的方法slice(),substr(),substring() 都不改变原字符串，都可接收2个参数，slice()和substring() 的第二个参数指定的是子字符串最后一个字符后面的位置，而 substr() 的第二个参数指定的则是返回的字符个数
+
+```javascript
+
+	var str = "Hello World"
+	console.log(str.slice(2))          //llo World
+	console.log(str.substring(2))      //llo World
+	console.log(str.slice(2,8))        //llo Wo
+	console.log(str.substring(2,8))    //llo Wo
+	console.log(str.substr(2))         //llo World
+	console.log(str.substr(2,8))       //llo Worl
+	console.log(str)                   //Hello World
 
 ```
