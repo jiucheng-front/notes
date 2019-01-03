@@ -1,5 +1,40 @@
 ### JS高級程序設計
-+ 5.5.5 函數屬性和方法
+
+> 5.1 Object 类型
+
+```javascript
+
+	function displayInfo(obj){
+		var output = ""
+		if(typeof obj.name == "string"){
+			output += "Name:" + obj.name + "\n"
+		}
+		if(typeof obj.age == "number"){
+			output += "Age:" + obj.age + "\n"
+		}
+		console.log(output)
+	}
+	displayInfo({name:"Jason",age:36})
+
+
+```
+
+> 5.2 Array 类型
+
+```javascript
+
+	// isArray
+	var arr = []
+	if(Array.isArray(arr)){
+		// do something
+	}
+
+```
+
+
+
+
+> 5.5.5 函數屬性和方法
 
 ```javascript
 	
