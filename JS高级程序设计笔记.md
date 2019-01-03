@@ -37,7 +37,7 @@
 
 > 5.2.4 队列方法：队列数据结构的访问规则是FIFO(First-In-First-Out,先进先出)，列表尾部添加项，首部移除项。push和shift(首部移除并返回该项)
 
-> 5.2.5 重排序方法：reverse和sort
+> 5.2.5 重排序方法：reverse和sort  都会改变原数组
 
 ```javascript
 
@@ -70,13 +70,92 @@
 
 ```javascript
 	
-	// 数组去重
+	// every(callback)callback 被调用时可传入三个参数：元素值，元素的索引，原数组
+	var arr = [10,26,6,18]
+	var isOver30 = arr.every(function(value){
+		return value < 30
+	})
+	console.log(isOver30)
+	
+	// filter(callback)callback 被调用时可传入三个参数：元素值，元素的索引，原数组
+	// Eg:数组去重
 	var arr = ['aaa','bbb','ccc','bbb','aaa','ddd']
 	var noRepeat = arr.filter(function(item,index,self){
 		return self.indexOf(item) === index
 	})
 	console.log(noRepeat) // ["aaa", "bbb", "ccc", "ddd"]
 	console.log(arr)      //['aaa','bbb','ccc','bbb','aaa','ddd']
+	
+	// find(callback)返回满足callback的第一个元素的值，否则返回undefined
+	var arr = [10,26,6,18]
+	var theOneOver10 = arr.find(function(value){
+	    return value > 10
+	})
+	console.log(theOneOver10) // 26
+	
+	//findIndex()方法返回数组中满足提供的测试函数的第一个元素的索引。否则返回-1
+	var arr = [10,26,6,18]
+	var firstOver10Index = arr.findIndex(function(value){
+	    return value > 10
+	})
+	console.log(firstOver10Index) // 1
+
+	//forEach(callback)callback被调用时可传入三个参数：元素值，元素的索引，原数组
+	//Eg:数组去重
+	var arr = ['aaa','bbb','ccc','bbb','aaa','ddd']
+	var noRepeat = []
+	arr.forEach(function(item,index,self){
+		if(self.indexOf(item) === index){
+			noRepeat.push(item)
+		}
+	})
+	console.log(noRepeat)  // ["aaa", "bbb", "ccc", "ddd"]
+	
+	// includes(elem) 判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false
+	var arr = [10,26,6,18]
+	var isHas18 = arr.includes(18)
+	console.log(isHas18) // true
+
+	//join([separator]) 方法将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串,不会改变数组！
+	//Eg:
+	var elements = ['Fire', 'Wind', 'Rain'];
+
+	console.log(elements.join());
+	// expected output: Fire,Wind,Rain
+	
+	console.log(elements.join(''));
+	// expected output: FireWindRain
+	
+	console.log(elements.join('-'));
+	// expected output: Fire-Wind-Rain
+	
+	//map(callback(item,[index,self])) 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果.callback被调用时可传入三个参数：元素值，元素的索引，原数组
+	//Eg:
+	var arr = [10,15,5]
+	var arr1 = arr.map(function(item){
+		return item * 2
+	})
+	console.log(arr1)   // [20, 30, 10]
+	
+	//reduce(callback(accumulator,currentValue[,currentIndex,array,initialValue]))为数组中的每一个元素依次执行callback函数，不包括数组中被删除或从未被赋值的元素，接受四个参数：
+	// accumulator 累计器
+	// currentValue 当前值
+	// currentIndex 当前索引
+	// array 数组
+	var arr = [10,15,5]
+	var total = arr.reduce(function(accumulator,currentValue){
+		console.log(accumulator,currentValue) //10 15，25 5
+		return accumulator + currentValue
+	})
+	console.log(total) //30
+	
+	//some(callback(item[,index,array])) 方法测试是否至少有一个元素通过由提供的函数实现的测试,满足返回true,否则返回false.callback被调用时可传入三个参数：元素值，元素的索引，原数组
+	// Eg:
+	var arr = [15,5,3,6,8]
+	var isHasEven = arr.reduce(function(item){
+		return item % 2 === 0
+	})
+	console.log(isHasEven)  // true
 
 ```
 
