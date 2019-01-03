@@ -35,7 +35,17 @@
 
 > 5.2.4 队列方法：队列数据结构的访问规则是FIFO(First-In-First-Out,先进先出)，列表尾部添加项，首部移除项。push和shift(首部移除并返回该项)
 
+> 5.2.5 重排序方法：reverse和sort
 
+```javascript
+
+	var arr = [1,3,6,5,7]
+	arr.reverse()  // [7,6,5,3,1]
+	
+	arr.sort(function(a,b){ return a-b }) //升序；   return b-a //降序
+	
+
+```
 
 
 > 5.5.5 函數屬性和方法
