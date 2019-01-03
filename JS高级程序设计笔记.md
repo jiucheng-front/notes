@@ -58,6 +58,28 @@
 项，则返回一个空数组）,会改变原数组
 + splice:删除、插入、替换
 
+> 5.2.7 位置方法：indexOf,lastIndexOf
+
+> 5.2.8 迭代方法：
+
++ every() ：对数组中的每一项运行给定函数，如果该函数对每一项都返回 true ，则返回 true
++ filter() ：对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组
++ forEach() ：对数组中的每一项运行给定函数。这个方法没有返回值
++ map() ：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组
++ some() ：对数组中的每一项运行给定函数，如果该函数对任一项返回 true ，则返回 true
+
+```javascript
+	
+	// 数组去重
+	var arr = ['aaa','bbb','ccc','bbb','aaa','ddd']
+	var noRepeat = arr.filter(function(item,index,self){
+		return self.indexOf(item) === index
+	})
+	console.log(noRepeat) // ["aaa", "bbb", "ccc", "ddd"]
+	console.log(arr)      //['aaa','bbb','ccc','bbb','aaa','ddd']
+
+```
+
 
 
 > 5.5.5 函數屬性和方法
