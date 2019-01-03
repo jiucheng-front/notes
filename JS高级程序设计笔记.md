@@ -312,7 +312,9 @@
 
 ```
 
-> 字符串操作方法：基于原字符串创建新字符串的方法slice(),substr(),substring() 都不改变原字符串，都可接收2个参数，slice()和substring() 的第二个参数指定的是子字符串最后一个字符后面的位置，而 substr() 的第二个参数指定的则是返回的字符个数
+> 字符串操作方法：基于原字符串创建新字符串的方法slice(),substr(),substring() 都不改变原字符串，都可接收2个参数，slice()和substring() 的第二个参数指定的是子字符串最后一个字符后面的位置，而 substr() 的第二个参数指定的则是返回的字符个数。在传递给这些方法的参数是负值的情况下，它们的行为就不尽相同了。其中， slice() 方法会将传
+入的负值与字符串的长度相加， substr() 方法将负的第一个参数加上字符串的长度，而将负的第二个
+参数转换为 0。最后， substring() 方法会把所有负值参数都转换为 0
 
 ```javascript
 
@@ -324,5 +326,59 @@
 	console.log(str.substr(2))         //llo World
 	console.log(str.substr(2,8))       //llo Worl
 	console.log(str)                   //Hello World
+
+```
+
+> 字符串位置方法：indexOf()、lastIndexOf() 查找字符所在的下标，没有返回-1
+
+> trim() 创建一个字符串副本删除前后的空格，返回结果。
+
+> 字符串大小写转换方法：toLowerCase(),toLocaleLowerCase()、toUpperCase()、toLocaleUpperCase(),locale拥有地区性推荐使用
+
+> 字符串的模式匹配方法:match()、search()、replace()
+
++ match() 当一个字符串与一个正则表达式匹配时， match()方法检索匹配项
+
+```javascript
+	
+	// Eg:
+	var str = 'For more information, see Chapter 3.4.5.1';
+	var re = /see (chapter \d+(\.\d)*)/i;
+	var found = str.match(re);
+	
+	console.log(found);
+	
+	// logs [ 'see Chapter 3.4.5.1',
+	//        'Chapter 3.4.5.1',
+	//        '.1',
+	//        index: 22,
+	//        input: 'For more information, see Chapter 3.4.5.1' ]
+	
+	// 'see Chapter 3.4.5.1' 是整个匹配。
+	// 'Chapter 3.4.5.1' 被'(chapter \d+(\.\d)*)'捕获。
+	// '.1' 是被'(\.\d)'捕获的最后一个值。
+	// 'index' 属性(22) 是整个匹配从零开始的索引。
+	// 'input' 属性是被解析的原始字符串。
+	
+
+	//Eg:
+	var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+	var regexp = /[A-E]/gi;
+	var matches_array = str.match(regexp);
+	
+	console.log(matches_array);
+	// ['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']
+	
+
+```
+
+
++ search() 如果匹配成功，则 search() 返回正则表达式在字符串中首次匹配项的索引。否则，返回 -1
++ replace() 返回一个有替换值替换一些或所有匹配的模式后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的函数
++ split()这个方法可以基于指定的分隔符将一个字符串分割成多个子字符串，并将结果放在一个数组中
+
+```javascript
+	
+	console.log("red,blue,green,yellow".split(",")) // ["red", "blue", "green", "yellow"]
 
 ```
