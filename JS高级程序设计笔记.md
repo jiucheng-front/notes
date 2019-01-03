@@ -68,6 +68,8 @@
 + map() ：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组
 + some() ：对数组中的每一项运行给定函数，如果该函数对任一项返回 true ，则返回 true
 
+> 5.2.9 归并方法：reduce和reduceRight
+
 ```javascript
 	
 	// every(callback)callback 被调用时可传入三个参数：元素值，元素的索引，原数组
@@ -159,7 +161,49 @@
 
 ```
 
+#### Function类型：函数的名字仅仅是一个包含指针的变量而已
 
+> 5.5.4 函数内部的属性：arguments和this
+
++ arguments保存函数参数的类数组，arguments还有一个叫callee的属性，该属性是一个指针，指向拥有这个arguments对象的函数
++ arguments.callee
+
+```javascript
+
+	function factorial(num){
+		console.log(num)  //5,4,3,2,1
+	    if (num <=1) {
+	    	return 1;
+	    } else {
+	    	return num * arguments.callee(num-1)  //即：5*4*3*2*1
+	    }
+	}
+	factorial(5)   // 120
+
+```
+
++ caller这个属性中保存着调用当前函数的函数的引用，如果是在全局作用域中调用当前函数，它的值为 null
+
+```javascript
+
+	function outer(){
+		inner();
+	}
+	function inner(){
+		console.log(inner.caller);      //outer的源代码
+	}
+	outer();
+	
+	//解耦：等于上面
+	function outer(){
+		inner();
+	}
+	function inner(){
+		console.log(arguments.callee.caller);    //outer的源代码
+	}
+	outer();
+
+```
 
 > 5.5.5 函數屬性和方法
 
