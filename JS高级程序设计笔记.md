@@ -19,7 +19,7 @@
 
 ```
 
-> 5.2 Array 类型
+> 5.2.1 Array 类型
 
 ```javascript
 
@@ -30,6 +30,10 @@
 	}
 
 ```
+
+> 5.2.3 栈方法：栈是一种LIFO(Last-In-First-Out,后进先出)的数据结构。push和pop(尾部移除并返回该项)
+
+> 5.2.4 队列方法：队列数据结构的访问规则是FIFO(First-In-First-Out,先进先出)，列表尾部添加项，首部移除项。push和shift(首部移除并返回该项)
 
 
 
