@@ -382,3 +382,7 @@
 	console.log("red,blue,green,yellow".split(",")) // ["red", "blue", "green", "yellow"]
 
 ```
+
+#### 五、单体内置对象
+> Global对象，URI 方法 encodeURI() 、 encodeURIComponent() 、 decodeURI() 和 decode-
+URIComponent()
