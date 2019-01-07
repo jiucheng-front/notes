@@ -44,7 +44,7 @@ function nativeAjax(option, success, error) {
             str = str.slice(1);
         }
     }
-    xhrRequest.onreadystatechange = function() {
+    xhrRequest.onreadystatechange = function () {
         if (xhrRequest.readyState == 4) {
             if (xhrRequest.status == 200) {
                 // 1.1、格式化返回的数据
@@ -68,9 +68,9 @@ var postOption = {
         "HTTP_USER_UID": pfid,
     }
 }
-nativeAjax(postOption, function(data) {
+nativeAjax(postOption, function (data) {
     console.log(data);
-}, function(error) {
+}, function (error) {
     console.log(error);
 });
 //	Example、GET：定义请求参数
@@ -79,9 +79,9 @@ var getOption = {
     urlStr: "/good_list",
     ajaxData: null
 }
-nativeAjax(getOption, function(data) {
+nativeAjax(getOption, function (data) {
     console.log(data);
-}, function(error) {
+}, function (error) {
     console.log(error);
 });
 
@@ -115,7 +115,7 @@ const Ajax = (method, url, data) => {
             }
         }
 
-        xhrRequest.onreadystatechange = function() {
+        xhrRequest.onreadystatechange = function () {
             if (xhrRequest.readyState == 4) {
                 if (xhrRequest.status == 200) {
                     resolve(xhrRequest.responseText)
@@ -188,7 +188,7 @@ function removeClass(elem, cls) {
  * 
  */
 // 4.1封装指定符号获取DOM
-window.$ = HTMLElement.prototype.$ = function(selector) {
+window.$ = HTMLElement.prototype.$ = function (selector) {
     return (this == window ? document : this).querySelectorAll(selector);
 }
 // 4.2根据ID获取指定DOM
@@ -208,7 +208,7 @@ function pushHtml(id, html) {
  * @param {*} callback 必须，绑定成功后的回调，继续操作DOM
  */
 function on(type, selector, callback) {
-    document.addEventListener(type, function(e) {
+    document.addEventListener(type, function (e) {
         e.preventDefault();
         e.stopPropagation();
         if (selector == e.target.tagName.toLowerCase() || selector == e.target.className || selector == e.target.id) {
@@ -217,7 +217,7 @@ function on(type, selector, callback) {
     })
 }
 // Example
-on("click", "btn", function() {
+on("click", "btn", function () {
     console.log("给btn按钮绑定了点击事件")
 })
 
@@ -227,7 +227,7 @@ on("click", "btn", function() {
  * 六、原生JS获取之前(prevAll)或者之后(nextAll)的所有兄弟元素
  * 	类似JQ的 prevAll和nextAll
  */
-HTMLElement.prototype.prevAll = function() {
+HTMLElement.prototype.prevAll = function () {
     var parent = this.parentElement;
     var children = parent.children;
     var arr = [];
@@ -241,7 +241,7 @@ HTMLElement.prototype.prevAll = function() {
     return arr;
 }
 
-HTMLElement.prototype.nextAll = function() {
+HTMLElement.prototype.nextAll = function () {
     var parent = this.parentElement;
     var children = parent.children;
     var arr = [];
@@ -255,7 +255,7 @@ HTMLElement.prototype.nextAll = function() {
     return arr;
 }
 // Example
-var temp = function(dom) {
+var temp = function (dom) {
     console.log("prevAll=", dom.prevAll());
     console.log("nextAll=", dom.nextAll());
 }
@@ -361,7 +361,7 @@ console.log(dePwd); //BLUE123456!
  * 详细可参考官网文档
  */
 
-window.onload = function() {
+window.onload = function () {
     var wechat = new Wechat();
     wechat.init();
 }
@@ -369,16 +369,16 @@ window.onload = function() {
 function Wechat() {}
 
 Wechat.prototype = {
-    init: function() {
+    init: function () {
         var _this = this;
         // 先判断是否需要前端授权(暂时后台做)
         this.isAuthorizationOr();
     },
     //1、 授权还是自动注册
-    isAuthorizationOr: function() {
+    isAuthorizationOr: function () {
         var _this = this;
         // 判断是微信浏览器打开
-        var isWeChat = function() {
+        var isWeChat = function () {
             var ua = window.navigator.userAgent.toLowerCase();
             return ua.match(/MicroMessenger/i) == 'micromessenger';
         }
@@ -394,7 +394,7 @@ Wechat.prototype = {
         }
     },
     //2、 微信授权登录获取信息
-    jumpWechat: function() {
+    jumpWechat: function () {
         // 官方示例：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140842
         // scope为snsapi_userinfo 
         // https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf0e81c3bee622d60&redirect_uri=http%3A%2F%2Fnba.bluewebgame.com%2Foauth_response.php&response_type=
@@ -407,12 +407,12 @@ Wechat.prototype = {
         alert('aa');
     },
     //3、 send data去注册
-    sendData: function(code) {
+    sendData: function (code) {
         // 发送给后台
         alert(code);
     },
     // 4、获取URL指定参数的值
-    getUrlParameter: function(strParame) {
+    getUrlParameter: function (strParame) {
         var args = new Object();
         var query = location.search.substring(1);
         var pairs = query.split("&");
@@ -524,12 +524,12 @@ numberWithComma(4567889798) // => "4,567,889,798"
  */
 const CAN_STORE = {
     repeatTemp: [],
-    initTime: function() {
+    initTime: function () {
         return new Date().getTime();
     }
 }
 const CAN_IS_REPEAT = {
-    repeat: function(id, num) {
+    repeat: function (id, num) {
         /**
          *  id ：string,標識符，哪個點擊事件
          *  num : 整數 t秒內只可以點擊一次
@@ -611,9 +611,9 @@ var Scroll = {
                     // 参数变化
                     $this.pageIndex += 1;
                     // 延迟
-                    setTimeout(function() {
+                    setTimeout(function () {
                         api.getReplayList($this.pageIndex, $this.pageSize, $this.anchorPfid)
-                            .then(function(res) {
+                            .then(function (res) {
                                 if (res.ret_code == "0") {
                                     let list = res.data.list;
                                     // 渲染列表
@@ -634,14 +634,14 @@ var Scroll = {
                                     // error
                                 }
                             })
-                            .catch(function(error) {
+                            .catch(function (error) {
                                 console.log(error)
                             })
                     }, 1000)
                 }
             }
         }
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             loadmore($(this));
         });
     }
@@ -654,7 +654,7 @@ Scroll.init()
  * 十六、es6 class用法
  * 
  */
-(function(window) {
+(function (window) {
     "use strict";
     class Video {
         constructor(signStatus) {
@@ -908,7 +908,7 @@ resetPhone(13585673010) // => 1358****010
  * 模块封装，属性私有化，对外抛出唯一的API可以操作内部属性和值，方便复用。
  * @param {}
  */
-var myModule = function() {
+var myModule = function () {
     var privateName = "Stephen Curry",
         publicMsg = "Hey there!";
 
@@ -948,7 +948,7 @@ function removeItem(arr) {
     var args = [].slice.call(arguments);
     args.slice(0, 1);
     var removeIndex;
-    args.forEach(function(item, index) {
+    args.forEach(function (item, index) {
         while ((removeIndex = arr.indexOf(item)) >= 0) {
             arr.splice(removeIndex, 1)
         }
@@ -1176,11 +1176,11 @@ function GetRandomStr(count) {
     this.count = count || 3;
     this.ABC = ["A", "B", "C", "D", "E", "F", "G", "H"];
     // 1 随机获得 min-max 之间的正整数
-    this.getRandomNum = function(max, min) {
+    this.getRandomNum = function (max, min) {
         return String(Math.round(Math.random() * (max - min)) + min);
     }
     // 2 随机冲字母中获得指定个数个
-    this.getRandomABC = function(ABC, count) {
+    this.getRandomABC = function (ABC, count) {
         var abc = []
         for (var i = 0; i < count; i++) {
             abc.push(ABC[Math.floor(Math.random() * ABC.length)])
@@ -1189,7 +1189,7 @@ function GetRandomStr(count) {
     }
     console.log(this.getRandomABC(this.ABC, this.count));
     // 3 向指定字符串中随机位置追加指定个数的字母:paramArr 字母数组
-    this.outRandomSplice = function(paramArr) {
+    this.outRandomSplice = function (paramArr) {
         var str = that.getRandomNum(99999999, 10000000)
         var strArr = str.split('')
         for (var i = 0; i < paramArr.length; i++) {
@@ -1197,7 +1197,7 @@ function GetRandomStr(count) {
         }
         return strArr.join('');
     }
-    this.endOut = function() {
+    this.endOut = function () {
         return that.getRandomNum(99999999, 10000000) + "-" + that.getRandomNum(9999, 1000) + "-" + that.getRandomNum(9999, 1000) + "-" + that.getRandomNum(9999, 1000) + "-" + that.outRandomSplice(that.getRandomABC(that.ABC, that.count));
     }
 }
@@ -1307,23 +1307,24 @@ axiosAjax("POST", "/abc/api/info", param).then(res => {
 /**
  * @param {btnId}  必须返回顶部按钮的id
  */
-function backTop(btnId){
+function backTop(btnId) {
     var btn = document.getElementById(btnId);
     var d = document.documentElement;
     var b = document.body;
     window.onscroll = set;
     btn.style.display = "none";
-    btn.onclick = function() {
+    btn.onclick = function () {
         btn.style.display = "none";
         window.onscroll = null;
-        this.timer = setInterval(function() {
+        this.timer = setInterval(function () {
             d.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
             b.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
             if ((d.scrollTop + b.scrollTop) == 0) clearInterval(btn.timer, window.onscroll = set);
         }, 10);
     };
+
     function set() {
-        btn.style.display = (d.scrollTop + b.scrollTop > 100) ? 'block': "none";
+        btn.style.display = (d.scrollTop + b.scrollTop > 100) ? 'block' : "none";
     }
 }
 
