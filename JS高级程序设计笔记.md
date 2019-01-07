@@ -384,5 +384,130 @@
 ```
 
 #### 五、单体内置对象
-> Global对象，URI 方法 encodeURI() 、 encodeURIComponent() 、 decodeURI() 和 decode-
+> 5.7.1 Global对象，URI 方法 encodeURI() 、 encodeURIComponent() 、 decodeURI() 和 decode-
 URIComponent()
+
+> 5.7.2 Math对象
+
++ 1、Math对象的属性
+
+<table style="border-collapse:collapse;">
+	<tr>
+        <td>属性</td>
+        <td>说明</td>
+    </tr>
+	<tr>
+        <td>Math.E</td>
+        <td>自然对数的底数，即常量 e 的值</td>
+    </tr>
+	<tr>
+        <td>Math.LN10</td>
+        <td>10的自然对数</td>
+    </tr>
+	<tr>
+        <td>Math.LN2</td>
+        <td>2的自然对数</td>
+    </tr>
+	<tr>
+        <td>Math.LOG10E</td>
+        <td>以10为底e的对数</td>
+    </tr>
+	<tr>
+        <td>Math.PI</td>
+        <td>π的值</td>
+    </tr>
+	<tr>
+        <td>Math.SQRT1_2</td>
+        <td>1/2的平方根（即2的平方根的倒数）</td>
+    </tr>
+	<tr>
+        <td>Math.SQRT2</td>
+        <td>2的平方根</td>
+    </tr>
+</table>
+
++ 2、max和min方法
+
+```javascript
+	
+	//获取数组中的最大数
+	var arr = [12,45,65,23,45]
+	var max = Math.max(...arr)
+	console.log(max)
+	
+	//等于
+	var max = Math.max.apply(Math, arr);
+	console.log(max);
+
+```
+
++ 3、舍入方法
+
+```javascript
+
+	// Math.ceil() 执行向上舍入，即它总是将数值向上舍入为最接近的整数
+	// Math.floor() 执行向下舍入，即它总是将数值向下舍入为最接近的整数
+	// Math.round() 执行标准舍入，即它总是将数值四舍五入为最接近的整数(自动四舍五入)
+	
+	console.log(Math.ceil(2.6)) //3
+	console.log(Math.ceil(2.5)) //3
+	console.log(Math.ceil(2.1)) //3
+	
+	console.log(Math.floor(2.6)) //2
+	console.log(Math.floor(2.5)) //2
+	console.log(Math.floor(2.1)) //2
+	
+	console.log(Math.round(2.6)) //3
+	console.log(Math.round(2.5)) //3
+	console.log(Math.round(2.1)) //2
+
+```
+
++ 4、random()方法
+
+```javascript
+
+	//值 = Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)
+	function selectFrom(lowerValue, upperValue) {
+		var choices = upperValue - lowerValue + 1;
+		return Math.floor(Math.random() * choices + lowerValue);
+	}
+	var num = selectFrom(2, 10);
+	console.log(num); // 介于 2 和 10 之间（包括 2 和 10）的一个数值
+	
+	var colors = ["red", "green", "blue", "yellow", "black", "purple","brown"];
+	var color = colors[selectFrom(0, colors.length-1)];
+	console.log(color); // 可能是数组中包含的任何一个字符串
+
+```
+
++ 5、其他方法
+
+```javascript
+
+	Math.abs(num)         返回 num 的绝对值
+	
+	Math.asin(x)          返回 x 的反正弦值
+	
+	Math.exp(num)         返回 Math.E 的 num 次幂
+	
+	Math.atan(x)          返回 x 的反正切值
+	
+	Math.log(num)         返回 num 的自然对数
+	
+	Math.atan2(y,x)       返回 y/x 的反正切值
+	
+	Math.pow(num,power)   返回 num 的 power 次幂
+	
+	Math.cos(x)           返回 x 的余弦值
+	
+	Math.sqrt(num)        返回 num 的平方根
+	
+	Math.sin(x)           返回 x 的正弦值
+	
+	Math.acos(x)          返回 x 的反余弦值
+	
+	Math.tan(x)           返回 x 的正切值
+	
+
+```
