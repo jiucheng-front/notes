@@ -511,3 +511,59 @@ URIComponent()
 	
 
 ```
+
+#### 六、面向对象
+
++ 理解对象：ECMA-262 把对象定义为：无序属性的集合，其属性可以包含基本值、对象或者函数。
++ 理解并创建对象
++ 理解继承
+
++ 1、数据属性：描述符（descriptor）对象的属性必须是： configurable 、 enumerable 、 writable 和 value
++ 2、访问器属性：访问器属性不包含数据值，包含一对儿 getter 和 setter 函数（不过，这两个函数都不是必需的）
+
+```javascript
+
+	var book = {
+		_year: 2004,
+		edition: 1
+	};
+	Object.defineProperty(book, "year", {
+		get: function(){
+			return this._year;
+		},
+		set: function(newValue){
+			if (newValue > 2004) {
+			this._year = newValue;
+				this.edition += newValue - 2004;
+			}
+		}
+	});
+	book.year = 2005;
+	console(book.edition); //2
+	
+	//get-set
+	var obj = {
+	    value: 111,
+	    get newValue(){
+	        console.log('取值',this.value);
+	        return this.value;
+	    },
+	    set newValue(val){
+	        console.log('存值', this.value , 'val' + val);
+	        this.value = val;
+	        console.log('存过后的',this.value);
+	    }
+	}
+	console.log(obj)
+	console.log('原生值：',obj.value);
+	console.log('get方法取值：',obj.newValue);
+	console.log('set方法存值：',obj.newValue = 222);
+	console.log('验证存取：',obj.value,obj.newValue);
+
+	不一定非要同时指定 getter 和 setter。只指定 getter 意味着属性是不能写，尝试写入属性会被忽略。
+	在严格模式下，尝试写入只指定了 getter 函数的属性会抛出错误。类似地，只指定 setter 函数的属性也
+	不能读，否则在非严格模式下会返回 undefined ，而在严格模式下会抛出错误
+
+
+```
+
