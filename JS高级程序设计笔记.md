@@ -661,6 +661,16 @@ URIComponent()
 	如：Animal.prototype.constructor指向Animal,
 	Animal.prototype指向原型对象，而Animal.prototype.constructor又
 	指向了Animal
+	
+	// 常用：
+	1、hasOwnProperty()：方法可以检测一个属性是存在于实例中，还是存在于原型中
+	dog.hasOwnProperty('say')  //false
+	dog.hasOwnProperty('name') //true
+	2、Object.keys(object)：获取一个对象可枚举属性的字符串数组
+	Object.keys(dog)  				// ['name','age']
+	Object.keys(dog.prototype)  	//['say']
+	3、Object.getOwnPropertyNames()：获得所有属性的字符串数组(无论是否可枚举)
+	Object.getOwnPropertyNames(Animal.prototype) //['constructor','say']
 
 
 ```
