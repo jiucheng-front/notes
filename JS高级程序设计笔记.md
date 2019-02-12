@@ -539,7 +539,7 @@ URIComponent()
 		}
 	});
 	book.year = 2005;
-	console(book.edition); //2
+	console.log(book.edition); //2
 	
 	//get-set
 	var obj = {
@@ -567,3 +567,71 @@ URIComponent()
 
 ```
 
++ 6.2 创建对象：虽然Object构造函数或对象字面量都可以来创建对象，但是这些方式有个明显的缺点--使用同一个接口创建很对对象，会产生大量的重复代码。因此出现工厂模式的变体
++ 6.2.1 工厂模式：用函数来封装。没有解决对象识别的问题（即怎样知道一个对象的类型）因此又有构造函数模式
+
+```javascript
+	
+	function createAnimal(name,age){
+		var obj = new Object()
+		obj.name = name
+		obj.age = age
+		obj.say = function(){
+			console.log('I am ' + this.name + ' and ' + this.age + ' year old.')
+		}
+		return obj
+	}
+	var dog = createAnimal('Huahua',2)
+	var cat = createAnimal('PangDun',1)
+	dog.say()
+	cat.say()
+		
+
+```
+
++ 6.2.2 构造函数模式
+
+```javascript
+
+	function Animal(name,age){
+		this.name = name
+		this.age = age
+		this.say = function(){
+			console.log('I am ' + this.name + ' and ' + this.age + ' year old.')
+		}
+	}
+	var dog = new Animal('HuaHua',2)
+	var cat = new Aanima('PangDun',1)
+	dog.say()
+	cat.say()
+	
+	这种模式必须使用new操作符，会经历一下4个阶段：
+	1、创建一个新对象
+	2、将构造函数的作用域赋值给这个对象(因此this就指向了这个对象)
+	3、执行构造函数中的代码(为这个新对象添加属性)
+	4、返回新对象
+	
+	dog和cat分别保存着Animal的不同实例，且这2个对象都有一个constructor(构造函数)属性指向Animal
+	dog.constructor == Animal //true
+	cat.constructor == Animal //true	
+	检测对象类型使用instanceof可靠
+	dog instanceof Animal //true
+	dog instanceof Object //true
+	cat instanceof Animal //true
+	cat instanceof Object //true
+	
+	3种使用：
+	//当做构造函数使用
+	var elephant = new Animal('Abu',4)
+	elephant.say() //...
+	//当做普通函数使用：此时this指向全局window
+	Animal('Pig',5)
+	window.say() //...
+	//在另一个对象的作用域中调用
+	var obj = new Object()
+	Animal.call(obj,'KK',3)
+	obj.say()
+	
+	公用属性可以放在prototype上，避免重复创建。
+
+```
