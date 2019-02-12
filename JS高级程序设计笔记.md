@@ -601,7 +601,7 @@ URIComponent()
 		}
 	}
 	var dog = new Animal('HuaHua',2)
-	var cat = new Aanima('PangDun',1)
+	var cat = new Animal('PangDun',1)
 	dog.say()
 	cat.say()
 	
@@ -633,5 +633,34 @@ URIComponent()
 	obj.say()
 	
 	公用属性可以放在prototype上，避免重复创建。
+
+```
+
++ 6.2.2 原型模式
+
+```javascript
+
+	function Animal(name,age){
+		this.name = name
+		this.age = age
+		
+	}
+	Animal.prototype.say = function(){
+		console.log('I am ' + this.name + ' and ' + this.age + ' year old.')
+	}
+	var dog = new Animal('HuaHua',2)
+	var cat = new Animal('PangDun',1)
+	dog.say()
+	cat.say()
+	
+	注意：
+	无论什么时候，只要创建了一个新函数，就会根据一组特定的规则
+	为该函数创建一个 prototype属性，这个属性指向函数的原型对象。
+	在默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，
+	这个属性包含一个指向 prototype 属性所在函数的指针--
+	如：Animal.prototype.constructor指向Animal,
+	Animal.prototype指向原型对象，而Animal.prototype.constructor又
+	指向了Animal
+
 
 ```
