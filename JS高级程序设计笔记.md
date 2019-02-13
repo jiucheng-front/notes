@@ -639,7 +639,8 @@ URIComponent()
 + 6.2.2 原型模式
 
 ```javascript
-
+	
+	// 组合使用构造函数模式和原型模式：使用广泛
 	function Animal(name,age){
 		this.name = name
 		this.age = age
