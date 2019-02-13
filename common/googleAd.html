@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function() {
+            var gads = document.createElement("script");
+            gads.async = true;
+            gads.type = "text/javascript";
+            var useSSL = "https:" == document.location.protocol;
+            gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+            var node = document.getElementsByTagName("script")[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
+
+    <script type="text/javascript">
+        // DOC
+        // https://developers.google.com/doubleclick-gpt/reference
+        console.log(googletag, 'googletag')
+        // 使用 Google 测试广告联盟中的常规广告
+        googletag.cmd.push(function() {
+            googletag.pubads().addEventListener('impressionViewable', function(event) {
+                console.log(`event`, event)
+                var targetSlot = event.slot.getSlotElementId();
+                if (targetSlot == "banner1") {
+                    console.log("ad viewable");
+                }
+                console.log(event.slot.getSlotElementId(), `Slot id`)
+            })
+
+            var adSlot1 = googletag.defineSlot('/6355419/Travel/Europe/France/Paris', [300, 250], "banner1");
+            adSlot1.addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+</head>
+
+<body>
+    <p>Hello world GPT Ad!</p>
+    <div id="banner1" style="width:300px; height:250px;">
+        <script type="text/javascript">
+            googletag.cmd.push(function() { googletag.display('banner1'); });
+        </script>
+    </div>
+</body>
+
+</html>
