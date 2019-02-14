@@ -772,7 +772,11 @@ URIComponent()
 	
 	组合继承避免了原型链和借用构造函数的缺陷，融合了它们的优点，
 	成为 JavaScript 中最常用的继承模式。而且， instanceof 和 
-	isPrototypeOf() 也能够用于识别基于组合继承创建的对象
+	isPrototypeOf() 也能够用于识别基于组合继承创建的对象。
+
+	问题：组合继承最大的问题就是无论什么情况下，都会调用两次
+	超类型构造函数：一次是在创建子类型原型的时候，另一次是在
+	子类型构造函数内部。解决这个问题方法------寄生组合式继承
 
 ```
 
@@ -850,5 +854,81 @@ URIComponent()
 	dog.say() //Hi...
 
 
+
+```
+
++ 6.3.6 寄生组合式继承：即通过借用构造函数来继承属性，通过原型链的混成形式来继承方法。其背
+后的基本思路是：不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型
+原型的一个副本而已。本质上，就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型
+的原型。
+
+```javascript
+
+	/*
+	* 寄生式继承依托于原型继承，原型继承又与类式继承想象。
+	* 即： 原型与构造函数的组合继承
+	* 寄生式继承  继承原型
+	* 传递参数 childClass 子类
+	* 传递参数 parentClass 父类
+	*/
+
+	//原型式继承
+	function inheritObj(obj){
+		//声明一个过渡函数对象
+		function F(){}
+		//过渡对象的原型继承父对象
+		F.prototype = obj;
+		//返回过渡对象的一个实例，该实例的原型继承了父对象
+		return new F();
+	}
+
+	function inheritPrototype(childClass,parentClass){
+		//复制一份父类原型副本保存在变量中
+		var p = inheritObj(parentClass.prototype);
+		//修正因为重写子类原型导致子类的constructor属性被修改
+		p.constructor = childClass;
+		//设置子类原型
+		childClass.prototype = p;
+	}
+
+	// 定义父类
+	function ParentClass(name){
+		this.name = name;
+		this.books = ['Html'];
+	}
+	//定义父类原型方法
+	ParentClass.prototype.getName = function(){
+		console.log(this.name);
+	}
+	//定义子类
+	function ChildClass(name,time){
+		//构造函数是继承
+		ParentClass.call(this,name);
+		//子类新增属性
+		this.time = time;
+	}
+
+	// 寄生式继承父类原型
+	inheritPrototype(ChildClass,ParentClass);
+	//子类新增方法
+	ChildClass.prototype.getTime = function(){
+		console.log(this.time);
+	}
+	// test
+	var child1 = new ChildClass('react',2018);
+	var child2 = new ChildClass('vue',2017);
+
+	child1.books.push('css');
+
+	console.log(child1.books)     // ['Html','css']
+	console.log(child2.books)     // ['html']
+
+	child2.getName()              // Vue
+	child2.getTime()              // 2017	
+	
+	注：
+	只调用了一次 ParentClass 构造函数，并且因此避免了在
+	ParentClass.prototype 上面创建不必要的、多余的属性。
+	遍认为寄生组合式继承是引用类型最理想的继承范式。
 
 ```
