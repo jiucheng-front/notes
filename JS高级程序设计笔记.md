@@ -709,9 +709,9 @@ URIComponent()
 	}
 	function SubType(){
 	    // 继承了 SuperType
-	    SuperType.call(this);
+	    SuperType.call(this);   	 //第二次调用超类SuperType
 	}
-	var instance1 = new SubType();
+	var instance1 = new SubType();   //第一次调用超类SuperType
 	instance1.colors.push("black");
 	console.log(instance1.colors); //"red,blue,green,black"
 	var instance2 = new SubType();
@@ -743,19 +743,19 @@ URIComponent()
 ```javascript
 
 	function SuperType(name){
-	this.name = name;
-	this.colors = ["red", "blue", "green"];
+		this.name = name;
+		this.colors = ["red", "blue", "green"];
 	}
 	SuperType.prototype.sayName = function(){
 		console.log(this.name);
 	}
 	function SubType(name, age){
 		//继承属性
-		SuperType.call(this, name);
+		SuperType.call(this, name);      
 		this.age = age;
 	}
 	//继承方法
-	SubType.prototype = new SuperType();
+	SubType.prototype = new SuperType();  
 	SubType.prototype.constructor = SubType;
 	SubType.prototype.sayAge = function(){
 		console.log(this.age);
@@ -818,6 +818,37 @@ URIComponent()
 	在没有必要兴师动众地创建构造函数，而只想让一个对象与另一个对象保持
 	类似的情况下，原型式继承是完全可以胜任的。不过别忘了，包含引用类型
 	值的属性始终都会共享相应的值，就像使用原型模式一样
+
+
+```
+
++ 6.3.5 寄生式继承：寄生式继承的思路与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，该函数在内部以某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象
+
+```javascript
+
+	//原型式继承
+	function inheritObj(obj){
+		//声明一个过渡函数对象
+		function F(){}
+		//过渡对象的原型继承父对象
+		F.prototype = obj;
+		//返回过渡对象的一个实例，该实例的原型继承了父对象
+		return new F();
+	}
+	function createOther(origin){
+		var clone = inheritObj(origin);
+		clone.say = function(){
+			console.log('Hi...')
+		}
+		return clone
+	}
+	var animal = {
+		name:'cat',
+		age:2
+	}
+	var dog = createOther(animal);
+	dog.say() //Hi...
+
 
 
 ```
