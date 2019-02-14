@@ -676,7 +676,7 @@ URIComponent()
 
 ```
 
-#### 6.3继承
+#### 6.3继承：主要是依靠原型链来实现的
 + 6.3.1 原型链：利用原型让一个引用类型继承另一个引用类型的属性和方法
 
 ```javascript
@@ -773,5 +773,51 @@ URIComponent()
 	组合继承避免了原型链和借用构造函数的缺陷，融合了它们的优点，
 	成为 JavaScript 中最常用的继承模式。而且， instanceof 和 
 	isPrototypeOf() 也能够用于识别基于组合继承创建的对象
+
+```
+
++ 6.3.4原型式继承：借助原型可以基于已有的对象创建新对象，同时还不必因此创建自定义类型
+
+```javascript
+
+	//原型式继承
+	function inheritObj(obj){
+		//声明一个过渡函数对象
+		function F(){}
+		//过渡对象的原型继承父对象
+		F.prototype = obj;
+		//返回过渡对象的一个实例，该实例的原型继承了父对象
+		return new F();
+	}
+	/*
+	* 这种方式是对类式继承的一个封装，所以类式继承中存在的缺点这里依然存在
+	*/
+	var car = {
+		id:1,
+		color:['red']
+	}
+
+	var car1 = inheritObj(car);
+	car1.id = 2;
+	car1.color.push('blue');
+
+	var car2 = inheritObj(car);
+	car2.id = 3;
+	car2.color.push('yellow');
+
+	console.log(car1.id)       // 2
+	console.log(car1.color)    // ["red", "blue", "yellow"]
+
+	console.log(car2.id)       // 3
+	console.log(car2.color)    // ["red", "blue", "yellow"]
+
+	console.log(book.id)       // 1
+	console.log(book.color)    // ["red", "blue", "yellow"]
+
+
+	在没有必要兴师动众地创建构造函数，而只想让一个对象与另一个对象保持
+	类似的情况下，原型式继承是完全可以胜任的。不过别忘了，包含引用类型
+	值的属性始终都会共享相应的值，就像使用原型模式一样
+
 
 ```
