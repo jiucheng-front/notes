@@ -675,3 +675,103 @@ URIComponent()
 
 
 ```
+
+#### 6.3继承
++ 6.3.1 原型链：利用原型让一个引用类型继承另一个引用类型的属性和方法
+
+```javascript
+
+	function SuperType(){
+		this.property = true;
+	}
+	SuperType.prototype.getSuperValue = function(){
+		return this.property;
+	};
+	function SubType(){
+		this.subproperty = false;
+	}
+	//继承了 SuperType
+	SubType.prototype = new SuperType();
+	SubType.prototype.getSubValue = function (){
+		return this.subproperty;
+	};
+	var instance = new SubType();
+	console.log(instance.getSuperValue()); //true
+
+```
+
++ 6.3.2 借用构造函数继承：即在子类型构造函数的内部调用超类型构造函数
+
+```javascript
+
+	function SuperType(){
+		this.colors = ["red", "blue", "green"];
+	}
+	function SubType(){
+	    // 继承了 SuperType
+	    SuperType.call(this);
+	}
+	var instance1 = new SubType();
+	instance1.colors.push("black");
+	console.log(instance1.colors); //"red,blue,green,black"
+	var instance2 = new SubType();
+	console.log(instance2.colors); //"red,blue,green"
+	
+	注：
+	SuperType.call(this)--代码“借调”了超类型的构造函数。通过使用 
+	call() 方法（或 apply() 方法
+	也可以），我们实际上是在（未来将要）新创建的 SubType 实例的环境下调用
+	SuperType 构造函数。
+	这样一来，就会在新 SubType 对象上执行 SuperType() 函数中定义的所有
+	对象初始化代码。结果，
+	SubType 的每个实例就都会具有自己的 colors 属性的副本
+
+	1、传递参数
+	//继承了 SuperType，同时还传递了参数
+	SuperType.call(this, "Nicholas");
+	
+	2、问题
+	如果仅仅是借用构造函数，那么也将无法避免构造函数模式存在的问题——方法都在
+	构造函数中定义，因此函数复用就无从谈起了。而且，在超类型的原型中定义的方法，
+	对子类型而言也是不可见的，结果所有类型都只能使用构造函数模式。考虑到这些问
+	题，借用构造函数的技术也是很少单独使用的
+	
+```
+
++ 6.3.3 组合继承：指将原型链和借用构造函数的技术组合到一块，从而发挥二者之长的一种继承模式
+
+```javascript
+
+	function SuperType(name){
+	this.name = name;
+	this.colors = ["red", "blue", "green"];
+	}
+	SuperType.prototype.sayName = function(){
+		console.log(this.name);
+	}
+	function SubType(name, age){
+		//继承属性
+		SuperType.call(this, name);
+		this.age = age;
+	}
+	//继承方法
+	SubType.prototype = new SuperType();
+	SubType.prototype.constructor = SubType;
+	SubType.prototype.sayAge = function(){
+		console.log(this.age);
+	};
+	var instance1 = new SubType("Nicholas", 29);
+	instance1.colors.push("black");
+	console.log(instance1.colors);  //"red,blue,green,black"
+	instance1.sayName(); 	 		//"Nicholas";
+	instance1.sayAge(); 	 		//29
+	var instance2 = new SubType("Greg", 27);
+	console.log(instance2.colors);  //"red,blue,green"
+	instance2.sayName(); 	 		//"Greg";
+	instance2.sayAge(); 	 		//27
+	
+	组合继承避免了原型链和借用构造函数的缺陷，融合了它们的优点，
+	成为 JavaScript 中最常用的继承模式。而且， instanceof 和 
+	isPrototypeOf() 也能够用于识别基于组合继承创建的对象
+
+```
