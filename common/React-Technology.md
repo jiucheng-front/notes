@@ -64,5 +64,40 @@
 > reselect：一旦redux从react的数据层来理解，很多问题都似乎找到了理论依据，所谓名正言顺。在web框架中都会用数据库做数据持久层，在查表的时候会为了效率做缓存，reselect是同样的目的。给state做缓存减少不必要的计算和更新！
 
 
+```javascript
+
+	1 action
+		(无需参数直接：'XX_AAA')
+		带参数：aaBBcc,AA_BB_CC: data => ({data})
+
+	2 saga 
+		import aaBBcc from '../aaBBcc'
+		takeEvery(aaBBcc,postFunc)
+		function* postFunc(action){
+			kkRequest...
+		}
+
+	3 如果接口拿到后需要缓存，再次更新给组件
+		function* api([param]){
+			const result = kkrequest({
+				...
+			})
+			if(result.ret_code==='0'){
+				yeild put(xxSave(result))
+			}
+		}
+		// 1 action 添加xxSave
+		// 2 reducer 添加xxSave, someData
+		// 3 selector 添加 
+		getSomeData  = state => (state[namespace].someData || {})
+
+	4 Component 内 引入对应的 selector--getSomeData
+		mapStateToProps = state => ({
+			xxData: getSomeData(state)
+		}) 
+
+```
+
+
 
 
