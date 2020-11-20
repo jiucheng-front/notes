@@ -36,6 +36,7 @@
 + git fetch -p origin   清除缓存
 + git branch -D branchName 删除本地分支	
 + git push origin -d branchName(分知名)  刪除远程分支
++ git cherry-pick commit_id 合并指定的commit到当前分支上
 
 ### 三、常用命令(2)：合并指定的文件或者文件夹到当前分支
 + 场景：主分支是master，有多个开发分支dev1,dev2
@@ -70,6 +71,7 @@
 
 ### 五、版本回退总结
 + git reset --hard commit-id在版本历史之间穿梭
++ git push origin HEAD --force 回退之后推送到远程更新远程
 + git log可以查看提交历史
 + git reflog查看当前分支的历史操作(方便重返未来)
 
