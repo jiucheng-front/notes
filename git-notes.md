@@ -37,6 +37,7 @@
 + git branch -D branchName 删除本地分支	
 + git push origin -d branchName(分知名)  刪除远程分支
 + git cherry-pick commit_id 合并指定的commit到当前分支上
++ 删除之前的某次commit [详解](https://www.cnblogs.com/lwcode6/p/11809973.html)
 
 ### 三、常用命令(2)：合并指定的文件或者文件夹到当前分支
 + 场景：主分支是master，有多个开发分支dev1,dev2
