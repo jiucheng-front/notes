@@ -2,7 +2,7 @@ name: Daily timestamp commit
 
 on:
   schedule:
-    - cron: '0 8 * * *' # 每天 08:00 UTC 执行，按需调整
+    - cron: '0 0 * * *' # 每天 08:00 北京时间 (UTC+8) -> 00:00 UTC
   workflow_dispatch: {}
 
 jobs:
@@ -16,14 +16,24 @@ jobs:
 
       - name: Configure git
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          # 优先使用仓库 Secrets 中设置的提交作者信息（可选），否则回退到 github.actor 的 noreply 邮箱
+          if [ -n "${{ secrets.DAILY_COMMIT_NAME }}" ]; then
+            git config user.name "${{ secrets.DAILY_COMMIT_NAME }}"
+          else
+            git config user.name "${{ github.actor }}"
+          fi
+          if [ -n "${{ secrets.DAILY_COMMIT_EMAIL }}" ]; then
+            git config user.email "${{ secrets.DAILY_COMMIT_EMAIL }}"
+          else
+            git config user.email "${{ github.actor }}@users.noreply.github.com"
+          fi
 
       - name: Update timestamp file
         run: |
-          # 使用仓库的默认分支（此仓库的默认分支是 master）
+          # 使用仓库的默认分支（例如 master）
           git checkout ${{ github.event.repository.default_branch }} || true
-          echo "Last commit: $(date -u +'%Y-%m-%dT%H:%M:%SZ')" > .daily_commit
+          # 写入包含秒和 epoch 的时间戳，确保每次都有变化
+          echo "Last commit: $(date -u +'%Y-%m-%dT%H:%M:%S%z') - epoch: $(date +%s)" > .daily_commit
           git add .daily_commit
           git commit -m "chore: update daily timestamp $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "no changes to commit"
           git push origin HEAD
